@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="css/dialog.css" />
+	<link rel="stylesheet" href="css/time/dcalendar.picker.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />		
+	<link rel="stylesheet" href="css/jquery.pageslide.css" /> 
+	<link rel="stylesheet" href="css/main.css" />	
+	<link rel="stylesheet" href="css/auto.css" />	
+
+</head>
+
+<body>
+	
+	<div class="background-img">
+		<img src="img/background-main.jpg" />
+	</div>
+	<div class="floor">
+		<div class="naturefloor">			
+			<div class="floor-header">
+				<span>新增资料</span>
+			</div>
+			<div class="add-title">				
+				<span><img src="img/star.png" />文件标题：</span>
+				<input type="text" placeholder="请输入标题" required="required"/>
+			</div>
+			<div class="add-time">				
+				<span><img src="img/star.png" />发布时间：</span>
+				<input type="text" id='mydatepicker3' placeholder="选择发布时间" required="required"/>
+			</div>
+			
+			<div class="top-time">
+				<span>选择置顶：</span>
+				<input type="text" id='mydatepicker4' placeholder="选择置顶时间" />
+			</div>
+			<div class="remark">
+				<span>添加备注：</span>
+				<textarea placeholder="请输入备注"></textarea>
+			</div>
+			<div class="uploader blue">
+				<input type="text" id="update-flie" class="filename" readonly="readonly" value="点击上传文件"/>
+				<input type="file" id="update" size="30" />
+			</div>
+			<div class="btn-box">
+				<input id="submit" type="button" value="提交"/>
+				<input type="button" class="floor-closeButton" value="关闭"/>
+			</div>			
+		</div>
+		<div class="mask"></div>
+	</div>
+	<div class="top-header">
+		<div class="container-fluid top-logo">
+			<div class="container">
+				<div class="row">
+				<div class="logo col-md-2">
+					<span>安全运行</span>
+					<p>本栏目由总工办负责维护</p>
+				</div>
+					<div class="search-content col-md-10">
+						<div class="search-box search-word">
+							<span class="search-box-span">关键字：</span>
+							<div class="input-box">
+								<input type="text" placeholder="请输入文件名关键字" class="form-control search-input" />
+							</div>
+							<div class="btn-box">
+								<a href="search.html"  title="搜索文件">搜索</a>
+							</div>
+						</div>
+						<div class="search-time search-box">
+							<span class="search-box-span">发布日期：</span>
+							<div class="input-box time-box">
+								<input id='mydatepicker1' placeholder="请选择日期" type="text" class="form-control" />
+							</div>
+							<span class="search-box-span">至</span>
+							<div class="input-box time-box">
+								<input id='mydatepicker2' placeholder="请选择日期" type="text" class="form-control" />
+							</div>
+						</div>												
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid menubar">
+		<div class="container">
+			<ul class="menu row">
+				<li class="level1"><a href="home.html">首页</a></li>
+				<li class="level1"><a href="page2.html">规章制度</a></li>
+				<li class="level1"><a href="#">安委会</a>
+					<ul>
+						<li>
+							<a href="#">会议通知</a>
+						</li>
+						<li>
+							<a href="#">会议材料</a>
+						</li>
+						<li>
+							<a href="#">会议纪要</a>
+						</li>
+						<li>
+							<a href="meeting.html">会议任务跟踪</a>
+						</li>							
+					</ul>
+				</li>
+				<li class="level1"><a href="#">技术管理</a>
+					<ul>
+						<li>
+							<a href="tech.html">技术项目</a>
+						</li>
+						<li>
+							<a href="#">无形资产</a>
+						</li>
+					</ul>
+				</li>
+				<li class="level1"><a href="#">信息安全</a>
+					<ul>
+						<li>
+							<a href="#">组织架构</a>
+						</li>
+						<li>
+							<a href="#">安全体系</a>
+						</li>
+						<li>
+							<a href="#">培训材料</a>
+						</li>
+					</ul>
+				</li>
+				<li class="level1"><a href="#">研究与交流</a>
+					<ul>
+						<li>
+							<a href="#">技术报告</a>
+						</li>
+						<li>
+							<a href="#">Gartner专栏</a>
+						</li>
+					</ul>
+				</li>							
+			</ul>
+			<div class="user-logout">
+				<span>欢迎您！admin</span>
+				<a title="退出">退出</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container middle-content">
+		<div class="row">
+			<div class="col-sm-3">
+				<ul class="list-menu">
+					<li class="title">
+						所有分类
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+								规章制度
+							</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col-md-9">
+				<table class="table-style">
+					<thead>
+						<tr>
+							<td class="xuhao">
+								序号
+							</td>
+							<td>
+								名称
+							</td>
+							<td class="time">
+								时间
+							</td>
+							<td class="operation-add"><a class="add" href="javascript:;">增加</a>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="xuhao">1</td>
+							<td class="name">
+								<a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a>
+								<img src="img/top.png" />	
+							</td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">2</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a>
+								<img src="img/top.png" />	
+							</td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">3</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">4</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">5</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">6</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">7</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">8</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">9</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">10</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">11</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">12</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">13</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">14</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="xuhao">15</td>
+							<td class="name"><a class="clearfix-link">如何制定与中国“十三五”规划相一致的IT战略</a></td>
+							<td class="time">2017-09-12</td>
+							<td class="operation"><a href="javascript:;">删除</a>
+							</td>
+						</tr>
+
+
+
+					</tbody>
+				</table>
+				<ul class="pagination">
+					<li>
+						<a href="javascript:void(0);"></a>
+					</li>
+					<li><a class="active" href="javascript:void(0);">1</a>
+					</li>
+					<li><a href="javascript:void(0);">2</a>
+					</li>
+					<li><a href="javascript:void(0);">3</a>
+					</li>
+					<li><a href="javascript:void(0);">4</a>
+					</li>
+					<li><a href="javascript:void(0);">5</a>
+					</li>
+					<li><span>……</span>
+					</li>
+					<li><a href="javascript:void(0);">></a>
+					</li>
+					<li class="tiaoz"><span>跳转至</span>
+						<input type="text" class="form-control"><span>页</span><a href="javascript:;">确定</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--[if lt IE 9]>
+	       <script src="js/ie8/respond.min.js"></script>
+	       <script src="js/ie8/excanvas.min.js"></script>
+	       <script src="js/ie8/html5shiv.js"></script>
+	       <script src="js/ie8/ie8.fix.min.js"></script>
+	   <![endif]-->
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>	
+	<script type="text/javascript" src="js/time/dcalendar.picker.js"></script>
+	<script type="text/javascript" src="js/dialog.js"></script>
+	<script type="text/javascript" src="js/jquery.pageslide.min.js"></script>
+	<script type="text/javascript" src="js/jquery.pageslide.js"></script>
+	
+	<script>
+		$(function() {
+			//引用日期控件
+			$('#mydatepicker1, #mydatepicker2, #mydatepicker3, #mydatepicker4').dcalendarpicker({
+					format:'yyyy-mm-dd'
+				}); 
+			
+			//增加按钮的点击事件
+			$(".operation-add .add").click(function() {
+				$(".floor").fadeIn();
+				$("body").addClass("noscroll");
+				$(".naturefloor").animate({　　
+					 "opacity": "1",
+				        　"margin": "4% auto"
+				});
+			});
+			
+			//关闭上传文件页面的点击事件
+			$(".floor-closeButton").click(function() {
+				$(".naturefloor").animate({　　
+				   "opacity": "0",
+				　　"margin": "10% auto"
+				});
+				$(".floor").fadeOut();
+				$("body").removeClass("noscroll");
+			});
+			
+			//上传文件的事件
+			var file = $('#update'),
+				aim = $('#update-flie');
+			file.on('change', function( e ){
+			    //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
+			    var name = e.currentTarget.files[0].name;
+			    aim.val( name );
+			});
+			
+		});
+		
+			//导航栏焦点切换
+			$("ul.menu li a").click(function(){     
+				$(this).closest(".level1").addClass('active');  
+				$(this).closest(".level1").siblings("li.level1").removeClass("active");
+			})	
+						
+			/* 弹出提示框*/
+			$(".operation > a").click(function(){		//删除按钮的点击事件
+				$('body').dailog({type:'primary'},function(ret) {if(ret.index===0){alert('已删除！')};})
+			})	
+			
+			$("#submit").click(function(){		//上传文件确认提示事件
+				$('body').dailog({type:'primary',title:'提示！',discription:'是否提交上传文件？'},function(ret) {if(ret.index===0){alert('提交成功！')};})
+			})	
+			
+			$(".user-logout > a").click(function(){		//退出提示事件
+				$('body').dailog({type:'primary',title:'提示！',discription:'您确定要退出吗？'},function(ret) {if(ret.index===0){window.location.href="home.html"};})
+			})
+		
+	</script>
+</body>
+
+</html>

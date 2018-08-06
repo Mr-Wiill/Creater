@@ -1,0 +1,253 @@
+/*-------------------------响应式页面style----------------------------------*/
+@media (max-width:768px) {
+	body{
+		width: 100%;
+	}
+	.container{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.clearfix-link{
+		max-width: 50%;
+	}
+	.menubar ul li a{
+    	padding: 10px 10px;
+	}
+	.menubar ul li{
+		margin: 0 5px;
+	}
+	.col-md-2{
+		width:17%;
+		float: left;
+	/* 	padding: 0; */
+	}
+	.col-sm-3{
+		width: 22%;
+		float: left;
+	}
+	.col-md-9{
+		width: 78%;
+		float: left;
+	}
+	.col-md-10{
+		width: 83%;
+ 		 text-align: left;
+ 		 float: right;
+/*  		 padding: 0; */
+	}
+	.logo span{
+		font-size: 22px;
+		line-height: 70px;
+	}
+	.logo p{
+		position: absolute;
+		bottom: -22px;
+		right: 0;
+		font-size: 11px;
+	}
+	.btn-box{
+		float: right;
+		margin: 0 10px 0 15px;
+		display: inline-block;
+	}
+	.search-box{
+		margin: 23px 0;
+		display: inline-block;
+		margin-left:5px ;
+	}
+	.form-control{
+		width:120px;
+	}
+	.top-logo{
+		height: 80px;
+	}
+	ul.content-list li.title{
+		width: 90px;
+	}
+	ul.content-list li.title a.title-inner{
+		width: 100%;
+	}
+	ul.content-list{
+		padding-left: 90px;
+	}
+	table.excel-table-tech thead tr td{
+		line-height: 20px;
+	}
+		table.excel-table-meeting thead tr td{
+		line-height: 39px;
+	}
+	
+}
+
+/**************************** 网页宽度大于768px时 ****************************/
+@media (min-width:768px) {
+	body{
+		width: 100%;
+	}
+	.container{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.clearfix-link{
+		max-width: 50%;
+	}
+	.menubar ul li a{
+    	padding: 10px 10px;
+	}
+	.menubar ul li{
+		margin: 0 5px;
+	}
+	.col-md-2{
+		width:17%;
+		float: left;
+	/* 	padding: 0; */
+	}
+	.col-sm-3{
+		width: 22%;
+		float: left;
+	}
+	.col-md-9{
+		width: 78%;
+		float: left;
+	}
+	.col-md-10{
+		width: 83%;
+ 		 text-align: left;
+ 		 float: right;
+/*  		 padding: 0; */
+	}
+	.logo span{
+		font-size: 22px;
+		line-height: 70px;
+	}
+	.logo p{
+		position: absolute;
+		bottom: -5px;
+		right: 0;
+		font-size: 11px;
+	}
+	.btn-box{
+		float: right;
+		margin: 0 10px 0 15px;
+		display: inline-block;
+	}
+	.search-box{
+		margin: 23px 0;
+		display: inline-block;
+		margin-left:5px ;
+	}
+	.form-control{
+		width:125px;
+	}
+	.top-logo{
+		height: 80px;
+	}
+	ul.content-list li.title{
+		width: 90px;
+	}
+	ul.content-list li.title a.title-inner{
+		width: 100%;
+	}
+	ul.content-list{
+		padding-left: 90px;
+	}
+	table.excel-table-tech thead tr td{
+		line-height: 20px;
+	}
+		table.excel-table-meeting thead tr td{
+		line-height: 39px;
+	}
+}
+
+
+/**************************** 网页宽度大于992px时 ****************************/
+@media (min-width: 992px) {
+	.container{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.clearfix-link{
+		max-width: 60%;
+	}
+	.menubar ul li a{
+    	padding: 10px 20px;
+	}
+	.col-md-2 {
+    	width: 16.66666667%;
+	}
+	.col-sm-3{
+		width: 22%;
+		float: left;
+	}
+	.col-md-9{
+		width: 78%;
+		float: left;
+	}
+	 .col-md-10 {
+ 		 width:83.33333333%;
+ 		 text-align: left;
+ 	}
+	.search-box{
+		margin: 23px 0;
+		display: inline-block;
+		margin-left:5px ;
+	}
+	.form-control{
+		width: 100% !important;
+	}
+	.logo span{
+		font-size: 25px;
+		line-height: 70px;
+	}
+	.logo p{
+		position: absolute;
+		bottom: -8px;
+		right: 0;
+		font-size: 12px;
+	}
+	ul.content-list li.title{
+		width: 120px;
+	}
+	ul.content-list li.title a.title-inner{
+		width: 100%;
+	}
+	ul.content-list{
+		padding-left: 120px;
+	}
+	table.excel-table-tech thead tr td{
+		line-height: 20px;
+	}
+
+}
+
+
+/**************************** 网页宽度大于1200px时 ****************************/
+@media (min-width: 1200px){
+	.clearfix-link{
+		max-width: 70%;
+	}
+	.menubar ul li a{
+    	padding: 10px 25px;
+	}
+	.search-box{
+		margin: 23px 5px;
+		display: inline-block
+	}
+	.logo span{
+		font-size: 32px;
+		line-height: 60px;
+	}
+	.logo p{
+		position: absolute;
+		font-size: 13px;
+		bottom: -23px;
+		right: -35px;
+	}
+	table.excel-table-tech thead tr td{
+		line-height: 20px;
+	}
+
+}
+
+
+

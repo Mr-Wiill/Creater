@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/dialog.css" />
+		<link rel="stylesheet" href="css/time/dcalendar.picker.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/jquery.pageslide.css" />
+		<link rel="stylesheet" href="css/table.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/auto.css" />
+
+	</head>
+
+	<body>
+		
+		<div class="background-img">
+			<img src="img/background-main.jpg" />
+		</div>
+		<div class="floor">
+			<div class="naturefloor">
+				<div class="floor-header">
+					<span>新增资料</span>
+				</div>
+				<div class="add-title">
+					<span><img src="img/star.png" />文件标题：</span>
+					<input type="text" placeholder="请输入标题" required="required" />
+				</div>
+				<div class="add-time">
+					<span><img src="img/star.png" />发布时间：</span>
+					<input type="text" id='mydatepicker3' placeholder="选择发布时间" required="required" />
+				</div>
+
+				<div class="top-time">
+					<span>选择置顶：</span>
+					<input type="text" id='mydatepicker4' placeholder="选择置顶时间" />
+				</div>
+				<div class="remark">
+					<span>添加备注：</span>
+					<textarea placeholder="请输入备注"></textarea>
+				</div>
+				<div class="uploader blue">
+					<input type="text" class="filename" readonly="readonly" />
+					<input type="file" size="30" />
+				</div>
+				<div class="btn-box">
+					<input id="submit" type="button" value="提交" />
+					<input type="button" class="floor-closeButton" value="关闭" />
+				</div>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<div class="top-header">
+			<div class="container-fluid top-logo">
+				<div class="container">
+					<div class="row">
+						<div class="logo col-md-2">
+							<span>安全运行</span>
+							<p>本栏目由总工办负责维护</p>
+						</div>
+						<div class="search-content col-md-10">
+							<div class="search-box search-word">
+								<span class="search-box-span">关键字：</span>
+								<div class="input-box">
+									<input type="text" placeholder="请输入文件名关键字" class="form-control search-input" />
+								</div>
+								<div class="btn-box">
+									<a href="search.html" title="搜索文件">搜索</a>
+								</div>
+							</div>
+							<div class="search-time search-box">
+								<span class="search-box-span">发布日期：</span>
+								<div class="input-box time-box">
+									<input id='mydatepicker1' placeholder="请选择日期" type="text" class="form-control" />
+								</div>
+								<span class="search-box-span">至</span>
+								<div class="input-box time-box">
+									<input id='mydatepicker2' placeholder="请选择日期" type="text" class="form-control" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid menubar">
+			<div class="container">
+				<ul class="menu row">
+					<li class="level1">
+						<a href="home.html">首页</a>
+					</li>
+					<li class="level1">
+						<a href="page2.html">规章制度</a>
+					</li>
+					<li class="level1">
+						<a href="#">安全会</a>
+						<ul>
+							<li>
+								<a href="#">会议通知</a>
+							</li>
+							<li>
+								<a href="#">会议材料</a>
+							</li>
+							<li>
+								<a href="#">会议纪要</a>
+							</li>
+							<li>
+								<a href="meeting.html">会议任务跟踪</a>
+							</li>
+						</ul>
+					</li>
+					<li class="level1">
+						<a href="#">技术管理</a>
+						<ul>
+							<li>
+								<a href="tech.html">技术项目</a>
+							</li>
+							<li>
+								<a href="#">无形资产</a>
+							</li>
+						</ul>
+					</li>
+					<li class="level1">
+						<a href="#">信息安全</a>
+						<ul>
+							<li>
+								<a href="#">组织架构</a>
+							</li>
+							<li>
+								<a href="#">安全体系</a>
+							</li>
+							<li>
+								<a href="#">培训材料</a>
+							</li>
+						</ul>
+					</li>
+					<li class="level1">
+						<a href="#">研究与交流</a>
+						<ul>
+							<li>
+								<a href="#">技术报告</a>
+							</li>
+							<li>
+								<a href="#">Gartner专栏</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="user-logout">
+					<span>欢迎您！admin</span>
+					<a title="退出">退出</a>
+				</div>
+			</div>
+		</div>
+
+<!-- ---------------------------------- 修改部分 Start------------------------------------ -->
+
+		<div class="container middle-content">
+			<div class="row">				
+				<div class="col-sm-3">
+					<ul class="list-menu">
+						<li class="title">
+							所有分类
+						</li>
+						<li>
+							<a href="javascript:void(0);">
+								会议通知
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">
+								会议材料
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">
+								会议纪要
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">
+								会议任务追踪
+							</a>
+						</li>					
+					</ul>
+				
+<!---------------------------------------  导入/导出Excel start --------------------------------------->				
+					<ul class="operation-list-menu">
+						<li class="title">
+							操作
+						</li>
+						<li>
+							<a class="import-excel" href="javascript:void(0);">
+								导入Excel
+							</a>
+						</li>
+						<li>
+							<a class="export-excel" href="javascript:void(0);">
+								导出Excel
+							</a>
+						</li>
+					</ul>
+					
+					<!--------------- 上传Excel弹出框  start ------------------>
+					<div class="excel-floor">
+						<div class="excel-naturefloor">			
+							<div class="floor-header">
+								<span>导入Excel</span>
+							</div>							
+							<div class="excel-uploader">
+								<input type="text" id="import-file" class="excel-filename" onchange="show()" readonly="readonly" value="点击选择文件" />
+								<input type="file" id="import" size="30" />
+							</div>
+							<div class="excel-btn-box">
+								<input id="import-submit" type="button" value="确定"/>
+								<input type="button" class="excel-floor-closeButton" value="取消"/>
+							</div>			
+						</div>
+						<div class="mask"></div>
+					</div>			
+					<!--------------- 上传Excel弹出框 end ------------------>
+					
+<!---------------------------------------  导入/导出Excel end --------------------------------------->							
+				</div>
+
+				<div class="col-md-9">
+					<table class="excel-table-meeting">
+						<thead>
+							<tr>
+								<td class="thead1">会议</td>
+								<td class="thead2">结论</td>
+								<td class="thead3">负责部门</td>
+								<td class="thead4">状态</td>
+								<td class="thead5">情况说明</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									总工办
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									总工办
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办
+							</tr>
+							
+							<tr>
+								<td>2017年第五次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									技术开发总部
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。					
+								</td>
+								<td>
+									总工办
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									待定
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									总工办
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									市场总部
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。系统运行总部会已将修改说明和修订后的文本送总工办并由总工办邮件分发全体委员审阅。待上会
+								</td>
+							</tr>
+							
+							<tr>
+								<td>2017年第三次会议</td>
+								<td>
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+									要求技术开发部考虑未来系统应用总体布局，以及其对网络与安全的影响。
+								</td>
+								<td>
+									总工办
+								</td>
+								<td>
+									进行中
+								</td>
+								<td>
+									签报已会签完成。
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+							
+<!-- ---------------------------------- 修改部分 End------------------------------------ -->						
+					
+					<ul class="pagination">
+						<li>
+							<a href="javascript:void(0);"></a>
+						</li>
+						<li>
+							<a class="active" href="javascript:void(0);">1</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">2</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">3</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">4</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">5</a>
+						</li>
+						<li><span>……</span>
+						</li>
+						<li>
+							<a href="javascript:void(0);">></a>
+						</li>
+						<li class="tiaoz"><span>跳转至</span>
+							<input type="text" class="form-control"><span>页</span>
+							<a href="javascript:;">确定</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+
+		<!--[if lt IE 9]>
+	       <script src="js/ie8/respond.min.js"></script>
+	       <script src="js/ie8/excanvas.min.js"></script>
+	       <script src="js/ie8/html5shiv.js"></script>
+	       <script src="js/ie8/ie8.fix.min.js"></script>
+	   <![endif]-->
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/time/dcalendar.picker.js"></script>
+		<script type="text/javascript" src="js/dialog.js"></script>
+		<script type="text/javascript" src="js/jquery.pageslide.min.js"></script>
+		<script type="text/javascript" src="js/jquery.pageslide.js"></script>
+
+		<script>
+			$(function() {
+				//引用日期控件
+				$('#mydatepicker1, #mydatepicker2, #mydatepicker3, #mydatepicker4').dcalendarpicker({
+					format: 'yyyy-mm-dd'
+				});
+								
+				//导航栏焦点切换
+				$("ul.menu li a").click(function() {
+					$(this).closest(".level1").addClass('active');
+					$(this).closest(".level1").siblings("li.level1").removeClass("active");
+				})		
+				
+/*------------------------------------ import excel start----------------------------------------*/				
+				//导入excel按钮的点击事件
+				$(".import-excel").click(function() {
+					$(".excel-floor").fadeIn();
+					$("body").addClass("noscroll");
+					$(".excel-naturefloor").animate({　　
+						"opacity": "1",
+						　"margin": "15% auto"
+					});
+				});
+
+				//关闭上传文件页面的点击事件
+				$(".excel-floor-closeButton").click(function() {
+					$(".excel-naturefloor").animate({　　
+						"opacity": "0",
+						　　"margin": "10% auto"
+					});
+					$(".excel-floor").fadeOut();
+					$("body").removeClass("noscroll");
+				});
+				
+				//上传文件的事件
+				var file = $('#import'),
+					aim = $('#import-file');
+				file.on('change', function( e ){
+				    //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
+				    var name = e.currentTarget.files[0].name;
+				    aim.val( name );
+				});	
+				
+				/* 弹出提示框*/				
+				$("#import-submit").click(function() { 	//上传文件确认提示事件					
+					alert('导入成功！')
+					/*$('body').dailog({
+						type: 'primary',
+						title: '提示！',
+						discription: '是否确定导入文件？'
+					}, function(ret) {
+						if(ret.index === 0) {
+							alert('导入成功！')
+						};
+					})*/
+				})							
+/*------------------------------------ import excel end----------------------------------------*/
+
+				$(".user-logout > a").click(function() { //退出提示事件
+					$('body').dailog({
+						type: 'primary',
+						title: '提示！',
+						discription: '您确定要退出吗？'
+					}, function(ret) {
+						if(ret.index === 0) {
+							window.location.href = "home.html"
+						};
+					})
+				})
+				
+			});
+		</script>
+	</body>
+
+</html>
