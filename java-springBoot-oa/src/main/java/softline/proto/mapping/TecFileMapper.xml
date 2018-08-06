@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="softline.proto.dao.TecFileMapper" >
+  <resultMap id="BaseResultMap" type="softline.proto.domain.TecFile" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="COLUMN_ID" property="columnId" jdbcType="INTEGER" />
+    <result column="MENU_ID" property="menuId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PATH" property="path" jdbcType="VARCHAR" />
+    <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="CREATE_ACCT" property="createAcct" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="IS_TOP" property="isTop" jdbcType="SMALLINT" />
+    <result column="TOP_TIME" property="topTime" jdbcType="VARCHAR" />
+    <result column="ISSUE_TIME" property="issueTime" jdbcType="VARCHAR" />
+    <result column="IS_FLAG" property="isFlag" jdbcType="BIT" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="content1" property="content1" jdbcType="VARCHAR" />
+    <result column="content2" property="content2" jdbcType="VARCHAR" />
+    <result column="content3" property="content3" jdbcType="VARCHAR" />
+    <result column="content4" property="content4" jdbcType="VARCHAR" />
+    <result column="content5" property="content5" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="softline.proto.domain.TecFile" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, COLUMN_ID, MENU_ID, TITLE, NAME, PATH, UUID, CREATE_ACCT, CREATE_TIME, IS_TOP, 
+    TOP_TIME, ISSUE_TIME, IS_FLAG,sort,content1,content2,content3,content4,content5
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tec_file
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tec_file
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="softline.proto.domain.TecFile" >
+    insert into tec_file (ID, COLUMN_ID, MENU_ID, 
+      TITLE, NAME, PATH, 
+      UUID, CREATE_ACCT, CREATE_TIME, 
+      IS_TOP, TOP_TIME, ISSUE_TIME, 
+      IS_FLAG, REMARK,sort,content1,content2,content3,content4,content5)
+    values (#{id,jdbcType=INTEGER}, #{columnId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{createAcct,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{isTop,jdbcType=SMALLINT}, #{topTime,jdbcType=VARCHAR}, #{issueTime,jdbcType=VARCHAR}, 
+      #{isFlag,jdbcType=BIT}, #{remark,jdbcType=LONGVARCHAR},#{sort,jdbcType=VARCHAR},
+      #{content1,jdbcType=VARCHAR},#{content2,jdbcType=VARCHAR},#{content3,jdbcType=VARCHAR},#{content4,jdbcType=VARCHAR},#{content5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="softline.proto.domain.TecFile" >
+    insert into tec_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="columnId != null" >
+        COLUMN_ID,
+      </if>
+      <if test="menuId != null" >
+        MENU_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="path != null" >
+        PATH,
+      </if>
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="createAcct != null" >
+        CREATE_ACCT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="isTop != null" >
+        IS_TOP,
+      </if>
+      <if test="topTime != null" >
+        TOP_TIME,
+      </if>
+      <if test="issueTime != null" >
+        ISSUE_TIME,
+      </if>
+      <if test="isFlag != null" >
+        IS_FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="sort!= null" >
+        sort,
+      </if>
+      <if test="content1!= null" >
+        content1,
+      </if>
+       <if test="content2!= null" >
+        content2,
+      </if>
+       <if test="content3!= null" >
+        content3,
+      </if>
+       <if test="content4!= null" >
+        content4,
+      </if>
+       <if test="content5!= null" >
+        content5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="columnId != null" >
+        #{columnId,jdbcType=INTEGER},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="createAcct != null" >
+        #{createAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isTop != null" >
+        #{isTop,jdbcType=SMALLINT},
+      </if>
+      <if test="topTime != null" >
+        #{topTime,jdbcType=VARCHAR},
+      </if>
+      <if test="issueTime != null" >
+        #{issueTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isFlag != null" >
+        #{isFlag,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="content1 != null" >
+        #{content1,jdbcType=VARCHAR},
+      </if>
+       <if test="content2 != null" >
+        #{content2,jdbcType=VARCHAR},
+      </if>
+       <if test="content3 != null" >
+        #{content3,jdbcType=VARCHAR},
+      </if>
+       <if test="content4 != null" >
+        #{content4,jdbcType=VARCHAR},
+      </if>
+       <if test="content5 != null" >
+        #{content5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="softline.proto.domain.TecFile" >
+    update tec_file
+    <set >
+      <if test="columnId != null" >
+        COLUMN_ID = #{columnId,jdbcType=INTEGER},
+      </if>
+      <if test="menuId != null" >
+        MENU_ID = #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        PATH = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        UUID = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="createAcct != null" >
+        CREATE_ACCT = #{createAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isTop != null" >
+        IS_TOP = #{isTop,jdbcType=SMALLINT},
+      </if>
+      <if test="topTime != null" >
+        TOP_TIME = #{topTime,jdbcType=VARCHAR},
+      </if>
+      <if test="issueTime != null" >
+        ISSUE_TIME = #{issueTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isFlag != null" >
+        IS_FLAG = #{isFlag,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="content1 != null" >
+        content1 = #{content1,jdbcType=VARCHAR},
+      </if>
+       <if test="content2 != null" >
+        content2 = #{content2,jdbcType=VARCHAR},
+      </if>
+       <if test="content3 != null" >
+        content3 = #{content3,jdbcType=VARCHAR},
+      </if>
+       <if test="content4 != null" >
+        content4 = #{content4,jdbcType=VARCHAR},
+      </if>
+       <if test="content5 != null" >
+        content5 = #{content5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="softline.proto.domain.TecFile" >
+    update tec_file
+    set COLUMN_ID = #{columnId,jdbcType=INTEGER},
+      MENU_ID = #{menuId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      CREATE_ACCT = #{createAcct,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      IS_TOP = #{isTop,jdbcType=SMALLINT},
+      TOP_TIME = #{topTime,jdbcType=VARCHAR},
+      ISSUE_TIME = #{issueTime,jdbcType=VARCHAR},
+      IS_FLAG = #{isFlag,jdbcType=BIT},
+      REMARK = #{remark,jdbcType=LONGVARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      content1 = #{content1,jdbcType=VARCHAR},
+      content2 = #{content2,jdbcType=VARCHAR},
+      content3 = #{content3,jdbcType=VARCHAR},
+      content4 = #{content4,jdbcType=VARCHAR},
+      content5 = #{content5,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <update id="topTimeTask">
+  UPDATE tec_file SET IS_TOP=0 WHERE TOP_TIME &lt; DATE_FORMAT(NOW(),'%Y-%m-%d')
+  </update>
+ <select id="selectSchedule" resultMap="BaseResultMap" parameterType="map">
+ 
+ SELECT f.* FROM tec_file f WHERE   f.IS_FLAG=0 
+ AND f.column_id=1
+ AND f.MENU_ID=#{menuId}			   
+ ORDER BY sort,ISSUE_TIME DESC 
+ </select>
+ 
+ <select id="personActive" resultMap="BaseResultMap">
+ select * from tec_file f where menu_id=1501 and (content4 >= DATE_FORMAT(NOW(),'%Y-%m-%d') or ISSUE_TIME >= DATE_FORMAT(NOW(),'%Y-%m-%d') or content3 >= DATE_FORMAT(NOW(),'%Y-%m-%d') ) and f.IS_FLAG=0 ORDER BY sort, ISSUE_TIME DESC 
+ </select>
+ 
+ <select id="noticeList" resultMap="BaseResultMap">
+ select * from tec_file f where menu_id=1502 and f.IS_FLAG=0 ORDER BY  ISSUE_TIME DESC limit 0,10
+ </select>
+</mapper>

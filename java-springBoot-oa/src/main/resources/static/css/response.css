@@ -1,0 +1,210 @@
+@media ( max-width :768px) {
+	body {
+		min-width: 768px;
+	}
+	.clearfix-link {
+		max-width: 40%;
+	}
+	.menubar ul li a {
+		padding: 10px 10px;
+	}
+	.menubar ul li {
+		margin: 0 10px;
+	}
+	.col-md-2 {
+		width: 15%;
+		float: left;
+		padding: 0;
+	}
+	.col-md-10 {
+		width: 85%;
+		text-align: left;
+		float: left;
+		padding: 0;
+	}
+	.logo span {
+		font-size: 22px;
+	}
+	.btn-box {
+		float: right;
+		margin: 0 10px 0 15px;
+		display: inline-block;
+	}
+	.search-box {
+		margin: 23px 0;
+		display: inline-block;
+		margin-left: 5px;
+	}
+	.form-control {
+		width: 130px;
+	}
+	.top-logo {
+		height: 80px;
+	}
+	.col-md-9 {
+		width: 75%;
+		float: left;
+	}
+	ul.page-2 {
+		width: 25%;
+		float: left;
+		margin: 0;
+	}
+	.col-sm-3 {
+		width: 25%;
+		float: left;
+	}
+	ul.list-menu {
+		width: 180px;
+	}
+	ul.content-list li.title {
+		width: 120px;
+	}
+	ul.content-list li.title a.title-inner {
+		width: 100%;
+	}
+	ul.content-list {
+		padding-left: 120px;
+	}
+}
+
+/**************************** 缃戦〉瀹藉害澶т簬768px鏃� ****************************/
+@media ( min-width :768px) {
+	body {
+		width: 100%;
+	}
+	.clearfix-link {
+		max-width: 40%;
+	}
+	.menubar ul li a {
+		padding: 10px 10px;
+	}
+	.menubar ul li {
+		margin: 0 20px;
+	}
+	.col-md-2 {
+		width: 15%;
+		float: left;
+		padding: 0;
+	}
+	.col-md-10 {
+		width: 85%;
+		text-align: left;
+		float: left;
+		padding: 0;
+	}
+	.logo span {
+		font-size: 19px;
+	}
+	.btn-box {
+		float: right;
+		margin: 0 10px 0 15px;
+		display: inline-block;
+	}
+	.search-box {
+		margin: 23px 0;
+		display: inline-block;
+		margin-left: 5px;
+	}
+	.form-control {
+		width: 130px;
+	}
+	.top-logo {
+		height: 80px;
+	}
+	.col-md-9 {
+		width: 75%;
+		float: left;
+	}
+	ul.page-2 {
+		width: 25%;
+		float: left;
+		margin: 0;
+	}
+	.col-sm-3 {
+		width: 25%;
+		float: left;
+	}
+	ul.list-menu {
+		width: 180px;
+	}
+	ul.content-list li.title {
+		width: 120px;
+	}
+	ul.content-list li.title a.title-inner {
+		width: 100%;
+	}
+	ul.content-list {
+		padding-left: 120px;
+	}
+}
+
+/**************************** 缃戦〉瀹藉害澶т簬992px鏃� ****************************/
+@media ( min-width : 992px) {
+	.clearfix-link {
+		max-width: 60%;
+	}
+	.menubar ul li a {
+		padding: 10px 20px;
+	}
+	.col-md-2 {
+		width: 250px;
+		margin: 0 20px;
+	}
+	.col-md-10 {
+		width: 789px;
+		text-align: center;
+		float: right;
+		/* padding-right: 40px; */
+		margin-right: 50px;
+		/* margin: 0 auto; */
+	}
+	.search-box {
+		margin: 23px 0;
+		display: inline-block;
+		margin-left: 5px;
+	}
+	.form-control {
+		width: 100% !important;
+	}
+	.logo span {
+		font-size: 25px;
+	}
+	.col-md-9 {
+		width: 75%;
+	}
+	ul.page-2 {
+		width: 25%;
+		float: left;
+		margin: 0;
+	}
+	.col-sm-3 {
+		width: 25%;
+	}
+	ul.list-menu {
+		width: 242.5px;
+	}
+}
+
+/**************************** 缃戦〉瀹藉害澶т簬1200px鏃� ****************************/
+@media ( min-width : 1200px) {
+	.clearfix-link {
+		max-width: 70%;
+	}
+	.menubar ul li a {
+		padding: 10px 25px;
+	}
+	.search-box {
+		margin: 23px 5px;
+		display: inline-block;
+	}
+	ul.page-2 {
+		width: 25%;
+		float: left;
+		margin: 0;
+	}
+	ul.list-menu {
+		width: 287px;
+		left: x;
+	}
+}

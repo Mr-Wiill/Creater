@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="softline.deploy.dao.TecFileVoMapper" >
+  <resultMap id="TecFileVoMap" type="softline.deploy.domain.TecFileVo" extends="softline.proto.dao.TecFileMapper.BaseResultMap" >
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+   <result column="p_menu_name" property="parentMenuName" jdbcType="VARCHAR" />
+  </resultMap>
+ <select id="selectByMidAndCid" resultMap="TecFileVoMap" parameterType="softline.deploy.domain.TecFileVo" >
+ SELECT f.*,m.NAME MENU_NAME 
+ FROM TEC_FILE f,TEC_MENU m
+ WHERE f.MENU_ID=m.ID
+  AND f.IS_FLAG=0 
+ AND m.ID= #{menuId}
+ AND f.column_id=#{columnId}				   
+ ORDER BY IS_TOP DESC,ISSUE_TIME DESC 
+ </select>
+ 
+ <select id="search" resultMap="TecFileVoMap" parameterType="softline.deploy.domain.TecFileVo">
+ SELECT f.*,m.NAME menu_name 
+ FROM tec_file f,tec_menu m
+ WHERE f.MENU_ID=m.ID AND f.IS_FLAG=0 
+ AND f.column_id=#{columnId}
+ <if test="startTime!='' and startTime!=null">
+ AND ISSUE_TIME &gt;=#{startTime}
+ </if>
+ <if test="issueTime!='' and issueTime!=null">
+ AND ISSUE_TIME &lt;=#{issueTime}
+ </if>
+ <if test="startTime!='' and startTime!=null and issueTime!='' and issueTime!=null ">
+  AND ISSUE_TIME BETWEEN #{startTime} AND #{issueTime}
+ </if>
+ <if test="title!=null and title!='' ">
+ AND title LIKE '%${title}%'
+ </if>
+ ORDER BY IS_TOP DESC, ISSUE_TIME DESC  
+ </select>
+ <select id="selectLatest" resultMap="TecFileVoMap" parameterType="map">
+ 
+ SELECT f.*,m.NAME MENU_NAME FROM tec_file f, tec_menu m WHERE   f.IS_FLAG=0 
+ AND f.MENU_ID=m.ID
+ AND f.column_id=1
+ AND f.MENU_ID not in (1501,1502,1503)			   
+ ORDER BY is_top DESC, ISSUE_TIME DESC 
+ <if test="pageNum!=null and pageNum!='' ">
+ LIMIT 0 ,#{pageNum}
+  </if>
+ </select>
+ 
+</mapper>

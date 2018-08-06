@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link rel="stylesheet" href="/css/login.css" />
+<script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
+<title>登录</title>
+</head>
+<body>
+	<div class="background-img">
+		<img src="/img/background-login.jpg" />
+	</div>
+	<div class="login">
+		<div class="login-head">
+			<h2>企业文档存储管理系统</h2>
+		</div>
+		<form id="loginForm" action="" method="post">
+			<div class="login-user">
+				<span>账 号：</span> <input id="acct" type="text" placeholder="请输入账号" />
+			</div>
+			<div class="login-user">
+				<span>密 码：</span> <input id="pswd" type="password"
+					placeholder="请输入密码" />
+			</div>
+		</form>
+
+		<div class="login-check">
+			<div class="login-submit">
+				<a href="javascript:;"><input id="sbutton" type="button"
+					value="登录" /></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(function() {
+		$("#sbutton").click(function() {
+			var acct = $("#acct").val();
+			var pswd = $("#pswd").val();
+			$.post("/bbc/doLogin", {
+				acct : acct,
+				pswd : pswd
+			}, function(data) {
+				if (data) {
+					location.href = "/bbc/home";
+				} else {
+					alert("用户名或密码错误！");
+				}
+			});
+		});
+	});
+	$(document).keyup(function(event) {
+		if (event.keyCode == 13) {
+			$("#sbutton").trigger("click");
+		}
+	});
+</script>
+</html>

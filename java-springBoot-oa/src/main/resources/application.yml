@@ -1,0 +1,27 @@
+server:
+  port: 8104
+  session:
+    timeout: 30  
+  tomcat:
+    uri-encoding: UTF-8
+
+spring: 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bond_database?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    
+  thymeleaf:
+   cache: false
+   prefix: classpath:/templates/
+   suffix: .html
+   encoding: UTF-8
+   content-type: text/html
+   mode: HTML5
+  
+    
+mybatis:
+  mapper-locations: classpath:softline/deploy/mapping/*.xml,classpath:softline/proto/mapping/*.xml
+
+guid: BM_BOND_COLUMN_WEB

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" href="/css/response.css" />
+<link rel="stylesheet" href="/css/paging.css" />
+<link rel="stylesheet" href="/css/dialog.css" />
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/js/time/dcalendar.picker.js"></script>
+<script type="text/javascript" src="/js/jquery.pageslide.min.js"></script>
+<script type="text/javascript" src="/js/jquery.pageslide.js"></script>
+<script type="text/javascript" src="/js/jQuery.rTabs.js"></script>
+<script type="text/javascript" src="/js/dialog.js"></script>
+<script type="text/javascript" src="/js/paging.js"></script>
+<script type="text/javascript" th:inline="JavaScript">
+var menuId = [[${menu_id}]];
+	$(function() {
+		var currentPage = ([[${pager.currentPage}]]==null?1:[[${pager.currentPage}]]);
+		var totalPage = [[${pager.totalPage}]];
+		var totalRecord = [[${pager.totalRecord}]];
+		$("#page").paging({
+			currentPage : currentPage,
+			totalPage : totalPage,
+			totalRecord : totalRecord,
+			callback : function(pageNum) {
+				page2Div("/bbc/page2Home/"+ pageNum + "/"+menuId);
+	
+			}
+		});
+	});
+	
+	function page2Div(url){
+		$.ajax({
+			url : url,
+			dataType : 'html',
+			type : 'post',
+			cache : false,
+			success : function(datas) {
+				$("#contentPage").html(datas);
+			}
+		});
+		
+	}
+window.onerror=function(){return true;}
+</script>
+</head>
+<div id="contentPage">
+	<div class="floor floor-public">
+		<div class="naturefloor naturefloor-public">
+			<div class="floor-header tab-header">
+				<span>新增资料</span>
+			</div>
+			<div class="floor-tab" id="tab">
+				<div class="tab-nav j-tab-nav">
+					<a href="javascript:void(0);" th:if="${menu_id==1501}">人员动态</a> <a
+						href="javascript:void(0);" th:if="${menu_id==1502}">公告周知</a> <a
+						href="javascript:void(0);" th:if="${menu_id==1503}">工作督办</a>
+				</div>
+				<div class="tab-con">
+					<div class="j-tab-con">
+						<div class="tab-con-item tab-item-schedule"
+							th:if="${menu_id==1501}">
+							<form id="scheduleForm"
+								th:action="@{'/bbc/addRecord/'+${menu_id}}" method="post">
+								<div class="tab-duty tab-person-name">
+									<span>人员姓名：</span> <input id="file_id" type="text" th:name="id"
+										style="display: none;" /> <input id="pName" type="text"
+										placeholder="输入姓名" th:name="content1" />
+								</div>
+								<div class="tab-schedule-category tab-padding-left">
+									<span>选择类型：</span> <select id="type"
+										onchange="selectChange(this[selectedIndex].value)"
+										th:name="content2">
+										<option id="act0" value="0">活动</option>
+										<option id="act1" value="1">休假</option>
+										<option id="act2" value="2">出差</option>
+										<option id="act3" value="3">其它</option>
+									</select>
+								</div>
+
+								<div class="tab-add-time ">
+									<span>选择日期：</span> <input type="text" id='mydatepicker3'
+										placeholder="起始日期" required="required" th:name="content3" />
+								</div>
+								<div class="tab-add-time tab-deadline" id="deadLine">
+									<span class="tab-deadline-span">-</span> <input type="text"
+										id='mydatepicker4' placeholder="截止日期" required="required"
+										th:name="content4" />
+								</div>
+								<div class="tab-duty sort-block">
+									<span>排序编号：</span> <input id="sort" type="text"
+										placeholder="请输入正整数" title="请输入正整数" th:name="sort" />
+								</div>
+								<div class="tab-category private-height private-padding-top">
+									<span>输入标题：</span> <input id="pTitle" placeholder="请输入标题"
+										th:name="title" maxlength="50"></input>
+								</div>
+								<div class="tab-btm tab-btm-padding-top">
+									<input class="submit" type="button" value="提交" /> <input
+										class="floor-closeButton" type="button" value="关闭" />
+								</div>
+							</form>
+						</div>
+						<div class="tab-con-item tab-item-schedule"
+							th:if="${menu_id==1502}">
+							<form id="scheduleForm"
+								th:action="@{'/bbc/addRecord/'+${menu_id}}" method="post">
+
+								<div class="tab-category tab-info">
+									<input id="file_id" type="text" th:name="id"
+										style="display: none;" /> <span>公告标题：</span> <input
+										id="pub_title" placeholder="请输入标题" th:name="title"
+										maxlength="50"></input>
+								</div>
+								<div class="tab-text-mark mark-private-height">
+									<span>公告内容：</span>
+									<textarea placeholder="请输入备注" id="pub_remark" th:name="remark"></textarea>
+								</div>
+								<div class="tab-category tab-info">
+									<span>落款信息：</span> <input type="text" id='content1'
+										placeholder="落款信息" th:name="content1" maxlength="20" />
+								</div>
+								<div class="tab-btm private-padding-top">
+									<input class="submit" type="button" value="提交" /> <input
+										class="floor-closeButton" type="button" value="关闭" />
+								</div>
+							</form>
+						</div>
+						<div class="tab-con-item tab-item-schedule"
+							th:if="${menu_id==1503}">
+							<form id="scheduleForm"
+								th:action="@{'/bbc/addRecord/'+${menu_id}}" method="post">
+								<div class="tab-category">
+									<span>任务标题：</span> <input id="file_id" type="text" th:name="id"
+										style="display: none;" /> <input id="title" type="text"
+										placeholder="请输入任务" th:name="title" maxlength="50" />
+								</div>
+
+								<div class="tab-duty">
+									<span>输入类别：</span> <input type="text" id="content1"
+										placeholder="类别" th:name="content1" maxlength="10" />
+								</div>
+
+								<div class="tab-duty tab-padding-left">
+									<span>截止时间：</span> <input type="text" id='mydatepicker6'
+										placeholder="选择日期" required="required" th:name="content4" />
+								</div>
+								<div class="tab-duty">
+									<span>牵头人员：</span> <input id="content3" type="text"
+										placeholder="人员" th:name="content3" maxlength="10" />
+								</div>
+								<div class="tab-state tab-padding-left">
+									<span>进行状态：</span> <select id="content5" th:name="content5">
+										<option value='进行中'>进行中</option>
+										<option value='完成'>完成</option>
+										<option value='终止'>终止</option>
+										<option value='其他'>其他</option>
+									</select>
+								</div>
+								<div class="tab-state">
+									<span>牵头部门：</span> <select id="departOne" th:name="content2">
+										<option value='人力资源部'>人力资源部</option>
+										<option value='财务管理部'>财务管理部</option>
+										<option value='市场运营部'>市场运营部</option>
+										<option value='技术开发部'>技术开发部</option>
+									</select>
+								</div>
+								<div class="tab-state tab-padding-left">
+									<span>配合部门：</span> <select id="departTwo" th:name="teamWork">
+										<option value='人力资源部'>人力资源部</option>
+										<option value='财务管理部'>财务管理部</option>
+										<option value='市场运营部'>市场运营部</option>
+										<option value='技术开发部'>技术开发部</option>
+									</select>
+								</div>
+								<div class="tab-text-mark">
+									<span>任务说明：</span>
+									<textarea placeholder="请输入备注" id="remark" th:name="remark"></textarea>
+								</div>
+								<div class="tab-btm">
+									<input class="submit" type="button" value="提交" /> <input
+										class="floor-closeButton" type="button" value="关闭" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mask"></div>
+	</div>
+
+
+	<div class="floor">
+		<div class="naturefloor">
+			<div class="floor-header">
+				<span>上传文档</span>
+			</div>
+			<form id="form" th:action="@{'/bbc/addRecord/'+${menu_id}}"
+				method="post" enctype="multipart/form-data">
+				<div class="add-title">
+
+					<span><img src="/img/star.png" />文件标题：</span> <input th:id="title"
+						maxlength="90" type="text" placeholder="请输入标题" required="required"
+						th:name="title" />
+				</div>
+				<div class="add-time">
+
+					<span><img src="/img/star.png" />发布时间：</span> <input type="text"
+						th:id='mydatepicker1' placeholder="选择发布时间" required="required"
+						th:name="issueTime" />
+				</div>
+
+				<div class="top-time">
+					<span>选择置顶：</span> <input type="text" th:id='mydatepicker2'
+						placeholder="选择置顶时间" name="topTime" />
+				</div>
+				<div class="remark">
+					<span>添加备注：</span>
+					<textarea placeholder="请输入备注" th:name="remark"></textarea>
+				</div>
+				<div class="uploader blue">
+					<input type="text" id="update-file" class="filename"
+						readonly="readonly" value="点击上传文件(双击)" /> <input th:id="files"
+						type="file" size="30" th:name="file" />
+				</div>
+				<div class="btn-box">
+					<input id="submit1" type="button" value="提交" /> <input
+						type="button" class="floor-closeButton" value="关闭" />
+				</div>
+			</form>
+		</div>
+		<div class="mask"></div>
+	</div>
+
+	<div class="container middle-content">
+		<div class="row">
+			<ul class="list-menu col-sm-3 page-2">
+				<span th:each="m,i:${menuList}">
+					<li class="title" th:if="${i.count==1 and m.id!=15}"><a
+						href="javascript:;" th:text="${m.name}"
+						th:onclick="'js_menu('+${m.id}+');'"></a></li>
+					<li class="title" th:if="${i.count==1 and m.id==15}"><a
+						href="javascript:;" th:text="所有分类" style="cursor: default;"></a></li>
+					<li class="active" th:if="${i.count!=1 and menu_id==m.id }"
+					style="background-color: #fff; color: #fff;"><a
+						href="javascript:;" th:onclick="'js_menu('+${menu_id}+');'"
+						th:text="${m.name}"> </a></li>
+					<li class="active" th:if="${i.count!=1 and menu_id!=m.id }"
+					style="background-color: #eee; color: #fff;"><a
+						href="javascript:;" th:onclick="'js_menu('+${m.id}+');'"
+						th:text="${m.name}"> </a></li>
+				</span>
+			</ul>
+			<div class="col-md-9" th:if="${menu_id==1501 or menu_id==1502}">
+				<table class="table-style">
+					<thead>
+						<tr>
+							<td class="xuhao">序号</td>
+							<td>名称</td>
+							<td class="time">发布时间</td>
+							<td class="operation-add" colspan="2"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'}">
+								<a class="add-public" href="javascript:;">增加</a>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${pager.dataList!=null}"
+							th:each="r,i:${pager.dataList}">
+							<td class="xuhao" th:text="${i.count }"></td>
+							<td class="name"><span th:if="${menu_id==1501}"> <a
+									class="clearfix-link perActive" th:title="${r.content5}"
+									th:utext="${#strings.substring(r.content5,0,43)}+'...'"
+									th:if="${#strings.length(r.content5)}>43"></a> <a
+									class="clearfix-link perActive" th:title="${r.content5}"
+									th:text="${r.content5}"
+									th:unless="${#strings.length(r.content5)}>43"></a>
+							</span> <span th:if="${menu_id==1502}"> <a class="clearfix-link"
+									th:onclick="'alertText('+${r.id }+',1502);'"
+									th:title="${r.title}"
+									th:utext="${#strings.substring(r.title,0,35)}+'...'"
+									th:if="${#strings.length(r.title) }>35"></a> <a
+									class="clearfix-link"
+									th:onclick="'alertText('+${r.id }+',1502);'"
+									th:text="${r.title}" th:unless="${#strings.length(r.title)}>35"></a>
+							</span></td>
+							<td class="time" th:text="${r.issueTime}"></td>
+							<td class="operation-edit"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'}"><a
+								href="javascript:;" th:id="${r.id}">编辑</a></td>
+							<td class="operation"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'}"><a
+								href="javascript:;" th:id="${r.id}" th:name="${r.menuId}">删除</a>
+							</td>
+						</tr>
+
+
+					</tbody>
+				</table>
+				<div id="page" class="page_div" style="float: right;"
+					th:if="${pager.dataList!=null}"></div>
+				<div align="center" th:unless="${pager.dataList!=null}">
+					<h2 style="color: white;">无记录！</h2>
+				</div>
+			</div>
+			<div class="col-md-9" th:if="${menu_id==1503}">
+				<table class="table-style">
+					<thead>
+						<tr>
+							<td class="xuhao">序号</td>
+							<td>任务</td>
+							<td class="leader">责任/牵头人</td>
+							<td class="time">截止时间</td>
+							<td class="state">状态</td>
+
+							<td class="operation-add" colspan="2"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'} ">
+								<a class="add-public" href="javascript:;">增加</a>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${pager.dataList!=null}"
+							th:each="r,i:${pager.dataList}">
+							<td class="xuhao" th:text="${i.count }">1</td>
+							<td class="name"><a class="clearfix-link"
+								th:onclick="'alertText('+${r.id }+',1503);'"
+								th:title="${r.title}"
+								th:utext="${#strings.substring(r.title,0,35)}+'...'"
+								th:if="${#strings.length(r.title) }>35"></a> <a
+								class="clearfix-link"
+								th:onclick="'alertText('+${r.id }+',1503);'"
+								th:title="${r.title}" th:text="${r.title}"
+								th:unless="${#strings.length(r.title)}>35"></a></td>
+							<td class="leader" th:text="${r.content3 }">老胡</td>
+							<td class="time" th:text="${r.content4 }">2017-09-12</td>
+							<td class="state" th:text="${r.content5 }">进行中</td>
+							<td class="operation-edit"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'}"><a
+								href="javascript:;" th:id="${r.id}">编辑</a></td>
+							<td class="operation"
+								th:if="${session.userLogin!=null and  session.userLogin.dept eq 'dept_all'}"><a
+								href="javascript:;" th:id="${r.id}" th:name="${r.menuId}">删除</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<div id="page" class="page_div" style="float: right;"
+					th:if="${pager.dataList!=null}"></div>
+				<div align="center" th:unless="${pager.dataList!=null}">
+					<h2 style="color: white;">无记录！</h2>
+				</div>
+
+			</div>
+
+
+
+			<div class="col-md-9"
+				th:if="${menu_id!=1501 and menu_id!=1502 and menu_id!=1503}">
+				<table class="table-style">
+					<thead>
+						<tr>
+							<td class="xuhao">序号</td>
+							<td class="title">名称</td>
+							<td class="category">分类</td>
+							<td class="time">发布时间</td>
+
+							<td class="operation-add"
+								th:if="${session.userLogin!=null and  (session.userLogin.dept eq dept or session.userLogin.dept eq 'dept_all') and (menu_level!=1 or menu_id==19) and menu_id!=1504}"><a
+								class="add" href="javascript:;">增加</a></td>
+							<td class="operation"
+								th:if="${session.userLogin!=null and (session.userLogin.dept eq dept or session.userLogin.dept eq 'dept_all') and ((menu_level==1 and menu_id!=19) or menu_id==1504) }">操作</td>
+
+
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr th:if="${pager.dataList!=null}"
+							th:each="r,i:${pager.dataList}">
+							<td class="xuhao" th:text="${i.count }"></td>
+							<td class="title"><a class="clearfix-link"
+								th:title="${r.title}"
+								th:utext="${#strings.substring(r.title,0,25)}+'...'"
+								th:if="${#strings.length(r.title)}>25" href="javascript:;"
+								th:onclick="'down('+${r.id }+');'"> </a> <a
+								class="clearfix-link" th:title="${r.title}" th:text="${r.title}"
+								th:unless="${#strings.length(r.title)}>25" href="javascript:;"
+								th:onclick="'down('+${r.id }+');'"></a> <img src='/img/top.png'
+								th:if="${r.isTop==1 }" height="15px;" width="22px;" /></td>
+							<td class="category" th:text="'【'+${r.menuName}+'】'"></td>
+							<td class="time" th:text="${r.issueTime}"></td>
+
+							<td class="operation"
+								th:if="${session.userLogin!=null and  (session.userLogin.dept eq dept or session.userLogin.dept eq 'dept_all')}"><a
+								th:id="${r.id}" th:name="${r.menuId}" href="javascript:;">删除</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<div id="page" class="page_div" style="float: right;"
+					th:if="${pager.dataList!=null}"></div>
+				<div align="center" th:unless="${pager.dataList!=null}">
+					<h2 style="color: white;">无记录！</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:inline="JavaScript">
+	var menuId = [[${menu_id}]];
+	$(function(){
+		$('#mydatepicker1,#mydatepicker2').dcalendarpicker({
+			format : 'yyyy-mm-dd'	
+		});
+		$(".operation-add .add").click(function() {
+			
+				$(".floor").fadeIn();
+				$("body").addClass("noscroll");
+				$(".naturefloor").animate({
+					"opacity" : "1",
+					"margin" : "4% auto"
+				});
+				
+			});
+		
+		$(".operation-add .add-public").click(function() {
+			if(1501==menuId){
+				$("#pName").val("");
+				$("#mydatepicker3").val("");
+				$("#mydatepicker4").val("");
+				$("#pTitle").val("");
+				$("#sort").val(1);
+			}else if(1502==menuId){
+				$("#content1").val("");
+				$("#pub_title").val("");
+				$("#pub_remark").val("");
+			}else{
+				$("#mydatepicker6").val("");
+				$("#title").val("");
+				$("#content1").val("");
+				$("#content3").val("");
+				$("#remark").val("");
+				
+			}
+			$(".floor-public").fadeIn();
+			$("body").addClass("noscroll");
+			$(".naturefloor-public").animate({
+				"opacity" : "1",
+				"margin" : "4% auto"
+			});
+			
+		});
+		
+
+		$(".operation-edit > a").click(function() {
+			var fileId = $(this).attr("id");
+			$.post("/bbc/edit/"+fileId+"/"+menuId,function(data){
+				if(1501==menuId){
+					$("#pName").val(data.content1);
+					$("#act"+data.content2).attr("selected","selected");	
+					selectChange(data.content2);
+					$("#mydatepicker3").val(data.content3);
+					$("#mydatepicker4").val(data.content4);
+					$("#pTitle").val(data.title);
+					$("#file_id").val(fileId);
+					$("#sort").val(data.sort);
+				}else if(1502==menuId){
+					$("#content1").val(data.content1);
+					$("#pub_title").val(data.title);
+					$("#pub_remark").val(data.remark);
+					$("#file_id").val(fileId);
+				}else{
+				
+					$("#title").val(data.title);
+					$("#content1").val(data.content1);
+					var str=data.content2.split('-->');
+					$("#departOne").val(str[0]);
+					$("#departTwo").val(str[1]);
+					$("#content5").val(data.content5);
+					$("#mydatepicker6").val(data.content4);
+					$("#content3").val(data.content3);
+					$("#remark").val(data.remark);
+					$("#file_id").val(fileId);
+					
+				}
+			},"json");
+			
+			
+	
+			$(".floor-public").fadeIn();
+			$("body").addClass("noscroll");
+			$(".naturefloor-public").animate({
+				"opacity" : "1",
+				"margin" : "4% auto"
+			});
+			
+		});
+		
+		$(".floor-closeButton,.excel-floor-closeButton").click(function() {
+			$(".naturefloor,.excel-naturefloor").animate({
+				"opacity" : "0",
+				"margin" : "10% auto"
+			});
+			$(".floor,.excel-floor").fadeOut();
+			$("body").removeClass("noscroll");
+		});
+		
+ 		$(".uploader input[type=file],.excel-uploader input[type=file]").change(
+				function() {
+					$(this).parents(".uploader,.excel-uploader").find(".filename,.excel-filename").val(
+							$(this).val());
+				});	
+
+		$("ul.menu li a").click(
+				function() { //导航栏焦点切换
+					$(this).closest(".level1").addClass('active');
+					$(this).closest(".level1").siblings("li.level1")
+							.removeClass("active");
+				})
+
+				$(".operation > a").click(function() {
+					//删除按钮的点击事件
+					var menuId = [[${menu_id}]];
+					var fileId = $(this).attr("id");
+					$('body').dailog({type : 'primary'},function(ret) {
+						if (ret.index === 0) {
+							$.ajax({
+								url : "/bbc/delete/"+ fileId+"/"+menuId,
+								type : 'post',
+								cache : false,
+								success : function(data) {
+									alert('已删除！');
+								//window.location="${pageContext.request.contextPath }/safe/page2/1/${menu_id}";
+								page2Div("/bbc/page2Home/1/"+menuId);
+								}
+							});
+						};
+					})
+				});
+		
+
+		$("#submit1").click(
+				function() { //上传文件提交提示事件
+					var title = $("#title").val();
+					var time = $("#mydatepicker1").val();
+					var file = $("#files").val();
+				
+    
+   //上传文件提交提示事件
+     $('body').dailog(
+		{
+			type : 'primary',
+			title : '提示！',
+			discription : '是否提交上传文件？'
+		},
+		function(ret) {
+			/*<![CDATA[*/
+			if (ret.index === 0) {
+				if ("" != title && "" != time && file != null && file != "") {
+					$("#form").submit();
+					 
+				} else if (file == null || "" == file) {
+					alert('请选择上传文件！');
+				} else if ("" == title) {
+					alert('请输入标题!');
+				} else {
+					alert('请输入选择发布时间!');
+				}
+			}
+			;
+			/*]]>*/})	
+				})
+				
+
+				//tab切换事件
+				$("#tab").rTabs({
+					bind : 'click',
+					animation : 'fadein',
+					auto:'false'
+				});	
+		$('#mydatepicker3, #mydatepicker4, #mydatepicker6').dcalendarpicker({
+			format:'yyyy-mm-dd'
+		}); 
+		
+	})
+	//tab今日安排的时间控件显示/隐藏
+			function selectChange(value){
+		        /*<![CDATA[*/
+				if(value=="0"||value=="3" ){
+					$(".tab-deadline").css("display","none");
+					$("#mydatepicker4").attr("name","");
+				}else{
+					$(".tab-deadline").css("display","inline-block");
+					$("#mydatepicker4").attr("name","content4");
+				}
+				   /*]]>*/};
+			$(".submit").click(function(){		//上传文件确认提示事件
+				$('body').dailog({type:'primary',title:'提示！',discription:'是否提交？'},function(ret) {if(ret.index===0){
+					 /*<![CDATA[*/
+					var flag=false;
+					if(1501==menuId){
+					   var name=$("#pName").val();
+					   var time=$("#mydatepicker3").val();
+						var title=$("#pTitle").val();
+						var sort=$("#sort").val();
+						var integer=/^[1-9]*[1-9][0-9]*$/;
+						var isNum=integer.test(sort);
+						
+						if(isNum&&""!=name&&name!=null&&""!=time&&time!=null&&""!=title&&title!=null){
+							flag=true;
+						}
+						
+					}else if(1502==menuId){
+						 var title=$("#pub_title").val();
+						 var remark=$("#remark").val();
+						
+						if(""!=title&&title!=null){
+							flag=true;
+						}
+					}else{
+					
+						var title=$("#title").val();
+						var content5=$("#content5").val();
+						var content4=	$("#mydatepicker6").val();
+						var content3=$("#content3").val();
+						if(""!=content3&&content3!=null&&""!=content4&&content4!=null&&""!=content5&&content5!=null&&""!=title&&title!=null){
+							flag=true;
+						}
+						
+					}
+					if(flag){
+						$("#scheduleForm").submit();
+					}else{
+						alert("请填写合法的完整信息！");
+					}
+				
+						 /*]]>*/};})
+			})	
+	</script>
+</div>
+</html>

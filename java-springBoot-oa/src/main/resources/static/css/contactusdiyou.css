@@ -1,0 +1,152 @@
+﻿
+/*优胜空间 */
+.contactusdiyou {
+	font-family: 'Microsoft YaHei';
+	position: absolute; 
+	right: -252px;
+	top: 0px; 	
+	_position: absolute; 
+	width: 252px; 
+	height: auto; 
+	background-color:#ebf4fd;
+	z-index: 99999999999;  
+	_margin-bottom:0px; 
+	_top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); 
+	transition:all .6s ease; 
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	
+}
+
+
+.contactusdiyou .hoverbtn{
+	display: block;
+	width:50px; 
+	height:42px; 
+	padding:6px; 
+	cursor: pointer; 
+	position:absolute; 
+	top:0px; 
+	left:-50px; 
+	font-size:14px; 
+	color:#fff; 
+	-webkit-border-radius: 3px 0px  0px 3px; 
+	-moz-border-radius: 3px 0px  0px 3px; 
+	-o-border-radius: 3px 0px  0px 3px;      
+	border-radius: 3px 0px  0px 3px; 
+	transition: all .7s;
+} 
+.hoverbtn-none{
+	opacity:0;
+	filter:alpha(Opacity=30); 
+	width:50px; 
+	height:42px; 
+	padding:6px; 
+	position:absolute; 
+	top:0px; 
+	left:-50px; 
+	font-size:14px; 
+	color:#fff; 
+	-webkit-border-radius: 3px 0px  0px 3px; 
+	-moz-border-radius: 3px 0px  0px 3px; 
+	-o-border-radius: 3px 0px  0px 3px;      
+	border-radius: 3px 0px  0px 3px; 
+}
+.contactusdiyou .hoverbtn .hoverimg{
+	width:17px; 
+	height:17px; 
+	margin:7px 6px; 
+	float:left; 
+	display:inline;
+	background-repeat: no-repeat;
+	color: #FFFFFF;
+}
+.hoverimg2{
+	background:url(../images/hoverbtnbg1.png) no-repeat; 
+} 
+.diyoumask { 
+	position:fixed; 
+	left: 0; 
+	top: 0; 
+	z-index: 100000; 
+	width:100%; 
+	height:100%; 
+	opacity:0.7;
+	filter:alpha(Opacity=30); 
+	background:#000; 
+	display:none;
+} 
+.contactusdiyou .conter{
+	width:auto; 
+	height:auto;  
+	position:relative; 
+	text-align: center;
+	color: #FFFFFF;
+	transition: all .7s;
+}
+
+.conter .admin{
+	margin: 13px 5px 13px 0;
+	color: #0070E0;
+	position: relative;
+	width: 100%;
+}
+
+.conter .admin img{
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	margin: 0;
+}
+.conter .admin a{
+	margin-right:5px ;
+}
+.conter-main-title{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background: #0070E0;
+	font-size: 18px;
+}
+.conter-item{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	color: #888888;
+	padding-left: 3px;
+	font-size: 13px;
+}
+.conter-link{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+}
+.conter-link:hover{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+	background: #FFFFFF;
+}
+.active{
+	background-color: #FFFFFF;
+	color: #666666;
+}
+
+/******************************* 11.12 end **************************************8*/
+
+.contactusdiyou ul li, .contactusdiyou ul li a{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.contactusdiyou ul li a{
+	font-size: 14px;
+	color: #337ab7;
+}
+.conter .admin .exit{
+	float: right;
+	margin-right: 20px;
+	margin-left: -50px;
+	cursor: pointer;
+}

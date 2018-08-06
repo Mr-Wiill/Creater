@@ -1,0 +1,89 @@
+body{
+	width: auto;
+	height: auto;
+}
+
+.public-content table.detail-table{
+	width: 730px;
+	display: block;
+	border: 1px solid #ccc;
+	text-align: center;
+	border-collapse: collapse;
+	table-loyout:fixed;
+}
+.public-content table.detail-table thead tr td{
+	background: #eee;
+	font-size:16px;
+	font-weight:bolder;
+}
+.public-content table.detail-table tr td{
+	border: 1px solid #ccc;
+	font-weight: normal;
+	line-height:30px;
+}
+.reading-container{
+	width: auto;
+	height: auto;
+	padding: 20px;
+	margin: 50px auto;
+	text-align:  center;
+}
+
+public-title{
+	margin-bottom: 20px;
+	text-align: center;
+	display:  inline-block;
+}
+.reading-container .public-title h3{
+	color:#000;
+}
+.reading-container .public-content{
+	text-align: left;
+	display:  inline-block;
+}
+.public-content pre{
+	font-size:16px;
+	font-family: 'Microsoft YaHei';
+	white-space:pre-wrap;
+	white-space:-moz-pre-wrap;
+	white-space:-pre-wrap;
+	white-space:-o-pre-wrap;
+	word-wrap:break-word;
+	word-break:break-all;
+	
+}
+.public-content span{
+	float:right;
+	display:block;
+	margin-top:50px;
+}
+.perActive{
+	cursor: default !important;
+}
+
+
+.table-style tbody tr td.leader,.table-style thead tr td.leader{
+	width: 11%;
+	text-align: center;
+}
+.table-style tbody tr td.state,.table-style thead tr td.state{
+	width: 7%;
+	text-align: center;
+}
+.detail-illustrate{
+	padding: 0 20px;
+	text-align: left !important;
+	width:730px;
+	white-space:pre-wrap;
+	white-space:-moz-pre-wrap;
+	white-space:-pre-wrap;
+	white-space:-o-pre-wrap;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+.sort-block{
+	display:block;
+}
+.tab-info{
+	padding-top:20px;
+}

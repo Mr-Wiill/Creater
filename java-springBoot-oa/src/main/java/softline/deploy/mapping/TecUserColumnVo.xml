@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="softline.deploy.dao.TecUserColumnVoMapper" >
+  <resultMap id="TecUserColumnVoMap" type="softline.deploy.domain.TecUserColumnVo" extends="softline.proto.dao.TecUserColumnMapper.BaseResultMap" >
+    <result column="name" property="columnName" jdbcType="VARCHAR" />
+    <result column="code" property="columnUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectZlByAcct" parameterType="String" resultMap="TecUserColumnVoMap">
+  SELECT NAME,column_id ,code FROM tec_user_column u,tec_column c WHERE   c.id=u.column_id AND u.acct='${_parameter}'
+  
+  </select>
+  </mapper>

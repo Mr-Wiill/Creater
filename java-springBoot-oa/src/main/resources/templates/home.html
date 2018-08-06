@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link rel="stylesheet" href="/css/jquery.pageslide.css" />
+<link rel="stylesheet" href="/css/time/dcalendar.picker.css" />
+
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/css/response.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/js/time/dcalendar.picker.js"></script>
+</head>
+
+<body>
+
+	<div th:include="head"></div>
+	<div id="contentPage">
+		<div class="container middle-content">
+			<div class="row">
+				<div class="col-sm-3 list-menu">
+					<div class="list-menu-header">
+						<a href="/bbc/page2/1501"> <span>人员动态</span>
+						</a>
+					</div>
+					<div class="schedule">
+						<marquee direction="up" scrolldelay="200"
+							onmouseover="this.stop()" onmouseout="this.start()">
+							<div class="schedule-item" th:if="${per_list!=null}"
+								th:each="r,i:${per_list}">
+								<a th:text="${r.content5}">1月18日14:30，召开2018第一次债券业务总办会（南9楼会议室）</a>
+							</div>
+						</marquee>
+					</div>
+					<div class="list-menu-more">
+						<a href="/bbc/page2/1501"> <span>查看更多</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-9">
+
+					<ul class="content-list li-mark">
+						<li class="title"><a class="title-inner"
+							href="/bbc/page2/1502"><img src="/img/not.png" />
+								<p>公告周知</p></a></li>
+						<li class="clearfix" th:if="${noticeList!=null}"
+							th:each="r,i:${noticeList}"><a class="clearfix-link"
+							th:title="${r.title}"
+							th:onclick="'alertText('+${r.id }+',1502);'"
+							th:utext="${#strings.substring(r.title,0,35)}+'...'"
+							th:if="${#strings.length(r.title) }>35"></a> <a
+							class="clearfix-link" th:title="${r.title}"
+							th:onclick="'alertText('+${r.id }+',1502);'" th:text="${r.title}"
+							th:unless="${#strings.length(r.title)}>35"></a> <b
+							th:text="${r.issueTime}">2018-01-10</b> <a
+							class="category-public ">【公告周知】</a></li>
+
+					</ul>
+
+					<ul class="content-list">
+						<li class="title"><a class="title-inner"
+							href="/bbc/page2/1503"><img src="/img/sup.png" />
+								<p>工作督办</p></a></li>
+						<div class="clearfix">
+							<table class="clearfix-table">
+								<thead>
+									<tr>
+										<td class="thead-name">任务</td>
+										<td class="thead-person">负责人</td>
+										<td class="thead-time">时间</td>
+										<td class="thead-state">状态</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="r:${divList}">
+										<td class="tbody-task"><a class="clearfix-link"
+											th:onclick="'alertText('+${r.id }+',1503);'"
+											th:title="${r.title}"
+											th:text="${#strings.substring(r.title,0,30)}+'...'"
+											th:if="${#strings.length(r.title)}>30"></a> <a
+											class="clearfix-link"
+											th:onclick="'alertText('+${r.id }+',1503);'"
+											th:title="${r.title}" th:text="${r.title}"
+											th:unless="${#strings.length(r.title)}>30"></a></td>
+										<td th:text="${r.content3}">张阿山</td>
+										<td th:text="${r.content4}">2018-01-10</td>
+										<td th:text="${r.content5}">完成</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</ul>
+
+					<ul class="content-list li-mark">
+						<li class="title"><a class="title-inner"
+							href="/bbc/page2/1504"><img src="/img/file.png" />
+								<p>最新文件</p></a></li>
+
+						<li class="clearfix" th:each="r:${latestList }"><a
+							class="clearfix-link" th:title="${r.title}" href="javascript:;"
+							th:text="${#strings.substring(r.title,0,30)}+'...'"
+							th:onclick="'down('+${r.id }+');'"
+							th:if="${#strings.length(r.title)}>30"></a> <a
+							class="clearfix-link" th:title="${r.title}" href="javascript:;"
+							th:text="${r.title}" th:onclick="'down('+${r.id }+');'"
+							th:unless="${#strings.length(r.title)}>30"></a> <img
+							src='/img/top.png' th:if="${r.isTop==1 }" /> <b
+							th:text="${r.issueTime}"></b> <a class="category-link"
+							th:href="@{'/bbc/page2/'+${r.menuId}}"
+							th:text="'【'+${r.menuName  }+'】'"></a></li>
+					</ul>
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<!--[if lt IE 9]>
+	       <script src="/js/ie8/respond.min.js"></script>
+	       <script src="/js/ie8/excanvas.min.js"></script>
+	       <script src="/js/ie8/html5shiv.js"></script>
+	       <script src="/js/ie8/ie8.fix.min.js"></script>
+   <![endif]-->
+
+	</div>
+</body>
+
+</html>
