@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter过滤器</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <!-- 使用filters把字符串转成首字母大写 -->
+    <div id="app">
+        {{msg | upperCase(true)}}     <!-- 调用filters方法：msg传给val，true传给firstWord -->
+    </div>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                msg : "hello world !"
+            },
+            filters : {
+                upperCase : function (val, firstWord) {
+                    var val = val.toString();
+                    if (firstWord){
+                        return val.charAt(0).toUpperCase()+val.slice(1).toLowerCase();  //首字母大写
+                    } else {
+                        return val.toUpperCase();
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

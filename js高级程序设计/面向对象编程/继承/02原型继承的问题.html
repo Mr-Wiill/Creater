@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承的问题</title>
+</head>
+<body>
+    <script>
+
+        /*--- 缺点：原型属性会被实例改动 ---*/
+        function Father() {
+            this.colors = ["blue", "red", "green"];
+        }
+        function Son() {
+        }
+
+        Son.prototype = new Father();   //son继承了father后，son就变成了father的实例
+
+        var instance1 = new Son();
+        alert(instance1.colors);
+        instance1.colors.push("yellow");    //son的此实例属性成了原型属性
+        alert(instance1.colors);
+
+        var instance2 = new Son();
+        alert(instance2.colors);
+        instance2.colors.splice(-1,1);
+        alert(instance2.colors);
+
+        var instance3 = new Son();
+        alert("instance3："+instance3.colors)
+    </script>
+</body>
+</html>

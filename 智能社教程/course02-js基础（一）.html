@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course2-Base</title>
+		<style>
+			ul,li{list-style: none;padding: 0;}
+			#example1{width: 520px;height: auto;}
+			#example1 ul li{
+				width: 100%;height: 10px;margin: 5px 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!---------------- js的数据类型------------------>
+		<h3>js的数据类型</h3>
+		<input id="typeof1" type="button" value="string" />
+		<input id="typeof2" type="button" value="number" />
+		<input id="typeof3" type="button" value="boolean" />
+		<input id="typeof4" type="button" value="object" />
+		<input id="typeof5" type="button" value="function" />
+		<script>			
+			document.getElementById("typeof1").onclick=function(){
+				var a="abc";		//string
+				alert(typeof a);
+			};
+			document.getElementById("typeof2").onclick=function(){
+				var a=123;			//number
+				alert(typeof a);
+			};
+			document.getElementById("typeof3").onclick=function(){
+				var a=true;			//boolean
+				alert(typeof a);
+			};
+			document.getElementById("typeof4").onclick=function(){
+				var a=document;			//boolean
+				alert(typeof a);
+			};
+			document.getElementById("typeof5").onclick=function(){
+				var a=function(){ 		//function
+					var a="123px123"
+				}			
+				alert(typeof a);
+			};
+		</script>
+		
+		<!---------------- js做一个加减计算器------------------><hr>
+		<h3>js做一个加减计算器</h3>
+		<p>显式(强制)类转换：parseInt/parseFloat</p>
+		<input id="txt1" type="text" /><span>&nbsp;+</span>
+		<input id="txt2" type="text" />
+		<input id="btn1" type="button" value="等于" />
+		<p>隐式类转换：==（先转换相同类型，再比较是否相等），===（不转换类型直接比较），-（只做减法运算）</p>
+		<input id="txt3" type="text" /><span>&nbsp;-</span>
+		<input id="txt4" type="text" />
+		<input id="btn2" type="button" value="等于" />
+		<script>
+			var txt1=document.getElementById("txt1");
+			var txt2=document.getElementById("txt2");
+			var btn=document.getElementById("btn1");
+			btn1.onclick=function(){
+				var n1=parseInt(txt1.value);		//数字类型转换
+				var n2=parseInt(txt2.value);
+				if(isNaN(n1)){						//判断是否为不是数字（NaN: No a Number）
+					alert("第一个数字错误");
+				}
+				else if(isNaN(n2)){
+					alert("第二个数字错误");
+				}
+				else{
+					alert(n1+n2);
+				}
+				
+			};
+			btn2.onclick=function(){
+				alert(document.getElementById("txt3").value-document.getElementById("txt4").value);
+			};
+		</script>
+		
+		<!---------------- js闭包------------------><hr>
+		<h3>js闭包：子函数可以使用父函数的局部变量</h3>
+		
+		<!---------------- js命名规范------------------><hr>
+		<h3>js命名规范</h3>
+		<p>1、类型前缀；2、首字母大写；</p>
+		<img src="imgs/js命名规范-前缀.png" />
+		
+		<!---------------- js运算符------------------><hr>
+		<h3>js运算符</h3>
+		<img src="imgs/运算符.png" />		
+		<div id="example1">
+			<p>实例一：隔行变色</p>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		
+			<p>实例二：秒转时间</p>
+			<input type="text" placeholder="输入多少秒" />
+			<input type="button" value="秒转时间" />
+			<input type="text" placeholder="显示几分几秒" />
+		</div>
+		<script>
+			var oExample = document.getElementById("example1");
+			var oLi = oExample.getElementsByTagName("li");
+			var oTxt1=oExample.getElementsByTagName("input")[0];
+			var oBtn1=oExample.getElementsByTagName("input")[1];
+			var oTxt2=oExample.getElementsByTagName("input")[2];
+			for(var i=0;i<oLi.length;i++){
+				if(i%2==0){					//0,2,4,6... 偶数行
+					oLi[i].style.backgroundColor="#ccc";
+				}else{						//1,3,5,7...
+					oLi[i].style.backgroundColor="#696969";
+				}
+			};
+			oBtn1.onclick=function(){
+				var sValue = parseInt(oTxt1.value/3600)+"时"+ parseInt(oTxt1.value/60) +"分"+ oTxt1.value%60 +"秒";
+				oTxt2.value = sValue;
+			};
+		</script>
+
+		<!---------------- switch循环------------------><hr>
+		<h3>switch循环</h3>
+		<input id="btn3" type="button" value="点击" />
+		<script>
+			var oSex="男";			//定义变量			
+			var oBtn3=document.getElementById("btn3");
+			oBtn3.onclick=function(){
+				var name="wiill";
+				switch(oSex){
+					case "男" :			
+						alert(name+"先生，您好！");	//语句，若oSex="男"执行这一条语句
+						break;			//结束
+					case "女":
+						alert(name+"女士，您好！");
+						break;
+					default:
+						alert(name+"您好！");
+				}
+			};
+		</script>
+		
+		<!---------------- 三目（三元）“ 条件？语句一：语句二  ”循环------------------><hr>
+		<h3>三目（三元）“ 条件？语句一：语句二  ”循环</h3>
+		<input id="btn4" type="button" value="三目运算" />
+		<script>
+			var btn=document.getElementById("btn4");
+			btn.onclick=function(){
+				var a=8;
+			/*	if(a%2==0){
+					alert("双数");
+				}else{
+					alert("单数");
+				}
+				等效于下面式子	*/	
+				a%2==0?alert("偶数"):alert("奇数");
+			};				
+		</script>
+		
+		<!---------------- break / continue ------------------><hr>
+		<h3>break：中断整个循环 / continue：中断本次循环</h3>
+		<input id="btn5" type="button" value="break" />
+		<input id="btn6" type="button" value="continue" />
+		<script>
+			var btn1=document.getElementById("btn5");
+			var btn2=document.getElementById("btn6");
+			btn1.onclick=function(){
+				for(var i=0;i<5;i++){
+					if (i==2) {
+						break;				//中断整个循环
+					}
+					alert(i);
+				}
+			};
+			btn2.onclick=function(){
+				for(var i=0;i<5;i++){
+					if (i==2) {
+						continue;			//中断本次循环
+					}
+					alert(i);
+				}
+			};				
+		</script>
+		
+		<!---------------- 真/假 ------------------><hr>
+		<h3>真：true、非零数字、非空字符串、非空对象；/ 假：false、	数字零、空字符串、空对象(null)、undefined</h3>
+		<input id="btn7" type="button" value="真/假" />
+		<script>
+			var btn=document.getElementById("btn7");
+			btn.onclick=function(){
+				//真：true、非零数字、非空字符串、非空对象
+				//假：false、	数字零、空字符串、空对象(null)、undefined			
+				var a=123;
+				if(a){
+					alert("真的");
+				}else{
+					alert("假的");
+				}
+			};
+		</script>
+		
+		<!---------------- json 及 for in循环------------------><hr>
+		<h3>json 及 for in循环</h3>
+		<p>json类似于array[]数组，区别：1、json.length是无效的；2、json的下表为自己定义的下标；3、数组用[]，json用{}</p>
+		<input id="btn8" type="button" value="json" />
+		<script>
+			var btn=document.getElementById("btn8");
+			var json={a:1, b:54, c:8};		
+			btn.onclick=function(){
+				
+				for(var i in json){			//for循环的第二种写法，等同于for(var i=0;i<array.length;i++)
+					alert("第"+i+"个值为"+json[i]);
+				}
+			};
+		</script>
+	</body>
+</html>

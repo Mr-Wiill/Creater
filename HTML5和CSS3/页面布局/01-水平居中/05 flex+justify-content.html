@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex+justify-center水平布局</title>
+    <style>
+        .parent{
+            width: 100%;height: 500px;border: 1px solid #2e6da4;
+            display: flex;
+            justify-content: center;        /*水平居中*/
+            /*align-items: center;*/        /*垂直居中*/
+        }
+        .child{
+            width: 500px;height: 200px;background: red;
+        }
+
+    </style>
+</head>
+<body>
+<!--
+    水平居中方法四：Flex布局
+    1）父级设置display:flex; justify-content:center;
+
+-->
+<div class="parent">
+    <div class="child">
+        <div class="grandchild"></div>
+    </div>
+</div>
+</body>
+</html>

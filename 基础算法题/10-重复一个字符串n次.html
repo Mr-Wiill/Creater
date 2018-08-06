@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+			题目：重复一个指定的字符串 num次，如果num是一个负数则返回一个空字符串。
+		-->
+		
+		<script>
+			function repeat(str, num){
+				var result=str;			//将初始值赋值给result
+				if (num<=0) {
+					return "";
+				} else{
+					for (var i=0; i<num-1; i++) {	//索引从0开始，循环num-1次；（出现的次数包括它本身，所以只需要循环num-1次）
+						result+=str;		
+					}
+					return result;
+				}			
+			}
+			document.write(repeat("love", 3));
+		</script>
+		
+	</body>
+</html>

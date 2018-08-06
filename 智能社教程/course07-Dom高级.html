@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course7-Dom高级</title>
+	</head>
+	<body>
+		
+		<!---------------- 表格的应用（一） ------------------>
+		<h3>表格的应用（一）: DOM操作查找表格元素</h3>
+		<p>tBodys(可有多个body)、tHead(一个表头)、tFood(一个表尾)、rows(行)、cells(列)</p>
+		<table id="tab1" border="1px solid #eee" cellspacing="0" width="400px">
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>wiill</td>
+					<td>23</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>jack</td>
+					<td>29</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>GG</td>
+					<td>30</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>tom</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			var oTab1=document.getElementById("tab1");
+			var oldBackground;
+//			alert(oTab1.tBodies[0].rows[1].cells[1].innerHTML);
+				
+			for(var i=0; i<oTab1.tBodies[0].rows.length; i++)
+			{	
+				oTab1.tBodies[0].rows[i].onmouseover=function()				//鼠标移入变色
+				{	
+					oldBackground=this.style.background;		//把这时的背景色存储在oldBackground里
+					this.style.background="green";
+				};
+				oTab1.tBodies[0].rows[i].onmouseout=function()				//鼠标移出恢复
+				{
+					this.style.background=oldBackground;		//使鼠标移出后的颜色等于移入前的颜色
+				};
+				
+				if(i%2)					//i%2取余数，若余数不为零则执行下面语句，若为零跳到else
+				{
+					oTab1.tBodies[0].rows[i].style.background="";			//i为奇数时执行
+				}
+				else
+				{
+					oTab1.tBodies[0].rows[i].style.background="#ccc";		//i为偶数时执行
+				}
+			}
+		</script>
+		
+		
+		
+		<!---------------- 表格的应用（二）: 插入、删除行元素 ------------------><hr />
+		<h3>表格的应用（二）: 插入、删除行元素</h3>		
+		<p>
+			姓名：<input id="name" type="text"  />
+			年龄：<input id="age" type="text"  />
+			<input id="btn" type="button" value="插入"  /> 
+		</p>		
+			<table id="tab2" border="1px solid #eee" cellspacing="0" width="500px">		
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>wiill</td>
+					<td>23</td>
+					<td><a class="delete" href="javascript:">删除</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>jack</td>
+					<td>29</td>
+					<td><a class="delete" href="javascript:">删除</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>GG</td>
+					<td>30</td>
+					<td><a class="delete" href="javascript:">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			var oTab2=document.getElementById("tab2");
+			var oName=document.getElementById("name");
+			var oAge=document.getElementById("age");
+			var oBtn=document.getElementById("btn");
+			
+			//插入函数
+			oBtn.onclick=function()
+			{	
+				if(oName.value!="" && oAge.value!="")
+				{
+					var newTr=document.createElement("tr");				//新增一行
+				
+					var aTd=document.createElement("td");			//新增第一列序号
+					aTd.innerHTML=oTab2.tBodies[0].rows.length+1;
+					newTr.appendChild(aTd);
+					
+					var aTd=document.createElement("td");			//新增第二列姓名
+					aTd.innerHTML=oName.value;
+					newTr.appendChild(aTd);
+					
+					var aTd=document.createElement("td");			//新增第三列年龄
+					aTd.innerHTML=oAge.value;
+					newTr.appendChild(aTd);
+					
+					var aA=document.createElement("a");		//新增第四列操作					
+					aA.className="delete";
+					aA.href="javascript:";
+					aA.innerHTML="删除";
+					newTr.appendChild(aA);
+					
+					oTab2.tBodies[0].appendChild(newTr);
+					
+					oName.value="";								//插入后输入框清空
+					oAge.value="";					
+				}				
+			}			
+		</script>
+		
+		
+		<!---------------- 表格的应用（三） ------------------>
+		<h3>表格的应用（三）: 搜索</h3>				
+		<p>大写转换小写toLowerCase()、模糊搜索（关键字搜索）search()</p>
+		<p style="margin-left: 80px;">
+			<input id="txt" type="text" placeholder="输入姓名搜索" />
+			<input id="btn1" type="button" value="搜索" />
+		</p>
+		<table id="tab3" border="1px solid #eee" cellspacing="0" width="400px">
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>wiill</td>
+					<td>23</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>jack</td>
+					<td>29</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>GG</td>
+					<td>30</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>WIILL</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			var oTxt=document.getElementById("txt");
+			var oBtn1=document.getElementById("btn1");
+			var oTab3=document.getElementById("tab3");
+			
+			oBtn1.onclick=function()
+			{				
+				for(var i=0; i<oTab3.tBodies[0].rows.length; i++)				//做一个循环，循环次数等于行数
+				{	
+					var strTab=oTab3.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();		//表格的姓名,并把大写转换成小写
+					var strTxt=oTxt.value.toLowerCase();										//输入的姓名,并把大写转换成小写
+					
+					/*var strNum="123654789";
+					alert(strNum.search(5));*/			//search()作用为找到并返回字符串出现的位置，如果没找到则返回-1
+					
+					var 01arr=strTxt.split(" ");			//实现多关键字搜索（关键字使用空格隔开）
+					
+					oTab3.tBodies[0].rows[i].style.background="";
+//					oTab3.tBodies[0].rows[i].style.display="none";			//未搜索到的则隐藏
+					
+					for(var j=0; j<arr.length; j++)		//对输入的字符串做一个循环
+					{
+						if(strTab.search(arr[j])!=-1 && arr!="")	//search()不等于-1则找到对应的字符串
+						{
+							oTab3.tBodies[0].rows[i].style.background="blue";
+							
+//							oTab3.tBodies[0].rows[i].style.display="block";			//搜索到的则显示，实现筛选搜索
+						}
+					}										
+				/*	else{
+						oTab3.tBodies[0].rows[i].style.background="";
+					}*/
+				}
+			};			
+		</script>
+		
+						
+		<!---------------- appendChild()实现转移元素 ------------------>
+		<h3>appendChild()实现转移元素</h3>
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<input id="btn3" type="button" value="转移" />
+		<ul id="ul2"></ul>
+		
+		<script>
+			var oUl1=document.getElementById("ul1");
+			var oUl2=document.getElementById("ul2");
+			var oBtn3=document.getElementById("btn3");
+			
+			oBtn3.onclick=function(){
+				oUl2.append(oUl1.children[0]);		//append()：1、从原父级删除子级元素；2、添加到另外一个父级；
+			}		
+		</script>
+		
+		
+		<!---------------- appendChild()和sort()实现排序 ------------------>
+		<h3>appendChild()和sort()实现排序</h3>
+		<p>sort()：对数组进行排序； appendChild()：把最小的元素插到最后，依次循环arr.length次</p>
+		<input id="btn4" type="button" value="排序" />
+		<ul id="ul3">
+			<li>2</li>			
+			<li>45</li>
+			<li>28</li>
+			<li>5</li>
+			<li>978</li>
+			<li>10</li>
+		</ul>
+			
+		<script>
+			var oUl3=document.getElementById("ul3"); 
+			var oBtn3=document.getElementById("btn4"); 
+			
+			oBtn3.onclick=function()
+			{	
+				var aLi=oUl3.getElementsByTagName("li");		//aLi为伪数组，不能直接使用sort()排序
+				var 01arr=[];										//声明一个空数组，用于存放aLi数组元素
+				for(var i=0; i<aLi.length; i++)
+				{
+					arr[i]=aLi[i];	
+				}					
+				arr.sort(function(li1, li2)				//li1和li2为arr数组里的两个数
+				{
+					var n1=parseInt(li1.innerHTML);
+					var n2=parseInt(li2.innerHTML);
+					return n1-n2;						//比较两个数的大小，并使用sort()排序
+				});				
+//				alert(01arr[0].innerHTML);
+				for(var i=0; i<arr.length; i++)
+				{	
+					alert("把" + arr[i].innerHTML + "插到最后");
+					oUl3.appendChild(arr[i]);			//使排序后的数组，重新插入ul
+				}
+			}
+		</script>
+		
+		
+		<!---------------- 表格的应用（四）：表格排序 ------------------>
+		<h3>表格的应用（四）：表格排序</h3>
+		<p style="color: red;">(本功能未实现)</p>
+		<input id="btn5" type="button" value="排序" />
+		<table id="tab4" border="1px solid #eee" cellspacing="0" width="400px">
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>5</td>
+					<td>wiill</td>
+					<td>23</td>
+				</tr>
+				<tr>
+					<td>99</td>
+					<td>jack</td>
+					<td>29</td>
+				</tr>
+				<tr>
+					<td>38</td>
+					<td>GG</td>
+					<td>30</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>tom</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			var oBtn5=document.getElementById("btn5");
+			var oTab4=document.getElementById("tab4");
+			
+			oBtn5.onclick=function(){
+				
+				var 01arr=[];
+				for(var i=0; i<oTab4.tBodies[0].rows.length; i++)
+				{
+					var aNum=oTab4.tBodies[0].rows[i];					
+					arr[i]=aNum[i];
+				}
+				arr.sort(function(tr1, tr2)
+				{
+					var n1=parseInt(tr1.cells[0].innerHTML);
+					var n2=parseInt(tr2.cells[0].innerHTML);
+					return n1-n2;
+				});
+				for(var i=0; i<arr.length;i++)
+				{
+					oTab4.tBodies[0].appendChild(arr[i]);
+				}
+			}
+		</script>
+		
+		
+		<!---------------- 表单验证 ------------------>
+		<h3>表单验证</h3>
+		<form id="form" action="">
+			<span>账号：</span><input type="text" name="userId" placeholder="用户名" required="required" />
+			<span>密码：</span><input type="password" name="password" placeholder="密码" required="required" />
+			<input type="submit" name="submit" />
+			<input type="reset" name="reset" />
+		</form>
+		
+		<script>
+			var oForm=document.getElementById("form");
+			
+			oForm.onsubmit=function()
+			{
+				alert("11111111111111111");
+			};
+			oForm.onreset=function()
+			{
+				alert("joijo");
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute+margin水平布局</title>
+    <style>
+        .parent{
+            width: 100%;height: 500px;border: 1px solid #2e6da4;
+            position: relative;
+        }
+        .child{
+            width: 500px;height: 200px;background: red;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="parent">
+    <div class="child">
+        <div class="grandchild">123</div>
+    </div>
+</div>
+</body>
+</html>

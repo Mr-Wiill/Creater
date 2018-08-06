@@ -1,0 +1,224 @@
+    @font-face {
+    font-family: 'rationaleregular';
+    src: url('fonts/rationale-regular-webfont.eot');
+    src: url('fonts/rationale-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/rationale-regular-webfont.woff2') format('woff2'),
+         url('fonts/rationale-regular-webfont.woff') format('woff'),
+         url('fonts/rationale-regular-webfont.ttf') format('truetype'),
+         url('fonts/rationale-regular-webfont.svg#rationaleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+	margin: 0;
+    padding: 0;
+}
+body {
+    background: #FFF url(img/bg-wall-repeat.jpg);
+    line-height: 1;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:14px;
+}
+
+#head {
+    height:118px;
+	width:100%;
+    background:url(img/bg-header.png) repeat-x bottom center;
+    color: #FFF;
+    z-index: 9000;
+    position: absolute;
+}
+
+.innerhead {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background:url(img/logo.png) no-repeat left center;
+}
+
+.innerhead h1, .innerhead ul {
+    display: none;
+}
+
+.utility {
+    position: relative;
+    margin: -30px auto 0 auto;
+    padding: 0.5% 1%;
+    width: 98%;
+    max-width: 960px;
+    text-align: right;
+	font-size: 0.85em;
+}
+
+.utility li {
+    margin: 0;
+    padding: 0;
+	display: inline;
+}
+
+.utility a {
+	color:#ffc002;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.config {
+    padding: 100px 0 1% 0;
+}
+
+.config a {
+    color: #EAA90B;
+    text-decoration: none;
+}
+
+.alltools {
+    background: url(img/bg-begin-repeat.jpg);
+    color: #212121;
+    padding: 0 0 1% 0;
+}
+
+.alltools a:link, .alltools a:visited, #foot a:link, #foot a:visited {
+    color: #FFF;
+    text-decoration:none;
+	cursor:pointer;
+}
+
+.alltools a:hover, #foot a:hover {
+    border-bottom: #FFF solid 1px;
+}
+
+.innerconfig, .inneralltools {
+    width: 100%;
+    height: 100%;
+    max-width: 980px;
+    margin: 0 auto 0 auto;
+}
+
+h2 {
+    font-family: 'rationaleregular', sans-serif;
+    font-size:2.5em;
+    text-transform:uppercase;
+    letter-spacing:-2px;
+    width: 100%;
+    margin: 0;
+    padding: 4% 0 0.5% 0;
+}
+
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#head ul li, dl ul li, #foot li {
+	list-style: none;
+	display: inline;
+	margin: 0;
+	padding: 0 0.4em;
+}
+ ul.aliases, ul.projects, ul.tools, ul.vhost {
+        	list-style: none;
+        	line-height: 24px;
+        }
+        ul.aliases a, ul.projects a, ul.tools a ,ul.vhost a {
+        	padding-left: 22px;
+        	background: url(../../index.php?img=pngFolder) 0 100% no-repeat;
+        }
+ul.tools a {
+	background: url(../../index.php?img=pngWrench) 0 100% no-repeat;
+}
+ul.aliases a, ul.vhost a {
+        	background: url(../../index.php?img=pngFolderGo) 0 100% no-repeat;
+        }
+
+dl {
+	margin: 0;
+	padding: 0;
+}
+dt {
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+	font-size: 1.2em;
+	text-align: center;
+	clear: both;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background: url(img/bg-title-dark.png) no-repeat;
+    color: #FFF;
+}
+dd {
+	margin: 0 0 0 50px;
+	padding: 14px 0.5%;
+	overflow: auto;
+}
+dd ul li {
+	float: left;
+	display: block;
+	width: 16.5%;
+    min-width: 140px;
+	margin: 0;
+	padding: 0 0 0 20px;
+	background: url(../../index.php?img=pngPlugin) 2px 50% no-repeat;
+	line-height: 1.6;
+}
+
+.divider1 {
+    position: relative;
+    margin: -5px 0;
+    height: 20px;
+    width: 100%;
+    background: url(img/divider.png) repeat-x center top;
+    z-index: 2000;
+}
+
+.divider2 {
+    position: relative;
+    margin: -5px 0;
+    height: 20px;
+    width: 100%;
+    background: url(img/divider.png) repeat-x center bottom;
+    z-index: 2000;
+    clear: left;
+}
+
+.column {
+    padding: 0.5%;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 220px;
+}
+
+.three-columns .column {
+		width:32%;
+}
+
+.four-columns .column {
+    width: 23%;
+}
+#foot {
+    margin: 0;
+    padding: 0;
+		text-align: center;
+    height: 100px;
+    line-height: 100px;
+    background: url(img/bg-dl-repeat.jpg) repeat-x top;
+}
+
+@media screen and (max-width: 750px) {
+
+    dt {
+        text-align: left;
+        width: 100%;
+        float: none;
+        margin: 2% 0 0 0;
+    }
+
+    dd {
+        margin: 0;
+        padding: 0.5% 1.5% 1% 1.5%;
+    }
+}

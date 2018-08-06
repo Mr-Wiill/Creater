@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断回文</title>
+		<script>
+window.onload=function(){
+	
+	/*------ 方法步骤：1、去掉标点符号和空格；2、转化成小写；3、翻转字符串；4、比较是否相等------*/
+			function palindrome(str){
+				var str1 = str.replace(/[^0-9a-zA-Z]/g,"").toLowerCase();		//去掉字符串，转化成小写，比较参数一
+//				alert(str1);	//输出：abc1d42efg000h000gfe24d1cba
+				
+				var str2 = str1.split("").reverse().join("");					//翻转字符串，比较参数二
+//				alert(str2);	//输出：abc1d42efg000h000gfe24d1cba
+				
+				if (str1 === str2) {
+					return true;
+				} else{
+					return false;
+				}
+			}
+			alert(palindrome("aBc,./1d42--==EFG0   00 h0-';'00gfE';./. 24d 1cBA")); 
+}
+		</script>
+	</head>
+	<body>
+		<span>回文概念：</span>
+		<p>如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。</p>
+		<p>注意需要去掉字符串多余的标点符号和空格，然后把字符串转化成小写来验证此字符串是否为回文。</p>
+	</body>
+</html>

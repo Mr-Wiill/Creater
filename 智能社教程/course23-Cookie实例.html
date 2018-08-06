@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course23-Cookie</title>
+		<script>
+			/*-------------------cookie的封装函数------------------*/
+			//设置cookie
+			function setCookie(name, value, numDay) {
+				var oDate = new Date();
+				oDate.setDate(oDate.getDate()+numDay);
+				document.cookie= name+"="+value +"; expires="+oDate ;
+			}			
+			//读取cookie
+			function getCookie(name) {
+				var 01arr = document.cookie.split(";");	//把cookie从“：”处分割
+				for (var i=0; i<arr.length; i++) {
+					var arr1=arr[i].split("=");		//把arr数组里的每个cookie再次从“=”处分割，剩下两份cookie名和cookie值
+					if (arr1[0]==name) {		//arr1[0]就是arr1数组cookie的名字，如果有这个cookie则输出相应值
+						return arr1[1]			//arr1[1]为arr1数组的cookie值
+					}
+				}
+				return "";
+			}
+			//删除cookie
+			function removeCookie(name){
+				setCookie(name, 1, -1);		//把cookie的期限设置为-1，计算机识别为昨天已经过期，从而删除cookie
+			}
+		</script>
+	</head>
+	<body>
+		<!---------------- cookie保存用户登录信息 ------------------>
+		<h3>cookie保存用户登录信息</h3>
+		<form id="form" action="http://www.baidu.com/">
+			账号：<input type="text" />
+			密码：<input type="password" />
+			<button type="submit" id="btn">提交</button>
+		</form>
+		<script>
+			window.onload=function(){
+				var oForm=document.getElementById("form");
+				var oUser=oForm.getElementsByTagName("input")[0];
+				oForm.onsubmit=function() {
+					setCookie('user', oUser.value, 5);		//设置一个cookie保存用户名，期限为5天
+				}
+				oUser.value=getCookie('user');		//读取cookie，再次登录时 存留用户名
+			};		
+		</script>
+	</body>
+</html>

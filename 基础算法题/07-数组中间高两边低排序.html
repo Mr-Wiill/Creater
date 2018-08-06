@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			题目2： 通过一个输入框，输入一个自定义的数组，例如 1,4,5,23,2,17,24,10000000。
+			请把他按照中间高两边低进行排序，最后的结果是 1,4,5,23,10000000,24,17,2，算法越准确越好，
+			请注意左右翼数据数据的平衡性。
+			
+			分析：应该分情况处理，1、如果数组的长度为偶数，则直接分为两组，第一组从小到大排序，
+			第二组从大到小排序，两组拼接输出。　　2、如果数值的长度为奇数，取出最大那个数,
+			剩下的偶位数数组进行1操作，然后得到的两个数组跟最大那个数拼接输出。
+		-->
+		
+		
+		
+		<script>
+//			var 01arr=[1,4,5,23,2,17,24,10000000,666];
+			var cont = prompt("请输入一个数组，并用英文逗号隔开");
+			var arr = cont.split(",");
+			var arr1=[];
+			var arr2=[];
+			var len = arr.length;
+			if (len%2==0) {							//偶数
+				arrSplit(arr,arr1,arr2,len);			//调用排序函数对	
+				document.write(arr1.concat(arr2));	//拼接arr1和arr2数组
+			} 
+			else{									//奇数
+				arr.sort(function(a, b){			//对数组进行排序
+					return a-b;
+				});				
+				var newArr = arr.slice(0, len-1);	//除掉最大一个的数，得到偶位数的数组
+				var newLen = newArr.length;					
+				arrSplit(newArr,arr1,arr2,newLen)				
+				arr2.unshift(Math.max.apply(null, arr));	//把最大那个数插入arr2	
+				document.write(arr1.concat(arr2));
+			}
+			
+			//把一个偶位数的数组分成左右两个数字，并对左数组(arr1)升序排序，右数组(arr2)降序排序
+			function arrSplit(arr,arr1,arr2,len){
+				var Array = [];						//定义一个数组用于存放arr1和arr2的返回返回值
+				for (var i=0; i<len/2; i++) {
+					arr1[i]= arr[i];				//左边数组
+					arr2[i]= arr[i+len/2];			
+				}			
+				arr1.sort(function (a, b){		
+					return a-b;						//升序
+				});
+				arr2.sort(function (c, d){
+					return d-c;						//降序
+				});
+				Array[0]=arr1;
+				Array[1]=arr2;
+				return Array;
+			}
+		</script>
+		
+	</body>
+</html>

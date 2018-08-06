@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute+transform</title>
+    <style>
+        .parent{
+            width: 100%;height: 500px;border: 1px solid #2e6da4;
+            position: relative;     /*父级relative*/
+        }
+        .child{
+            width: 500px;height: 200px;
+            position: absolute;     /*子级absolute*/
+            left: 50%;              /*相对于父级左边框50%*/
+            transform:translateX(-50%);     /*向左移动50%*/
+        }
+        .div1{
+            background: #1E90FF;
+        }
+        .div2{
+            background: #2F4F4F;
+            margin: 300px 0;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        水平居中方法二：
+
+        语法：
+            父级position:relative;
+            子级position:absolute; left:50%; transform:translate(-50%);
+
+        缺点：transform是CSS3属性，兼容性存在问题；
+    -->
+    <div class="parent">
+        <div class="child div1"></div>
+        <div class="child div2"></div>
+    </div>
+
+</body>
+</html>

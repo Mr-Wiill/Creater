@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--			
+			题目：一个大数组中包含了4个小数组，分别找到每个小数组中的最大值，然后把它们串联起来，形成一个新数组。
+			
+			分析：找出每个小数组中的最大值，把最大值存入一个新数组里输出。
+		-->
+			
+		
+		<script>  
+		   //方法一：		  
+		   	function largestArray(01arr){
+		   		var result = [];			//用于存放四个小数组中最大的数
+		   		//alert(01arr.length);		//输出：4
+		   		 for (var i=0; i<arr.length; i++) {			   		
+			   		result.push(Math.max.apply(null, arr[i]));	//找出四个小数组中的最大值，存放到新数组里
+			   	}
+		   		 return result;
+		   }		  
+		   document.write("方法一："+largestArray([[165,2,9], [48,6,9,82],[6,5],[29658,91,2]])+"</br>");
+		   
+		   
+		   //方法二：
+		   function largestArr(01arr){
+		   		var result = [];
+		   		for (var i=0; i<arr.length; i++) {
+		   			arr[i].sort(function(a, b) {		//对四个小数组进行排序，从大到小
+		   				return b-a;
+		   			});
+		   			result.push(arr[i][0]);				//把四个小数组中第一个(最大)添加到result
+		   		}
+		   		return result;
+		   }
+		   
+		   document.write("方法二："+largestArr([[165,2,9], [48,6,9,82],[6,5],[29658,91,2]])+"</br>");
+		</script>
+	</body>
+</html>

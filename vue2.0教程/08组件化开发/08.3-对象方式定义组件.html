@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+</div>
+<script>
+    var component = {       //定义一个组件对象
+        template : `
+                <button @click="clickMe">{{count}}</button>
+           `,
+        data : function () {       //使用函数返回的原因：调用多个组件时，改变其中一个组件的值，不会影响到其他的。
+            return {
+                count : 0
+            }
+        },
+        methods : {
+            clickMe : function () {
+                this.count++
+            }
+        }
+    };
+    new Vue ({
+        el : "#app",
+        components : {                    //定义一个局部组件
+            'my-component' : component    // '组件名' : '组件对象'     可以定义多个
+        }
+    })
+</script>
+
+<!--
+    总结：
+    1、把一个组件内容赋值给一个对象，然后在vue中调用；
+-->
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串翻转</title>
+		<script>
+		
+/*
+			var str1="abcdefghijklmnopqrstuvwxyz";
+			var arr1=str1.split("");		//字符串转成数组
+//			alert(01arr);
+			var arr2=arr1.reverse();		//翻转数组
+//			alert(arr2);
+			var str2=arr2.join("");			//数组转成字符串
+			alert(str2);
+*/			
+
+		/*----翻转字符串：1、split（）字符串转成数组；2、reverse()翻转数组；3、join()数组转化成字符串----*/
+			function reverseString(str){
+				var str=str.split("").reverse().join("");		//字符串转成数组.翻转数组.数组转成字符串
+				return str;										//返回值
+			}
+			alert(reverseString("hello world!"));
+		</script>
+		
+	
+		
+		
+		
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

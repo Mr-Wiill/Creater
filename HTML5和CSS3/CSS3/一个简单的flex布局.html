@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一个简单的flex布局</title>
+    <style>
+        .container{
+            display: flex;
+            flex-flow: row;
+            width: 100%;
+            height: 500px;
+        }
+        .main{
+            width: 60%;
+            background-color: red;
+        }
+        .nav-left{
+            flex: 1;    /*自动计算比例*/
+            background-color: yellow;
+        }
+        .nav-right{
+            flex: 5;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-left"></nav>
+        <section class="main"></section>
+        <nav class="nav-right"></nav>
+    </div>
+</body>
+</html>

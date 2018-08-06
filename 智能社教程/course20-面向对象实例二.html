@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course20-面向对象实例二</title>
+	</head>
+	<body>
+		<!---------------- 面向对象函数做一个拖拽程序; 继承拖拽 ------------------>
+		<h3>面向对象函数做一个拖拽程序； 继承拖拽</h3>
+		<div id="parentDiv">
+			<div id="div">父拖拽</div>
+			<div id="div1">子拖拽，限制边界</div>
+		</div>
+		<style>
+			#parentDiv{height: 200px;}
+			#div{width: 200px;height: 200px;background: #375069;position: absolute;color: #fff;}
+			#div1{width: 200px;height: 200px;background: yellow;position: absolute;color: #000;}
+		</style>
+		<script>
+			//父级拖拽
+			
+			//面向过程的函数
+		/*	window.onload=function(){
+				var oDiv=document.getElementById("div");
+				oDiv.onmousedown=function(ev){
+					var oEvent = event || ev;
+					var disX = oEvent.clientX-oDiv.offsetLeft;
+					var disY = oEvent.clientY-oDiv.offsetTop;
+					document.onmousemove=function(ev){
+						var oEvent = event || ev;
+						var l = oEvent.clientX - disX;
+						var t = oEvent.clientY - disY;
+						oDiv.style.left=l+"px";
+						oDiv.style.top=t+"px";
+					}
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+					}
+					return false;
+				}
+			}	
+		*/
+		
+			//面向对象的函数（1.去嵌套；2.onload变构造；3.变量变属性；4.函数变方法；）			
+						
+			//构造函数
+			function Drag(id){
+				var _this=this;				
+				this.disX=0;				//变量变属性
+				this.disY=0;
+				this.oDiv=document.getElementById(id);				
+				this.oDiv.onmousedown=function(ev){
+					_this.fnDown(ev);
+					return false;		//处理拖拽时文字被选中的问题
+				};
+			};	
+			Drag.prototype.fnDown=function (ev){		//函数变方法
+				var _this=this;
+				var oEvent = event || ev;
+				this.disX = oEvent.clientX-this.oDiv.offsetLeft;
+				this.disY = oEvent.clientY-this.oDiv.offsetTop;
+				document.onmousemove=function(ev){
+					_this.fnMove(ev);
+				};
+				document.onmouseup=function(ev){
+					_this.fnUp(ev);
+				};
+				
+			};
+			Drag.prototype.fnMove=function (ev){		//函数变方法
+				var oEvent = event || ev;
+				var l = oEvent.clientX - this.disX;
+				var t = oEvent.clientY - this.disY;
+				this.oDiv.style.left=l+"px";
+				this.oDiv.style.top=t+"px";
+			};
+			Drag.prototype.fnUp=function (){			//函数变方法
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}
+			
+			
+			/*---------------- 继承上面父拖拽做一个子拖拽 ----------------*/
+			//子级拖拽
+			var oDiv1 = document.getElementById("div1");
+			function LimitDrag(id){
+				Drag.call(this, id);	//继承属性
+			}
+			for(var i in Drag.prototype){
+				LimitDrag.prototype[i] = Drag.prototype[i];		//继承所有父级方法
+			}
+			LimitDrag.prototype.fnMove=function(ev){		//重写fnMove方法(继承后LimitDrag已经存在fnMove)
+				var oEvent = ev || event;
+				var l = oEvent.clientX - this.disX;
+				var t = oEvent.clientY - this.disY;
+				if(l<0){									//限制边界
+					l=0;
+				}
+				else if(l>document.documentElement.clientWidth-oDiv1.offsetWidth){
+					l=document.documentElement.clientWidth-oDiv1.offsetWidth;
+				}
+				if(t<0){
+					t=0
+				}
+				else if(t>document.documentElement.clientHeight-oDiv1.offsetHeight){
+					t=document.documentElement.clientHeight-oDiv1.offsetHeight;
+				}
+				oDiv1.style.left=l+"px";
+				oDiv1.style.top=t+"px";
+			}
+			
+			window.onload=function(){
+				new LimitDrag("div1");
+				new Drag("div");	
+			}
+			
+		</script>
+	</body>
+</html>

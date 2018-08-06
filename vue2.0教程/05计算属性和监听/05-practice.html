@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05practice</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <!-- 练习1：使用计算属性方法把movies转换成name(year)显示 -->
+    <!-- 练习2：添加一部电影 -->
+    <div id="app">
+        <ul>
+            <!--<li v-for="items in movies">{{items.name}}（{{items.year}}）</li>-->
+            <li v-for="movie in forMateMovies">{{movie}}</li>
+        </ul>
+        <button v-on:click="addMovie">addMovie</button>
+    </div>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                movies : [{
+                    name : "捉妖记2",
+                    year : 2018
+                },{
+                    name : "红海行动",
+                    year : 2018
+                },{
+                    name : "唐人街探案2",
+                    year : 2018
+                }]
+            },
+            methods : {
+                addMovie : function () {        //添加电影
+                    this.movies.push({
+                        name : "女儿国",
+                        year : 2018
+                    })
+                }
+            },
+            watch : {                           //当movies被改变时，执行此方法
+              movies : function (newMovies) {       //newMovies为新增了电源后的movies
+                  alert("添加了电影："+newMovies[newMovies.length-1].name);
+              }
+            },
+            computed : {
+                forMateMovies : function () {
+                   return this.movies.map(function (movie) {    //map把movies映射成一个新数组
+                       return movie.name + "（" + movie.year + "）";      //从新组合数组
+                   })
+                }
+            }
+        });
+    </script>
+
+    <!--
+        总结：
+        1、map ：数值映射，把原数组映射成一个新数组。
+    -->
+</body>
+</html>

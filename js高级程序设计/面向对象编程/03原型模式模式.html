@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>（对象字面量）原型模式：</h2>
+    <script>
+        /*--- （对象字面量）原型模式 ---*/
+        function Stu() {                //创建一个空函数，对象名
+        }
+        Stu.prototype = {        //所有的属性和方法都赋值给prototype属性，这样Student就有了这些属性
+            name : "jobs",
+            age : 25,
+            job : "Software Engineer",
+            sayName : function () {             //方法
+                document.write(this.name+",");
+            }
+        }
+        var stu1 = new Stu();        //创建对象实例
+        var stu2 = new Stu();
+        stu2.name = "steven";    //给对象实例添加属性（屏蔽了prototype（原型）属性中的同名属性，但不修改，其他实例还可以调用）
+        document.write(stu1.name+"，");
+        stu2.sayName()
+
+    </script>
+</body>
+</html>

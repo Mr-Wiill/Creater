@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course13-js事件中级</title>
+	</head>
+	<body>
+		<!---------------- 阻止（浏览器）默认行为 /自定义右键默认菜单 ------------------>
+		<h3>阻止（浏览器）默认行为 /自定义默认行为</h3>
+		<p>阻止鼠标右键的默认菜单、添加自定义鼠标右键默认菜单</p>
+		<button id="btn">启动自定义鼠标右键菜单</button>
+		<div id="div"></div>
+		
+		<style>
+			#div{width: 150px; height: 200px;background: #CCCCCC;position: absolute;display: none;}
+		</style>
+		
+		<script>
+			var oBtn=document.getElementById("btn");
+			var oDiv=document.getElementById("div");
+			oBtn.onclick=function(){
+				document.oncontextmenu=function(ev){	//默认菜单函数oncontextmune
+					var oEvent= ev||event;
+					oDiv.style.display="block";		//点击右键后，展示自定义右键菜单
+					oDiv.style.left=oEvent.clientX+"px";	//使菜单的位置等于鼠标的位置
+					oDiv.style.top=oEvent.clientY+"px";
+					return false;	//阻止默认右键菜单					
+				}
+			};
+			document.onclick=function(){
+				oDiv.style.display="none";	//点击页面的其他地方，关闭自定义菜单
+			}
+			
+		</script>
+		
+		
+		<!---------------- 只能输入数字的输入框 ------------------><hr />
+		<h3>只能输入数字的输入框</h3>
+		<input id="txt" type="text" />
+		
+		
+		<script>
+			var oTxt=document.getElementById("txt");
+			oTxt.onkeydown=function(ev){
+				var oEvent= ev||event;
+				var _numKey=oEvent.keyCode<96 || oEvent.keyCode>105;	//当不是数字键盘
+				var _backspace=oEvent.keyCode!=8;	//不是backspace键(删除)
+				var _dirKey=oEvent.keyCode<37 || oEvent.keyCode>40;		//不是方向键
+				var _freshKey=oEvent.keyCode!=116;	//不是刷新键F5
+				if(_numKey && _backspace && _dirKey && _freshKey){	
+					return false;	//如果以上为真，则禁止这些按键
+				}
+			}			
+		</script>
+		
+		
+		
+		<!---------------- 拖拽 ------------------><hr />
+		<h3>鼠标拖拽div（div的位移==鼠标的位移，并且移动时鼠标在div里的位置不变）</h3>
+		<p>使用三个鼠标事件：鼠标按下onmousedown()、鼠标移动onmousemove()、鼠标松开onmouseup()</p>
+		<div class="parentDiv">
+			<div id="div1"></div>
+		</div>
+		
+		<style>
+			.parentDiv{height: 200px;}
+			#div1{
+				width: 200px;height: 200px;background: #375069;position: absolute;
+			}
+		</style>
+		
+		<script>
+			var oDiv1=document.getElementById("div1");
+			oDiv1.onmousedown=function(ev){		//鼠标按下事件
+				var oEvent= ev||event;
+				var disX=oEvent.clientX-oDiv1.offsetLeft;	//鼠标在div里的点击位置距离div的左边距=鼠标X坐标值-div的left
+				var disY=oEvent.clientY-oDiv1.offsetTop;	//鼠标点击位置距离div的上边距=鼠标Y坐标值-div的top值
+				document.onmousemove=function(ev){
+					var oEvent= ev||event;
+					var l=oEvent.clientX-disX;	//水平位移=移动后鼠标的X坐标值-disX（保持不变）	
+					var t=oEvent.clientY-disY;	//垂直位移=移动后鼠标的Y坐标值-disY（保持不变）
+					if(l<50){	//当小于50就把l设置为零，实现磁力吸附效果
+						l=0;	//使它水平位移为0，移不出
+					}
+					else if(l>document.documentElement.clientWidth-oDiv1.offsetWidth-50){	//移出右边页面
+						l=document.documentElement.clientWidth-oDiv1.offsetWidth;
+					}
+					if(t<50){	//移出顶部页面
+						t=0;
+					}
+					else if(t>document.documentElement.clientHeight-oDiv1.offsetHeight-50){	//移出底部页面
+						t=document.documentElement.clientHeight-oDiv1.offsetHeight;
+					}
+					oDiv1.style.left=l + "px";		//div水平移动
+					oDiv1.style.top=t + "px";		//div垂直移动
+				};
+				document.onmouseup=function(){		//松开鼠标事件
+					document.onmousemove=null;		//移动函数清空
+					document.onmouseup=null;
+				};
+				return false;
+			}
+		</script>
+		
+		
+		<!---------------- 带框拖拽 ------------------><hr />
+		<h3>带框拖拽</h3>
+		<div id="div2"></div>		
+		<style>
+			#div2{
+				width: 200px;height: 200px;background: yellow;position: absolute;
+			}
+			.box{border:1px dashed; #333333;position: absolute;}
+		</style>
+		
+		<script>
+			var oDiv2=document.getElementById("div2");
+			oDiv2.onmousedown=function(ev){		
+				var oEvent= ev||event;
+				var disX=oEvent.clientX-oDiv2.offsetLeft;	
+				var disY=oEvent.clientY-oDiv2.offsetTop;	
+				
+				var oBox=document.createElement("div");		//点击oDiv2后创建一个新div（虚框）
+				oBox.className="box";
+				oBox.style.width=oDiv2.offsetWidth-2+"px";	//宽高等于原div
+				oBox.style.height=oDiv2.offsetHeight-2+"px";
+				document.body.appendChild(oBox);	//把box插入body，才能展示出	
+				
+				oBox.style.left=oDiv2.offsetLeft+"px";	//box的位移等于oDiv2
+				oBox.style.top=oDiv2.offsetTop+"px";
+				
+				document.onmousemove=function(ev){
+					var oEvent= ev||event;
+					var l=oEvent.clientX-disX;
+					var t=oEvent.clientY-disY;
+					oBox.style.left=l + "px";	//拖动的是box（过程），而不是div		
+					oBox.style.top=t + "px";		
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+					
+					oDiv2.style.left=oBox.offsetLeft+"px";	//拖动后的div（结果）		
+					oDiv2.style.top=oBox.offsetTop+"px";
+					
+					document.body.removeChild(oBox);	//拖动完成后，去除box
+				};
+				return false;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course14-js事件高级</title>
+	</head>
+	<body>
+		<!---------------- 事件绑定 ------------------><hr />
+		<h3>事件绑定：同名的函数可以同时执行（不绑定只能执行最后一个函数）</h3>
+		<p>obj.addEventListener(事件名，函数 );、ie8以下：obj.attachEvent(事件名， 函数);</p>
+		<button id="btn">事件绑定</button>
+		
+		<script>
+			var oBtn=document.getElementById("btn");
+			
+		/*	oBtn.onclick=function(){		//函数一
+				alert("11111111111111");
+			};
+			oBtn.onclick=function(){		//函数二，事件没绑定只能执行这个函数
+				alert("22222222222222");
+			}*/
+			
+			if(oBtn.attachEvent){	//IE8及以下
+				oBtn.attachEvent("onclick", function(){		//绑定事件obj.attachEvent(事件名， 函数);
+					alert("bbbbbbbbbbbbbbbbbbb");
+				});
+				oBtn.attachEvent("onclick", function(){
+					alert("aaaaaaaaaaaaaaaaaaaa");
+				});
+			}
+			else{		//IE9以上及其他浏览器
+				oBtn.addEventListener("click",function(){	//绑定事件obj.addEventListener(事件名， 函数);
+				alert("aaaaaaaaaaaaaaaaa");
+				});
+				oBtn.addEventListener("click",function(){
+					alert("bbbbbbbbbbbbbbbbbb");
+				});
+			}
+			
+			function addEvent(obj, ev, fn){		//把绑定事件函数封装起来 addEvent(对象， 事件名， 函数);
+				if(obj.attachEvent){
+					obj.attachEvent("on"+ev, fn);	//IE8及以下
+				}
+				else{
+					obj.addEventListener(ev,fn);	//IE9及以上，Chrome，Firefox
+				}
+			}
+			window.onload=function(){
+				addEvent(oBtn,"click",function(){	//调用绑定事件函数
+					alert("111111111111111");
+				});
+				addEvent(oBtn,"click",function(){
+					alert("22222222222222222");
+				});
+			}
+		</script>
+		
+		
+		<!---------------- 自定义滚动条------------------><hr />
+		<h3>自定义滚动条</h3>
+		<div id="parentDiv">
+			<div id="div"></div>			
+		</div>		
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<style>
+			 #parentDiv{
+			 	width: 800px;height: 20px;background: #CCCCCC;position: relative;
+			 }
+			 #div{
+			 	width: 15px;height: 24px;background: #375069;position: absolute;top: -2px;
+			 }
+			#div1{
+			 	width: 0;height: 0;background:#FF3333;margin-top: 10px;float: left;
+			}#div2{
+			 	width: 250px;height: 250px;background:#FF6600;margin-top: 10px;
+			 	filter: alpha(opacity:0);opacity:0;
+			}
+		</style>
+		
+		<script>
+			var oParent=document.getElementById("parentDiv");
+			var oDiv=document.getElementById("div");
+			var oDiv1=document.getElementById("div1");
+			var oDiv2=document.getElementById("div2");
+			oDiv.onmousedown=function(ev){
+				var oEvent= ev||event;
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				
+				document.onmousemove=function(ev){
+					var oEvent =ev||event;
+					var l=oEvent.clientX-disX;
+					if(l<0){
+						l=0
+					}
+					else if(l>oParent.offsetWidth-oDiv.offsetWidth){
+						l=oParent.offsetWidth-oDiv.offsetWidth;
+					}
+					oDiv.style.left= l +"px";	//水平移动位移
+					
+					//移动位移与最大位移的比值（0~1）
+					var scale=l/(oParent.offsetWidth-oDiv.offsetWidth);	
+					oDiv1.style.width=250*scale+"px";	//div1大小的变化（0~250）
+					oDiv1.style.height=250*scale+"px";
+					
+					oDiv2.style.filter="alpha(opacity:"+scale*100+")";	//div2透明度的变化
+					oDiv2.style.opacity=scale;
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+				return false;
+			};
+		</script>
+		
+		
+		<!---------------- 自定义阅读器------------------><hr />
+		<h3>自定义阅读器</h3>
+		<div class="parent">
+			<div id="div4">
+				<div id="div5">
+					第一点：谈的所谓“数据驱动”，归根接地两个作用，1）精准营销，每个人因为买了啥系统都知道，你消费的偏好他也知道一些，所以他觉得可以通过数据分析，向你推荐你感兴趣的东西，猜猜你喜欢啥，看看淘宝的“猜你喜欢”，就是这个意思；2）反向驱动供应链，其实就是你大概知道你能卖什么，于是你就主动调整供应链，这样一来，店里的货周转更快，品类也更新更快，整个供应链的成本就可以更低。 “数据驱动”需要的是门店的支付的电子化，因此POS及会员系统，以及线下门店与线上商城的一致会员体系是第一步需要打通的（很多公司已经在做），这是容易的，难的是有效的销售数据分析。点评：很容易做的是，你买啥品类东西最多，我就收品牌方的钱推送这个品类给你，这事儿做的多了，消费者自然会把营销提醒删掉，这是一个典型的滥用数据的行为。而更好的方式是，如果我是某个产品的忠实客户，你是否可以给与我这个商品的特别优惠价格？别人都没有这个价格，只有我有。这种营销行为是不需要厂商配合的，是零售商自身的优化营销支出和资源的体现，我认为这是精准营销的更好的形态。“在我们这儿买1个XX也能有类似去COSTCO的价格，只因为你是我们的尊享会员，我们给予你最好的折扣“。这样消费者会有意识的累积在这个平台的销售规模，以提高折扣率。第二点：谈的所谓线上线下的业态形式。其实很多创业者最没弄明白的是，这个O2O平台要做的是什么场景。这是一切业态组织的根基。有几个观点，1）基于便利店的O2O没有价值，因为即时需求的贴点是低客单价，最后一公里上，进行配送的成本与消费者下楼买的成本相比，更本没有任何效率。更况且，便利店的SKU数量太少，根本无法匹配线上购买商品的其他场景。这个观点的推论是：高密度小业态（100-200平米）搭配O2O不经济。有兴趣的朋友也可以看下今年便利店大会 全家 的中国区总经理对于便利店O2O的看法2）电商平台做线下店：如果一个电商平台收购了一个线下门店为主的公司，比如阿里现在拿下了联华，相信在整合中，会有一万次让他们后悔这个交易的时候。由于线下门店SKU数量和品类设计和线上电商逻辑完全不同，整合最后一公里配送时非常困难。可以看一下飞牛网APP的混乱组织，就知道这事儿有多不好做。3）盒马生鲜个人觉得是一个很有意思的尝试。短期内的盒马受到如此多关注，得益于新型的餐饮+零售业态，但是如果从更加关注零售本身的角度，这家店最大的优点在于对于场景的精准切入，仅以三餐作为其消费场景，因此所有的SKU，生鲜，鲜食，加工或常规，全部都是围绕餐桌，于是能够在零售的3000平左右经营面积下，装入了5000个左右的必要SKU数量。盒马在线上和线下拥有完全同样的SKU组合，这其实是非常优秀的线上线下设计，大润发的飞牛没有做到这一点，飞牛依旧是一个总仓配送的类似天猫超市的业务模型；永辉会员的当日达虽然做到了这一点，但是SKU数量非常少。又要有个很舒服的SKU数量，且需要当日达，盒马给予一个非常好的商业模式构建。这是个人觉得目前最好的新零售尝试，但是由于整体SKU的档次较高，针对高消费能力的客群，我并不认为这种模式会很适用于3-4线城市，也需要相当大的人口密度来支撑。全国1-2线城市开设100家可能是比较理想的规模，每家都是亿元店的话，百亿规模销售似乎问题不大。但是利润上很难说，由于固定投入较大，后仓面积很大，生鲜和进口产品的损耗也都是比较厉害的品类，因此如果线上线下一起能够实现4%-5%左右的利润率将是比较理想的情况（线下如传统零售做3%的利润率，线上可以在后端供应链上和线下有协同，最后一公里的成本以后由消费者承担更多，争取做到综合净利率6-7%，那么整个商业模式4-5%）以上为原回答，2017年12月6日更新内容如下：最近对于盒马的观察发现与开始的理解里头，误解非常多，多数是不乐观的1）为了实现成数量级的配送量级，不太可能提高配送费用或提高配送门槛，那么对应的，线上订单，从门店端分拣，专用分拣区域租金，到配送成本，这一系列的安排成本非常高（而且似乎是高人力密集的），线上订单看起来很难赚钱2）线下的业态越来越偏餐饮化。事实上大面积租赁，只要超过500平米，选址难度就增加很多，因为物业非常不规则，导致了规划和营建就非常不标准化。在盒马这里就体现在餐饮区域和零售区域的规划在每个店都不标准，不标准的结果就是一方面餐饮体验差异很大，另一方面，不是每个店餐饮都能有效带动零售客流转化3）零售部分的售价较高，特别是生鲜水果这种运营难度较大，供应商基本全是区域性的，价格很难降下来，那么最终结果就是，消费者不买账，2线城市都比较难，以新开业的贵阳盒马为例，即使在最好的区的比较高档的百货里面，餐饮区热闹，生鲜依旧卖不动（实地观察结果）4）零售区域不是特别给力，就不敢扩大零售区域，那么餐饮区域就会比较大，遇到面积比较大的情况，就开始扩大招商规模，于是各种餐饮供应商好的不好的都来了，最终结果就是整的和大食代都快差不多了我记得之前有一位大神曾经分析盒马，认为他可以成为海鲜品类的领导零售商，这个已经足够了，但是盒马心太大，可能最终什么都做不好。可能这个预言正要实现。
+				</div>
+			</div>	
+			<div id="parentDiv1">
+				<div id="div3"></div>			
+			</div>				
+		</div>
+		<style>
+			.parent{height: 550px;}
+			 #parentDiv1{
+			 	width: 20px;height: 502px;background: #CCCCCC;position: relative;float: left;margin-left: 2px;
+			 }
+			 #div3{
+			 	width: 24px;height: 50px;background: #375069;position: absolute;left: -2px;border-radius: 5px;
+			 }
+			#div4{
+			 	width: 500px;height: 500px;float: left;border: 1px solid #333;
+			 	overflow: hidden;border-radius: 5px;position: relative;
+			 }
+			#div5{line-height:30px;padding: 10px;position: absolute;top: 0;}
+		</style>
+		
+		<script>
+
+			var oParent1=document.getElementById("parentDiv1");
+			var oDiv3=document.getElementById("div3");
+			var oDiv4=document.getElementById("div4");
+			var oDiv5=document.getElementById("div5");
+			oDiv3.onmousedown=function(ev){
+				var oEvent= ev||event;
+				var disY=oEvent.clientY-oDiv3.offsetTop;
+				
+				document.onmousemove=function(ev){
+					var oEvent =ev||event;
+					var l=oEvent.clientY-disY;
+					if(l<0){
+						l=0
+					}
+					else if(l>oParent1.offsetHeight-oDiv3.offsetHeight){
+						l=oParent1.offsetHeight-oDiv3.offsetHeight;
+					}
+					oDiv3.style.top= l +"px";	//垂直移动位移
+					
+					//移动位移与最大位移的比值（0~1）
+					var scale=l/(oParent1.offsetHeight-oDiv3.offsetHeight);	
+					var changeH=oDiv5.offsetHeight-oDiv4.offsetHeight;
+					oDiv5.style.top=-changeH*scale +"px";
+
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+				
+				return false;
+			};
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 100%;
+            height: 200px;
+            border: 1px solid #000;
+            margin-top: 20px;
+        }
+        .float{
+            background: cornflowerblue;
+            margin-left: 10px;
+            width: 200px;
+            float: left;
+        }
+        .inline{
+            background: yellow;
+            margin-left: 10px;
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- float会靠顶部对齐，而inline-block靠底部对齐 -->
+
+    <div class="container">
+        <div class="row">
+            <div class="float" style="height:200px"></div>
+            <div class="float" style="height:150px"></div>
+            <div class="float" style="height:100px"></div>
+            <div class="float" style="height:90px"></div>
+            <div class="float" style="height:60px"></div>
+            <div class="float" style="height:50px"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="inline" style="height:200px"></div>
+            <div class="inline" style="height:150px"></div>
+            <div class="inline" style="height:100px"></div>
+            <div class="inline" style="height:90px"></div>
+            <div class="inline" style="height:60px"></div>
+            <div class="inline" style="height:50px"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>course11-js运动中级</title>
+		<style>
+			ol,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			h4 {
+				margin: 0;
+			}
+			
+			#div {
+				width: 100px;
+				height: 100px;
+				background: #8B0000;
+			}
+			
+			#parentDiv {
+				position: relative;
+				height: 250px;
+			}
+			
+			#div1 {
+				width: 150px;
+				height: 50px;
+				background: #333333;
+				color: #fff;
+				text-align: center;
+				line-height: 50px;
+				position: absolute;
+				top=0;
+				left: -158px;
+			}
+			
+			#div2 {
+				width: 150px;
+				height: 200px;
+				background: #375069;
+				text-align: center;
+				line-height: 200px;
+				position: absolute;
+				top: 50px;
+				left: 0;
+			}
+			
+			#div3 {
+				width: 100px;
+				height: 100px;
+				background: darkturquoise;
+				filter: alpha(opacity:100);
+				opacity: 1;
+			}
+			
+			#play {
+				width: 470px;
+				height: 150px;
+				overflow: hidden;
+				position: relative;
+				margin: 50px auto;
+				background: #375069;
+			}
+			
+			#play ol {
+				position: absolute;
+				right: 2px;
+				bottom: 5px;
+				z-index: 999;
+			}
+			
+			#play ol li {
+				float: left;
+				display: inline;
+				margin-right: 5px;
+				background: #1E90FF;
+				color: darkblue;
+				padding: 2px 6px;
+				font-size: 12px;
+				border: 1px solid darkblue;
+				cursor: pointer;
+			}
+			
+			.active{
+				background:#375069 !important;color: #fff !important;padding: 3px 7px !important;
+			}
+			
+			#play ul {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			
+			#play ul li {
+				width: 470px;
+				height: 150px;
+				float: left;
+			}
+			#play ul li a img{
+				float: left;width: 470px;height: 150px;border: none;
+			}
+			textarea{
+				width: 350px;
+			}
+			#ull{
+				width: 400px;height: 400px;border: 1px solid #375069;margin: 10px 0;overflow: hidden;
+			}
+			#ull li{
+				border-bottom: 1px solid #eee;height: auto; padding: 10px;font-size: 13px;opacity: 0;
+			}
+		</style>
+		<script src="js/Cooler-1.0.2.js"></script>
+		<!--引入运动框架-->
+	</head>
+
+	<body>
+
+		<!---------------- 链式运动框架：当一个运动停止时，接着执行下一个运动 ------------------>
+		<h3>链式运动框架：当一个运动停止时，接着执行下一个运动</h3>
+		<div id="div"></div>
+
+		<script>
+			var oDiv = document.getElementById("div");
+			oDiv.onmouseover = function() {
+				move(oDiv, {
+					width: 200
+				}, function() {
+					move(oDiv, {
+						height: 200
+					}, function() {
+						move(oDiv, {
+							opacity: 50
+						});
+					});
+				});
+			};
+			oDiv.onmouseout = function() {
+				move(oDiv, {
+					opacity: 100
+				}, function() {
+					move(oDiv, {
+						height: 100
+					}, function() {
+						move(oDiv, {
+							width: 100
+						});
+					});
+				});
+			}
+		</script>
+
+		<!---------------- 链式运动框架应用 ------------------><hr />
+		<h3>链式运动框架应用</h3>
+		<button id="start">开启</button>
+		<button id="close">关闭</button>
+		<div id="parentDiv">
+			<div id="div1">
+				<h4>这是一个标题</h4></div>
+			<div id="div2"></div>
+		</div>
+		<script>
+			var oBtn_start = document.getElementById("start");
+			var oBtn_close = document.getElementById("close");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+
+			oDiv2.style.height = 0;
+			oBtn_start.onclick = function() {
+				move(oDiv1, {
+					left: 0
+				}, function() {
+					move(oDiv2, {
+						height: 200
+					})
+				});
+			};
+			oBtn_close.onclick = function() {
+				move(oDiv2, {
+					height: 0
+				}, function() {
+					move(oDiv1, {
+						left: -158
+					});
+				});
+			}
+		</script>
+
+		<!---------------- 完美运动框架 ------------------><hr />
+		<h3>完美运动框架</h3>
+		<button id="start1">开始运动</button>
+		<div id="div3"></div>
+
+		<script>
+			var oStart1 = document.getElementById("start1");
+			var oDiv3 = document.getElementById("div3");
+
+			oStart1.onclick = function() {
+				move(oDiv3, {
+					width: 500,
+					height: 200,
+					opacity: 40
+				}, function() {
+					move(oDiv3, {
+						width: 100,
+						height: 100,
+						opacity: 100
+					});
+				});
+			}
+		</script>
+
+		
+		<!---------------- 幻灯片 ------------------><hr />
+		<h3>完美运动框架一：幻灯片</h3>
+		<div id="play">
+			<ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+			<ul>
+				<li>
+					<a>
+						<img src="imgs/slide/1.jpg" />
+					</a>
+				</li>
+				<li>
+					<a>
+						<img src="imgs/slide/2.jpg" />
+					</a>
+				</li>
+				<li>
+					<a>
+						<img src="imgs/slide/3.jpg" />
+					</a>
+				</li>
+				<li>
+					<a>
+						<img src="imgs/slide/4.jpg" />
+					</a>
+				</li>
+				<li>
+					<a>
+						<img src="imgs/slide/5.jpg" />
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<script>
+			var oPlay = document.getElementById("play");
+			var oOl = oPlay.getElementsByTagName("ol")[0];
+			var aBtn = oOl.getElementsByTagName("li");
+			var oUl_slide = oPlay.getElementsByTagName("ul")[0];
+			var aLi = oUl_slide.getElementsByTagName("li");
+			var now=0;
+			
+			for(var i=0; i<aBtn.length; i++) {				
+				aBtn[i].index=i;
+				aBtn[i].onclick=function(){
+					now=this.index;		//now为当前所在的第几张图片
+					tab();		//执行图片切换
+				}
+			}
+			
+			function tab(){
+				for(var i=0; i<aBtn.length; i++){
+					aBtn[i].className="";
+				}
+				aBtn[now].className="active";	//给按钮添加点击切换效果			
+				
+//				oUl.style.top=-150*this.index+"px";
+				move(oUl_slide,{top:-150*now});		//图片切换
+			};
+			
+			function autoNext(){		//自动播放
+				now++;
+				if(now==aBtn.length){	//当到达最后一张后
+					now=0		//回到第一张
+				}
+				tab();		
+			};
+			
+			var timer=setInterval(autoNext, 2000);
+			
+			oPlay.onmouseover=function(){
+				clearInterval(timer);
+			};
+			oPlay.onmouseout=function(){
+				timer=setInterval(autoNext, 2000);
+			};
+			
+		</script>
+	
+		<!---------------- 幻灯片 ------------------><hr />
+		<h3>完美运动框架二：模拟发布微博</h3>
+		<!--<input id="txt" type="text"  />-->
+		<textarea id="txt" required="required"></textarea>
+		<button id="btn">发布</button>
+		<ul id="ull">
+		</ul>
+		
+		<script>
+			var oBtn=document.getElementById("btn");
+			var oTxt=document.getElementById("txt");
+			var oUl=document.getElementById("ull");
+			
+			oBtn.onclick=function(){
+				
+				var oLi=document.createElement("li");					
+					oLi.innerHTML=oTxt.value;
+					oTxt.value="";	
+					
+					if(oUl.children.length>0){					
+						oUl.insertBefore(oLi, oUl.children[0]);	//从最顶部插入	
+					}
+					else{
+						oUl.appendChild(oLi);	//当li为空时
+					}
+					
+					var iHeight=oLi.offsetHeight-20;
+					oLi.style.height=0;
+					move(oLi, {height:iHeight},function(){	//li的高度变换
+						move(oLi, {opacity:100});	//li的透明度变换
+					});
+				
+			};
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>找出最长字符串</title>
+		<script>
+	/*----------- 题目：找到提供的句子中最长的单词，并计算它的长度。----------*/
+	//		方法：1、转化成数组；2、根据元素长度排序；3、输出最长元素并返回长度。
+			function findLongestString(str){
+				
+				var 01arr = str.split(" ");					//转化成数组，注意split()括号里为一个空格
+//				alert(01arr);		//输出：I,love,China
+				
+				var aSort = arr.sort(function (a,b){		//排序
+					return b.length-a.length;
+				});
+//				alert(aSort);		//输出： China,love,I
+
+				document.write("最长单词："+aSort[0]+"</br>"); 	//第一个元素为最长
+				document.write("单词长度："+aSort[0].length);
+				
+				return aSort[0].length;
+			}
+			findLongestString("I love China");
+		</script>
+		
+<!--		
+		<script>
+			function findLongestWord(str) {
+			//转化成数组
+			  var astr=str.split(" ");  alert(astr);
+			//对数组中每个元素的字符串长度进行比较，按照字符串长度由大至小排列数组顺序。
+			  var bstr=astr.sort(function(a,b){
+			    return b.length-a.length;
+			  });
+			//取出数组中第一个元素(也就是最大长度的字符串）
+			  var lenMax= bstr[0].length;
+			//返回长度值
+			  return lenMax;
+			}
+			
+			alert(findLongestWord("The quick brown fox jumped over the lazy dog"));
+			
+			//结果：6
+		</script>
+	-->		
+	</head>
+	<body>
+	</body>
+</html>

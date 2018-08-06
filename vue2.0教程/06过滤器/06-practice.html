@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filters练习</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--绑定title属性，title为单词首字母大写-->
+        <div v-bind:title="msg | firstWordUp">{{msg}}</div>
+
+        <!--单词首字母大写并去空格显示-->
+        <div>{{msg | firstWordUp | removeSpace}}</div>      <!--调用了两个filters方法-->
+    </div>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                msg : "hello world !"
+            },
+            filters : {
+                firstWordUp : function(val){         /*title首字母大写*/
+                    var val = val.toString();
+                    var valArr = val.split(" ");
+                    var newVal = valArr.map(function (value) {
+                        return value.charAt(0).toUpperCase()+value.slice(1).toLowerCase();
+                    })
+                    return newVal.join(" ");
+                },
+                removeSpace : function (val) {              /*删除空格*/
+                    return val.toString().split(" ").join("");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

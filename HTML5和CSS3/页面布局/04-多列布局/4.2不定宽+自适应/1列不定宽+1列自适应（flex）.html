@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .parent{
+            width: 100%;height: 500px;border:1px solid #2F4F4F;
+            display: flex;
+        }
+        .left{
+            height:500px;background-color:#696969;margin-right: 20px;
+        }
+        .left p{
+            width: 300px;       /*左边内容定宽*/
+        }
+        .right{
+            background: #545cbe;height: 500px;
+            flex: 1;    /*自动计算属性*/
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="left">
+            <p>left</p>
+        </div>
+        <div class="right">
+            <p>right</p>
+        </div>
+    </div>
+</body>
+</html>

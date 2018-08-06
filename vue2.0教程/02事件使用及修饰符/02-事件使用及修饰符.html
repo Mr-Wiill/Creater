@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-事件使用及修饰符</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-on:click="show(msg)">
+            <!--stop用于阻止事件冒泡-->
+            <button v-on:click.stop="show(msg,$event)">点击按钮</button>
+        </div>  <hr>
+
+        <!-- 默认为打开链接，使用prevent可以阻止默认事件 -->
+        <a href="http://www.baidu.com" v-on:click.prevent="btnClick()">阻止默认事件</a>    <hr>
+
+        <!-- keyup.enter表示当回车键松开后触发事件，类似于enter 的还有space(空格键)、esc(退出键)、backspace(删除键)等-->
+        按回车键触发事件：<input type="text" v-on:keyup.enter="keyup">     <hr>
+
+        <!--可以连续使用多个按键来触发事件-->
+        回车键和空格键触发事件：<input type="text" v-on:keyup.enter.space="keyup">   <hr>
+
+        <!--使用shift这类系统按键，需要加上其它按钮或操作才能触发事件-->
+        shift+按键 触发事件：<input type="text" v-on:keyup.shift="shift()">    <br>
+        alt+点击 触发事件：<button v-on:click.alt="shift()">alt+点击</button>
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:123546
+            },
+            methods:{
+                show:function (msg, event) {
+                    console.log(msg),
+                    alert("v-on用于事件绑定！");
+                },
+                keyup:function () {
+                    alert("keyup.enter表示当回车键松开后触发事件");
+                },
+                shift:function () {
+                    alert("shift配合其它按钮才能触发事件！")
+                }
+            }
+        })
+    </script>
+
+<!--
+    总结：
+    1、v-on用于绑定事件，如v-on:click="fn()" 绑定了点击事件；
+    2、在绑定的事件后面添加对应的修饰符，可以通过修饰符触发事件，
+       如v-on:key.enter="fn()" 按回车键触发事件，类似还有 space、esc、backspace等按钮
+    3、可以通过多个按钮控制触发事件，如v-on:keyup.enter.space="fn()";
+    4、shift、ctrl、alt等这类系统按钮需要配合其它按钮或操作 才能触发事件，如在button里添加v-on:key.shift="fn()" 需要shift+点击触发事件
+-->
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* Simple style for WampServer */
+
+html {
+	margin:0;
+    padding: 0;
+}
+
+body {
+	margin: 0;
+    padding: 0;
+	font: 100%/1.4 Impact, Charcoal, sans-serif;
+}
+
+#head, .config, .alltools, #foot {
+    padding: 1em;
+}
+
+#head ul, #foot {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    list-style: none;
+}
+
+#head, #foot {
+    background: darkslategray;
+    color: #FFF;
+    padding: 1em;
+}
+
+#head ul li, ul#foot li {
+    margin: 0.5em;
+    padding: 0.5em;
+   display: inline; 
+}
+
+#head a, #foot a {
+    color: lightgrey;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: normal;
+    text-shadow: 1px 1px 0 #000;
+}
+
+h2 {
+	margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    clear: left;
+    font-weight: normal;
+}
+
+ul.aliases, ul.projects, ul.tools, ul.vhost, dd ul {
+    list-style: none;
+    margin: 0 1.2em 1em 1.2em;
+    padding: 0;
+}
+
+
+ul.aliases li, ul.projects li, ul.tools li, ul.vhost li, dd ul li {
+    float: left;
+    margin: 1em;
+    padding: 0.5em;
+    width: 200px;
+    text-align: center;
+}
+
+dd ul li {
+    background: lightblue;
+    color: dimgrey;
+}
+
+.aliases li {
+    background: lightgreen;
+}
+
+.projects li {
+    background: gold;
+}
+
+.tools li {
+    background: darksalmon;
+}
+
+.vhost li {
+    background: thistle;
+}
+
+dl {
+    margin: 1.2em;
+    padding: 0;
+}
+
+dt {
+    margin: 0 1em;
+    padding: 0;
+    text-decoration: underline;
+    clear: left;
+}
+
+dd {
+    margin: 0;
+    padding: 0.5em 1.5em;
+}
+
+a {
+    color: #2F4F4F;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+}
+
+#foot, #error {
+    clear: left;
+}

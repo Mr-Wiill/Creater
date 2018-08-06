@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用构造函数</title>
+</head>
+<body>
+    <!---  借用构造函数解决原型继承出现的问题  --->
+    <script>
+        function Father() {
+            this.colors = ["blue", "gray", "yellow"];
+        }
+        function Son() {
+            Father.call(this);      //son继承father
+        }
+
+        var instance1 = new Son();
+        instance1.colors.push("red");
+        alert(instance1.colors);
+
+        var instance2 = new Son();
+        alert(instance2.colors);        //不受上一个实例属性变更的影响
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阶乘</title>
+		<script>
+		/*----------------- 方法一：while方法 --------------*/
+			function factorialWhile(num){
+				var result=1;
+				while(num>1){
+					result*=num;
+					num--;
+				}
+				return result;
+			}
+			alert("while方法一："+factorialWhile(5));
+			
+		/*----------------- 方法二：for循环方法 -------------*/
+			function factorialFor(num){
+				if(num<1){
+					return 1;
+				}else{
+					for(var i=num-1; i>=1; i--){
+						num*=i;
+					}
+				}
+				return num;
+			}
+			alert("for方法二："+factorialFor(5));
+		
+		/*-----------------方法三：递归方法 ---------------*/
+			/*function factorial(num){
+				if(num<1){
+					return 1;
+				}
+				else{
+					return num*factorial(num-1);
+				}
+			}
+			alert("递归方法三："+factorial(5));*/
+
+			var factorial = (function f(num) {		//函数表达式的方法
+				if (num <= 1){
+				    return 1;
+				} else {
+				    return num * f(num-1);
+				}
+            });
+			var result = factorial;
+			alert("方法三："+ (result)(5))
+			// console.log((result)(5));
+
+		</script>
+	</head>
+	<body>
+		<span>---------------------------- end --------------------------------</span>
+
+		<span>文章来源：</span><span>https://www.cnblogs.com/JanySu/p/5278542.html</span>
+	</body>
+</html>

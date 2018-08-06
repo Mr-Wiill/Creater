@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course4-定时器1</title>
+		<style>
+			#clock{
+				width: 500px;height: 150px;background: #375069;
+				font-size:40px;text-align: center;color: #fff;
+				padding-top: 10px;line-height: 70px;
+			}
+			#tip_container{
+				height: 150px;width: 230px;display: block;
+			}
+			#div1{
+				background: #CCCCCC;width: 50px;height: 50px;float: left;
+			}
+			#div2{
+				background: #1E90FF;width: 150px;height: 150px;float: left;margin: 0 15px;display: none;
+			}
+			#roll{
+				width: 710px;height: 108px;background: #375069;position: relative;overflow: hidden;
+			}
+			#roll ul{
+				list-style: none;padding: 0;margin: 0;position: absolute;top: 0;left: 0;
+			}
+			#roll ul li{
+				list-style: none;float: left;margin: 0;padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!----------------开启定时器、停止定时器 ------------------>
+		<h3>setInternal(连续型)、setTimeout()开启定时器、停止定时器</h3>
+		<input id="btn" type="button" value="setInterval开启"  />
+		<input id="btn1" type="button" value="setInterval关闭" /> &nbsp;
+		<input id="btn2" type="button" value="setTimeout开启"  />
+		<input id="btn3" type="button" value="setTimeout关闭" />
+		<script>
+			var btn =document.getElementById("btn");
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var btn3=document.getElementById("btn3");
+			var timer1;
+			var timer2;
+			//setInterval开启定时器(连续执行)
+			btn.onclick=function(){
+				timer1 = setInterval(function(){	
+					alert("aaaaaaaaaaaaaaaa");
+				},1000)							//单位为毫秒，1000ms=1s
+			};			
+			//setInterval停止定时器
+			btn1.onclick=function(){
+				clearInterval(timer1);
+			};
+			
+			//setTimeout开启(只执行一次)
+			btn2.onclick=function(){
+				timer2=setTimeout(function(){
+					alert("bbbbbbbbbbbbbbbbbbbbbbbb");
+				},1000)
+			};
+			//setTimeout开启
+			btn3.onclick=function(){
+				clearTimeout(timer2);
+			}
+		</script>
+		
+		<!----------------获取当前时间 ------------------><hr />
+		<h3>获取当前时间</h3>
+		<input id="txt" style="width: 300px;height: 25px;"  />
+		<input id="txt1" style="width: 200px;height: 25px;"  />
+		<input id="btn4" type="button"  value="获取时钟"  />
+		<script>
+			var txt=document.getElementById("txt");
+			var txt1=document.getElementById("txt1");
+			var btn=document.getElementById("btn4");
+			var oDate=new Date();			//获取当前时间
+			btn.onclick=function(){
+				var year=oDate.getFullYear();			//年(四位，如2018)
+				var month=oDate.getMonth()+1;			//月（从0-12，所以需要加1）
+				var day=oDate.getDate();				//日(0-31)
+				var week=oDate.getDay();				//星期几（0-6，0为星期日）
+				if(week==0){				
+					week="日";		//当week=0时，改成week="日"
+				}else{
+					week;
+				}
+				var hour=oDate.getHours();				//时(0-23)
+				var minute=oDate.getMinutes();			//分(0-59)
+				var second=oDate.getSeconds();			//秒(0-59)
+				var millisecond=oDate.getMilliseconds();	 //毫秒数(0-999)
+				
+				var time=year+"年"+month+"月"+day+"日"+"，"+"星期"+week+"，"+hour+"时"+minute+"分"+second+"秒"+millisecond+"毫秒";
+				txt.value = time;
+				
+				var oTime=oDate.toLocaleDateString();		 //获取当前日期，如2018/1/21
+				var oDateTime=oDate.toLocaleTimeString();	 //获取当前时间，如下午9:48:25	
+				var nowTime=oDate.toLocaleString();			 //获取日期和时间，如2018/1/21 下午9:50:43
+								
+				txt1.value = nowTime;
+				
+			};
+			
+		</script>
+		
+		<!----------------制作一个时钟 ------------------><hr />
+		<h3>制作一个时钟</h3>
+		<div id="clock">
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			年			
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			月
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			日
+			
+			<br />
+			
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			:
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+			:
+			<img src="imgs/clock/0.png" />
+			<img src="imgs/clock/0.png" />
+		</div>
+		<script>
+			//使获取的时间都显示两位数，如11:08:05
+			function toDo(n){			
+				if(n<10){
+					return "0"+n;		//当小于10时，显示0n
+				}else{
+					return ""+n;
+				}
+			};
+			
+			function clock(){
+				var oClock=document.getElementById("clock");
+				var oImg=oClock.getElementsByTagName("img");		
+//				 	var str="012356";
+				var myDate=new Date();
+				
+				//调用toDo函数，并获取当前系统时间
+				var str=toDo(myDate.getFullYear())+toDo(myDate.getMonth()+1)+toDo(myDate.getDate())+toDo(myDate.getHours())+toDo(myDate.getMinutes())+toDo(myDate.getSeconds());	
+				
+				for(var i=0; i<str.length; i++){
+//						oImg[i].src="imgs/clock/"+str[i]+".png";		//设置图片路径
+					oImg[i].src="imgs/clock/"+str.charAt(i)+".png";		//str[i]=str.charAt(i)，只不过str[i]不兼容IE7以下版本
+				}
+				setInterval(clock,1000);		//设置时间间隔，1s刷新一下		
+			};				
+			clock();	//使一开始就执行clock函数，这样不会从0开始显示		
+		</script>
+		
+		
+		<!----------------延时提示框 ------------------><hr />
+		<h3>延时提示框</h3>
+		<div id="tip_container">
+			<div id="div1"></div>
+			<div id="div2"></div>
+		</div>
+			
+		
+		<script>
+				var oDiv1=document.getElementById("div1");
+				var oDiv2=document.getElementById("div2");
+				var timer_tip;
+				oDiv2.onmouseover=oDiv1.onmouseover=function(){		//两个函数相同的可以共用一个function
+					clearTimeout(timer_tip);						//清除延时，并显示oDive2
+					oDiv2.style.display="block";
+				};
+				oDiv2.onmouseout=oDiv1.onmouseout=function(){
+					timer_tip=setTimeout(function(){				//鼠标离开后，延时隐藏,并隐藏oDive2
+						oDiv2.style.display="none";
+					},200);					
+				};
+			/*	oDiv2.onmouseover=function(){
+					clearTimeout(timer_tip);
+					oDiv2.style.display="block";
+				};
+				oDiv2.onmouseout=function(){
+					timer_tip=setTimeout(function(){
+						oDiv2.style.display="none";
+					},200);
+				
+				}
+			*/	
+		</script>
+		
+		<!---------------------offsetLeft设置无缝滚动图 -----------------------><hr />
+		<h3>offsetLeft设置无缝滚动图</h3>
+		<p>offsetLeft可以计算模块的left的值（包括left+margin），类似的还有offsetTop, offsetWidth和offsetHeight</p>
+		<input id="btn_left" type="button" value="向左" />
+		<input id="btn_right" type="button" value="向左" />
+		<div id="roll">			
+			<ul>
+				<li><img src="imgs/rollPic/1.jpg"/></li>
+				<li><img src="imgs/rollPic/2.jpg"/></li>
+				<li><img src="imgs/rollPic/3.jpg"/></li>
+				<li><img src="imgs/rollPic/4.jpg"/></li>
+			</ul>
+		</div>
+		
+		<script>
+			var oRoll=document.getElementById("roll");
+			var oUl=oRoll.getElementsByTagName("ul")[0];
+			var aLi=oUl.getElementsByTagName("li");
+			var btn1=document.getElementById("btn_left");
+			var btn2=document.getElementById("btn_right");			
+			var timer;
+			var speed=-2;			//初始化速度和方向（负数向右，正数向左）
+			
+//			oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;				
+			oUl.innerHTML+=oUl.innerHTML;							//一行显示两个ul
+			oUl.style.width=aLi[0].offsetWidth*aLi.length+"px";		//是div的宽度自适应多个li的宽度，offsetWidth可以计算li的宽度
+			
+			function roll(){
+				//使ul向左循环滚动（滚动到一半后，又回到原点）
+				if(oUl.offsetLeft<=-oUl.offsetWidth/2){		//ul向左滚动一半后（left<width/2,此时left为负数），是它恢复left=0从头开始滚动
+					oUl.style.left="0";
+				}
+				//使ul向右循环滚动（滚动到一半后，又回到原点）
+				if(oUl.offsetLeft>0){						//ul向右滚动一半后（left>0）时
+					oUl.style.left=-oUl.offsetWidth/2+"px";		
+				}				
+				oUl.style.left=oUl.offsetLeft+speed+"px";		//每个30ms，ul的left减2px,是它往左连续移动
+			};	
+				timer=setInterval(roll, 30);
+			oRoll.onmouseover=function(){
+				clearInterval(timer);			//鼠标放上去停止定时器，停止滚动			
+			};
+			oRoll.onmouseout=function(){
+				timer=setInterval(roll, 30);	//鼠标离开去启动定时器，开始滚动
+			};
+			btn1.onclick=function(){
+				speed=-2;						//当speed=-2时，向左滚动
+			};
+			btn2.onclick=function(){
+				speed=2;						//当speed=2时，向右滚动
+			};
+		</script>
+		
+
+	</body>
+</html>

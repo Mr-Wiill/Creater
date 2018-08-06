@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sessionStorage</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <form>
+        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password">
+        <button onclick="setdata()">存储</button>
+        <button onclick="getdate()">查看</button>
+    </form>
+    <script>
+        function setdata() {
+            var userName = $("#username").val();
+            var password = $("#password").val();
+            sessionStorage.setItem("k_username", userName);
+            sessionStorage.setItem("k_password", password);
+            alert('存储完成');
+        }
+        function getdate() {
+            alert(sessionStorage.getItem("k_username")+" "+sessionStorage.getItem("k_password"));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//封装Ajax函数
+			function Ajax(url, fnSucc, fnFaild){
+				//1、创建Ajax对象
+				if(XMLHttpRequest) {
+					var oAjax = new XMLHttpRequest();
+				}
+				else {
+					var oAjax = new ActiveXObject("Microsoft.XMLHttp");
+				}
+//				alert(oAjax);
+				
+				//2、连接服务器
+				//open(方法， 文件名， 异步传输)
+				oAjax.open("GET", url, true);	//添加t阻止缓存
+				
+				//3、发送请求
+				oAjax.send();
+				
+				//4、接收返回
+				oAjax.onreadystatechange=function() {
+					//oAjax.readyState	 //浏览器与服务器进行到哪一步了
+					/*
+					 		0			（未初始化）还没有调用open()方法
+					 		1			（载入）已调用send()方法，正在发送请求
+					 		2			（载入完成）send()方法完成，已收到全部响应内容
+					 		3			（解析）正在解析响应内容
+					 		4			（完成）响应内容解析完成，可以在客户端调用了
+					 * */
+					if(oAjax.readyState==4) {	//读取完成
+						if(oAjax.status==200){	//读取成功
+//							alert("成功 ： "+oAjax.responseText);		//展示读取的内容
+							fnSucc(oAjax.responseText);
+						}
+						else {
+//							alert("失败 ： "+oAjax.status);	//读取失败
+							fnFaild(oAjax.status);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+		<h3>创建Ajax</h3>
+		<p>1、创建Ajax对象；2、连接服务器；3、发送请求；4、接收返回值；</p>
+		<button id="btn">创建Ajax</button>
+		<script>
+			var oBtn= document.getElementById("btn");
+			oBtn.onclick=function() {
+				Ajax("a.txt?t="+ new Date().getTime(), function(str){	//调用Ajax函数
+					alert(str);
+				}, function(str){
+					alert(str);
+				})
+			}
+		</script>
+	</body>
+</html>

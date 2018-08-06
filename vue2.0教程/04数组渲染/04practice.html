@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>双向数据绑定</h2>
+        <input type="password" v-model="password">
+
+        <!-- 根据密码的长度来显示不同的提示 -->
+        <p v-if="password.length > 8">密码大于8个字符</p>
+        <p v-else-if="password.length > 1">密码1到8个字符</p>
+        <p v-else>没有输入密码</p>
+
+        <h2>数组渲染</h2>
+        <ol>
+            <li v-for="item in subs">{{ item.name }}
+                <ul>
+                    <li v-for="subEle in item.sub">{{ subEle }}</li>    <!-- v-for里面可以再套一层v-for -->
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                password : "123",
+                subs : [{
+                    name : "javascript",
+                    sub : ["vue", "react", "angular"]
+                },{
+                    name : "database",
+                    sub : ["mysql", "mongodb", "sqlserver"]
+                },{
+                    name : "system",
+                    sub : ["windows", "Linux", "macOs"]
+                }]
+            }
+        })
+
+    </script>
+</body>
+</html>

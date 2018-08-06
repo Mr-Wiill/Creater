@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象方法</title>
+</head>
+<body>
+    <h2>工厂模式：</h2>
+    <script>
+        /*--- 工厂模式 ---*/
+        function createPerson(name, age, job) {
+            var o = new Object();       //创建一个空对象
+            o.name = name;              //给空对象添加属性
+            o.age = age;
+            o.job = job;
+
+            o.sayName = function () {   //方法
+                document.write("，"+ this.name);
+            };
+            return o;       //返回对象
+        }
+        var person1 = createPerson("tom", 23, "Software Engineer");     //创建一个对象实例
+        document.write(person1.age);
+        person1.sayName();          //调用对象里面的方法
+
+    </script>
+
+
+
+
+</body>
+</html>

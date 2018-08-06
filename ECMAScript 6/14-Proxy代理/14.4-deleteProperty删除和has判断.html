@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+            new Proxy(target,{
+                deleteProperty(target,property){
+                    delete target[property];        //删除属性；调用：delete obj.property
+                },
+                has(target,property){
+                    return property in target;      //判断是否存在，调用：property in boj
+                }
+            })
+
+        */
+        let json = {
+            a : 1,
+            b : 2
+        };
+        let newObj = new Proxy(json,{
+            deleteProperty(target, prop){
+                console.log(`您删除了${prop}`);
+                delete target[prop];        //删除属性
+            },
+            has(target,prop){
+                console.log(`调用has判断`);
+                return prop in target;      //判断是否存在，存在返回true，不存在返回false
+            }
+        });
+        delete newObj.a;        //调用deleteProperty方法删除
+        console.log(newObj);
+
+        console.log('a' in newObj);     //调用has方法判断是否存在
+    </script>
+</body>
+</html>

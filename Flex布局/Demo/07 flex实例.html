@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width:100%;border:2px solid red;color:#fff;overflow:auto
+        }
+        .main{
+            margin: 10px;border: 1px solid green;
+            display: flex;
+        }
+        .item1,.item2,.item3,.item4{
+            height: 100px;background:#1b6d85;
+            margin: 20px;text-align: center;line-height: 100px;
+        }
+        .item1{
+            flex: 1 ;       /*控制项目宽度占比*/
+        }
+        .item2{
+            flex: 2;
+        }
+        .item3{
+            flex: 3;
+        }
+        .item4{
+            flex: 4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main">
+        <div class="item1">01</div>
+        <div class="item2">02</div>
+        <div class="item3">03</div>
+        <div class="item4">04</div>
+    </div>
+
+</div>
+</body>
+</html>

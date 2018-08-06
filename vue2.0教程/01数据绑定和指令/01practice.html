@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定和指令-练习</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <!--输出一部电影名称和上映日期-->
+        <span>{{"电影："+filmName}}</span>     <br>
+        <span>{{"上映日期："+releaseDate}}</span>    <br>
+
+        <!--判断一部电影是否是新电影：> 2000 为新电影，否则老电影-->
+        <span>这是一部{{getMove(releaseDate)}}电影</span>     <br>
+
+        <!--title绑定-->
+        <span v-bind:title="title">hover me</span>
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                filmName:"战狼3",
+                releaseDate: 2019,
+                title:"this is a new film."
+            },
+            methods:{
+                getMove:function (time) {
+                    return time > 2018 ? "新" : "旧";
+                },
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-列表渲染</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <!-- v-for数组渲染：把一个数组渲染到每一项 -->
+    <!--
+        v-for语法：
+        1） v-for="value in Array"   （value必选，值）
+        2） v-for="(value, index) in Array"   （index可选，索引）
+        3） v-for="(value, key, index) in object"     （key可选，键名（属性值），循环对象）
+    -->
+    <div id="app">
+        <!-- 1） v-for="value in Array" -->
+        <h2>电影列表1：</h2>
+        <ul>
+            <li v-for="title in moves">{{ title }}</li>
+        </ul>
+
+        <!-- 2） v-for="(value, index) in Array"  -->
+        <h2>电影列表2：</h2>
+        <ul>
+            <li v-for="(title, index) in moves">{{ title }} （{{index}}）</li>
+        </ul>
+
+        <!-- v-for 循环对象数组 -->
+        <h2>员工列表：</h2>
+        <table>
+            <thead>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>职位</th>
+                <th>公司</th>
+            </thead>
+            <tbody>
+                <tr v-for="(person,index) in persons">
+                    <td>{{index+1}}</td>
+                    <td>{{person.name}}</td>        <!--引用对象-->
+                    <td>{{person.job}}</td>
+                    <td>{{company}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 3） v-for="(value, key, index) in object"  循环对象 -->
+        <h2>循环对象</h2>
+        <div v-for="(value, key, index) in person">
+           {{index+1}} {{key}}：{{value}}
+        </div>
+
+        <!-- v-for 循环数字和字符串 -->
+        <h2>循环数字和字符串</h2>
+        <div v-for="n in 10">{{n}}</div>
+        <div v-for="str in 'string'">{{str}}</div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                moves: ["女儿国","唐人街探案2","捉妖记2","红海行动"],      //字符串数组
+                persons: [{             //对象（object）数组
+                    name: "tom",
+                    job: "javascript"
+                },{
+                    name: "jack",
+                    job: "vue.js"
+                },{
+                    name: "moli",
+                    job: "html5"
+                }],
+                company: "Alibaba",
+                person: {               //一个对象
+                    lastName: 'Hu',
+                    firstName: 'Ge',
+                    age: 35
+                }
+            }
+        })
+    </script>
+
+    <!--
+        总结：
+        1、数组（循环）渲染：v-for = "(value, key, index) in Array"，三个参数value为必选，其余可选。
+        2、可以用于循环 数字，字符串，数组，对象数组，对象。
+    -->
+
+</body>
+</html>

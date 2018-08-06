@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+            border: 1px solid #000;
+            margin: 20px 0 20px 0;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        事件委托三部曲：
+        1、给父级绑定事件；
+        2、监听子元素的冒泡事件；
+        3、找到是哪个子元素的事件；
+     -->
+    <ul id="ul">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ul>
+    <button id="btn">添加元素</button>
+
+    <script>
+        let oUl = document.querySelector('#ul');
+        oUl.addEventListener('click', function (ev) {       //给ul添加一个监听事件
+            ev = ev || event;
+            let target = ev.target || ev.srcElement;
+            if (target.nodeName == 'LI'){
+                alert(target.innerHTML);
+            }
+        });
+
+        let oBtn = document.querySelector('#btn');
+        let num = 5;
+        oBtn.onclick=function () {
+            num++;
+            let oLi = document.createElement('li');     //创建一个新节点
+            oLi.innerHTML = num*111;
+            oUl.appendChild(oLi);
+        }
+    </script>
+</body>
+</html>

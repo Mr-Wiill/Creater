@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--
+        反向引用命名捕获：\k<名字> （反向引用及为重复引用之前的正则表达式）；
+    -->
+    <script>
+        //后面那个表达式引用了前面的表达式，即(\k<Strive>)等同于(?<Strive>welcome)
+        let reg = /^(?<Strive>welcome)-(\k<Strive>)$/;
+        let reg1 = /^(?<strive>welcome)-(\k<strive>)-\1$/;  //  \1等同于(?<strive>welcome)
+
+        let str = "welcome-welcome";
+        let str1 = "welcome";
+        let str2 = "welcome-welcome-welcome";
+
+        console.log(reg.test(str)); //true
+        console.log(reg.test(str1)); //false
+
+        console.log(reg1.test(str));
+        console.log(reg1.test(str2));
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 100%;border:2px solid red;color:#fff;overflow:auto
+        }
+        .item{
+            width: 100px;height: 100px;background:#1b6d85;
+            margin: 20px;text-align: center;line-height: 100px;
+        }
+        .main1,.main2,.main3,.main4{
+            margin: 10px;border: 1px solid green;
+            display: flex;
+        }
+        .main1{
+            flex-direction: row;    /*从左向右排列*/
+        }
+        .main2{
+            flex-direction: row-reverse;    /*从右向左排列*/
+        }
+        .main3{
+            flex-direction:column;      /*从上向下排列*/
+        }
+        .main4{
+            display: flex;
+            flex-direction:column-reverse;      /*从下向上排列*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main1">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+        <div class="main2">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main3">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+        <div class="main4">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </div>
+</body>
+</html>

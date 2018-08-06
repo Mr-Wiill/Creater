@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        let time = '2018-05-04';
+        let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+        let str = time.replace(reg,'$<year>/$<month>/$<day>');      //使用$根据名称去选取相匹配的结果
+        document.write(str);
+
+        /*replace()返回一个函数*/
+        let str1 = time.replace(reg,(...args)=>{
+            // console.log(...args);    //一个对象
+            let {year,month,day} = args[args.length-1];
+            return `${day}/${month}/${year}`;
+        });
+        alert(str1);
+    </script>
+
+</body>
+</html>

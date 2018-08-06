@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义组件</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+
+    <script>
+        Vue.component("my-component", {         //定义一个全局组件（名字，设置内容）
+            /* ``为es6语法，包括在``里面的内容可以当HTML代码展示，包括换行；注意：组件的内容必须包含在一个根节点里面 如：div */
+            template : `
+                <div>
+                    <h3>我的联系方式：</h3><span>{{phone}}</span>
+                </div>
+            `,
+            data : function(){      //data定义一个函数传参
+                return {
+                    phone : "15216806191"
+                }
+            }
+        });
+
+        new Vue ({
+            el : "#app",
+
+        })
+    </script>
+
+    <!--
+        总结：
+        1、定义一个组件：Vue.component("组件名",{设置内容});
+        2、组件里面可以通过data定义一个函数来传参数；
+        3、调用组件：<组件名></组件名> （当HTML标签使用）；
+     -->
+</body>
+</html>

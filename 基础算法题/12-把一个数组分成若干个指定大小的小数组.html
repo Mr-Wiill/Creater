@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+			题目：把一个数组arr按照指定的数组大小size分割成若干个数组块。
+				   例如:chunk([1,2,3,4],2)=[[1,2],[3,4]]; chunk([1,2,3,4,5],2)=[[1,2],[3,4],[5]];
+			
+		-->
+		
+		<script>
+			function chunk(01arr, size){
+				var Array = [];
+				if (arr.length > size) {							
+					for (var i=0; i<arr.length; i+=size) {			//每次循环size个元素
+						Array.push("["+arr.slice(i,i+size)+"]");	//每次截取size元素加入Array（为了便于观察，添加了[]）					
+					}
+					return Array;
+				} else{
+					return "["+arr+"]";
+				}				
+			}
+			document.write(chunk([1,2,3,4,48,666],2));
+		</script>
+		
+	</body>
+</html>

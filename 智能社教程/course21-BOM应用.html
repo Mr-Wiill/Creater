@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course21-BOM应用</title>
+		<style>
+			body{height: 2000px;}
+		</style>
+	</head>
+	<body>
+		<!---------------- window.open ------------------>
+		<h3>window.open</h3>
+		<button onclick="window.open('http://www.baidu.com')">打开百度</button>
+		<button onclick="window.close()">关闭此页面</button>
+		
+		
+		<!---------------- window.open应用 ------------------><hr />
+		<h3>window.open的应用</h3>
+		<textarea id="txt"></textarea>
+		<button id="btn">运行</button>
+		<script>
+			var oBtn=document.getElementById("btn");
+			var oTxt=document.getElementById("txt");
+			oBtn.onclick=function(){
+				var oNewWin = window.open("about:blank", "_blank");	//about:blank打开一个空白页，_blank打开新窗口
+				oNewWin.document.write(oTxt.value);		//document.write：清空页面，显示写入内容
+			}	
+			
+		</script>
+		
+		
+		<!---------------- 查看浏览器信息 ------------------><hr />
+		<h3>查看浏览器信息</h3>
+		<button id="btn1">查看</button>
+		<script>
+			var oBtn=document.getElementById("btn1");			
+			oBtn.onclick=function(){
+				alert("浏览器信息：" + window.navigator.userAgent);	//查看浏览器版本信息，判断浏览器类型
+				alert("当前网页地址：" + window.location);		//查看网址
+			}			
+		</script>
+		
+		
+		<!---------------- 可视区高度，宽度 ------------------><hr />
+		<h3>可视区宽高、滚动距离</h3>
+		<button id="btn2">查看可视区宽高</button>
+		<script>
+			var oBtn=document.getElementById("btn2");			
+			oBtn.onclick=function(){
+				alert("可视区宽度： "+document.documentElement.clientWidth);	//可视区宽度
+				alert("可视区高度： "+document.documentElement.clientHeight);	//可视区高度	
+			}
+			document.onclick=function(){
+				alert("滚动距离："+document.documentElement.scrollTop || document.body.scrollTop);	//可视区距离顶部的距离
+			}
+		</script>
+		
+		
+		<!---------------- js做一个悬浮窗 ------------------><hr />
+		<h3>js做一个悬浮窗</h3>
+		<div id="div"></div>
+		<style>
+			#div{width: 100px;height: 100px;background-color:red;position: absolute;right: 20px;top: 410px;}
+		</style>
+		<script>
+			window.onscroll=window.resize=function(){		//onscroll滚动时执行，resize窗口大小改变时执行
+				var oDiv=document.getElementById("div");
+				var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+				if(scrollTop<400){
+					oDiv.style.top=410+"px";
+				}
+				else{
+					oDiv.style.top=scrollTop + 20 + "px";	//当滚动距离大于400px后悬浮
+				}	
+			}			
+		</script>
+		
+		
+		<!---------------- 系统对话框 ------------------><hr />
+		<h3>系统对话框：警告框alert()、确认框confirm()、输入框prompt()</h3>
+		<button id="btn3">确认框</button>
+		<button id="btn4">输入框</button>
+		<script>
+			var oBtn=document.getElementById("btn3");
+			var oBtn1=document.getElementById("btn4");	
+			oBtn.onclick=function(){
+				confirm("Are you ok ?");
+			}
+			oBtn1.onclick=function(){
+				prompt("请输入名称：");
+			}	
+		</script>
+	</body>
+</html>

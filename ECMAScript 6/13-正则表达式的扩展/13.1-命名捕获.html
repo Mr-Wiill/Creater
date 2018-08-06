@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <!--
+            命名捕获：给正则表达式的分组命名，并提取出各个分组；
+            语法：  (?<名字>)
+        -->
+        <script>
+            let time = "2018-05-04";
+            let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+            let g = time.match(reg).groups;     //返回按照正则条件分组的一个对象
+            console.log(g);
+            let {year, month, day} = g;     //解构赋值
+            console.log(year,month,day);
+        </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>course3-Deep</title>
+		
+		<style>
+			#obj1{
+				width: 200px;height: 200px;
+			}
+			#obj2,#obj3{
+				width: 300px;background-color:dodgerblue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!---------------- return函数返回值：函数的执行结果------------------>
+		<h3>return函数返回值：函数的执行结果</h3>
+		<input id="btn" type="button" value="return" />
+		<script>
+			var btn=document.getElementById("btn");	
+			btn.onclick=function(){
+				function show(a,b){				
+					return a+b;				//返回值
+				};
+				alert(show(3,5));			//外部调用
+			}				
+		</script>
+		
+		<!---------------- arguments函数传参------------------>
+		<h3>arguments函数传参 : 当参数不固定时，使用arguments传参</h3>
+		<input id="btn1" type="button" value="arguments" />
+		<script>
+			var btn=document.getElementById("btn1");	
+			btn.onclick=function(){
+				function sum(){				
+					var result = 0;		//声明一个变量并赋值为0
+					for(var i=0; i<arguments.length; i++){		
+						result+=arguments[i];				//遍历相加(arguments其实就是sum里的数组)
+					}
+					return result;			//返回值
+				};
+				alert(sum(2,5,6,8,6,98,3,56,3,3,2,5,6,8,6,98,3,56,3,3));		//调用
+			}
+		</script>
+		
+		<!---------------- CSS函数：两个参数则获取，三个参数则设置 ------------------>
+		<h3>CSS函数：两个参数则获取，三个参数则设置</h3>
+		<input id="btn2" type="button" value="css函数" />
+		<div id="obj1" style="background-color: red;"></div>
+		<script>	
+			function css(obj, name, value){
+				if(arguments.length==2){
+					return obj.style[name];
+				}else{
+					return obj.style[name]=value;		//设置行间样式
+				}
+			}
+		
+			var btn=document.getElementById("btn2");	
+			btn.onclick=function(){
+				var obj=document.getElementById("obj1");
+//				alert(css(obj,"background-color"));			//取行间的样式
+				css(obj,"background-color","green")			//设置样式
+			}
+		</script>
+		
+		<!------------ currentStyle(IE)和getComputed(Chrome, Firefox...)取外部样式 ---------->
+		<h3>currentStyle(IE)和getComputed(Chrome, Firefox...)取外部样式，以及设置兼容性的方法if...else...</h3>
+		<input id="btn3" type="button" value="获取外部样式" />
+		<div id="obj2" style="height: 200px;"></div>
+		<script>
+			var btn=document.getElementById("btn3");
+			var obj=document.getElementById("obj2");
+			btn.onclick=function(){				
+//				alert(obj.style.height);			//获取内行样式
+				
+				//获取外部样式方法 设置兼容性
+				if(obj.currentStyle){				//如果obj.currentStyle为真，则是IE浏览器
+					alert(obj.currentStyle.width);		//currentStyle只兼容IE
+				}else{								//除IE外的其他浏览器执行（Firefox，Chrome...）
+					alert(getComputedStyle(obj, false).width);	//getComputedStyle(object,任意值)兼容其他浏览器
+				}			
+			}
+		</script>
+		
+		<!---------------- js封装一个函数 ------------------>
+		<h3>js封装一个函数</h3>
+		<input id="btn4" type="button" value="js封装一个函数" />
+		<div id="obj3" style="height: 200px;"></div>
+		<script>
+			
+			//封装的函数
+			function getStyle(obj,name){				
+				if(obj.currentStyle){
+					return obj.currentStyle[name];
+				}else{
+					return getComputedStyle(obj,false)[name];
+				}
+			}
+			var btn=document.getElementById("btn4");
+			btn.onclick=function(){	
+				var oDiv=document.getElementById("obj3");
+				alert(getStyle(oDiv, "width"));				//调用函数
+			};
+		</script>
+				
+		<!---------------- 定义数组 ------------------>
+		<h3>定义数组：一个数组里只存一种类型</h3>
+		<input id="btn5" type="button" value="定义数组" />
+		<script>
+			var btn=document.getElementById("btn5");
+			btn.onclick=function(){	
+				var a = [1,2,3,5,6,7];				//方法一
+				var 01arr = new Array(1,6,98,3,5);		//方法二
+				arr.length = 3;			//length可以重新定义数组长度
+				alert(arr);
+			};
+		</script>
+		
+		<!---------------- 数组的头尾添加、删除------------------>
+		<h3>数组的添加、删除</h3>
+		<input id="btn6" type="button" value="数组的添加、删除" />
+		<script>
+			var btn=document.getElementById("btn6");
+			btn.onclick=function(){	
+				var a = [1,2,3,5];				
+				var b = [65,8,2,96];
+				var c = [00000000,6,3,46,5];
+				var d = [999999999999999,89,1,6,5];
+				a.push(100000);			//尾部添加
+				b.pop();				//尾部删除
+				c.unshift(987654321);	//头部添加
+				d.shift();			//头部删除
+				
+				alert(a);
+				alert(b);
+				alert(c);
+				alert(d);
+			};
+		</script>
+		
+		<!---------------- splice中间删除、插入；concat：数组的拼接；join分隔符：分隔数字里的元素------------------>
+		<h3>splice删除、插入；concat：数组的拼接；join分隔符：分隔数字里的元素</h3>
+		<input id="btn7" type="button" value="splice, concat, join" />
+		<script>
+			var btn=document.getElementById("btn7");
+			btn.onclick=function(){	
+				var aa=[1,2,3,4,5,6,7,8,9];
+				var bb=[9,8,7,6,5,4,3,2,1];
+				//splice删除：splice(起始位置，长度);
+				aa.splice(5,3);
+				
+				//splice替换：splice(起始，长度，"元素")
+				bb.splice(2,3,"0","0","0");
+				
+				//concat：两个数组的拼接
+				var cc=aa.concat(bb);
+				
+				//join:使用字符连接数组的元素
+				var dd= aa.join("---");
+				
+				alert(aa);
+				alert(bb);
+				alert(cc);	
+				alert(dd);
+			};
+		</script>
+		
+		<!---------------- sort：排序------------------>
+		<h3>sort：只会识别字符串，并按照首位字符排序；若判断数字需要对数字进行判断</h3>
+		<input id="btn8" type="button" value="字符串排序" />
+		<input id="btn9" type="button" value="数字排序" />
+		<script>
+			var btn=document.getElementById("btn8");
+			var btn1=document.getElementById("btn9");
+			btn.onclick=function(){	
+				var a = ["China", "America","Canada","Japan","Europe"];								
+				//对字符串按首字母进行从大到小排序
+				var sArray=a.sort();
+				alert(sArray);
+			};
+			btn1.onclick=function(){	
+				var 01arr = [156,8,2,6,8,6,5161,0];
+				
+				arr.sort(function(n1, n2){
+					//判断两个数字的大小，方法一
+				/*	if(n1>n2){
+						return 1;		// n1-n2为正数，则n1>n2
+					}
+					else if(n1<n2){
+						return -1;		// n1-n2为负数，则n1<n2
+					}else{
+						return 0;		// n1-n2为0，则n1=n2
+					}	*/
+					
+					return n1-n2;		//判断两个数的大小，方法二
+				});
+
+				alert(arr);
+			};
+		</script>
+		
+		
+		
+	</body>
+</html>
