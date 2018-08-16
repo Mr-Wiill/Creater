@@ -14,7 +14,7 @@
 
 > 2018.05 vue.js实战2.0。实践并开发一个披萨点餐系统vue-shopping-app，学习使用less（练习实战）
 
-> 2018.06 vue.js实战3.0。实践并开发一个企业员工信息管理系统vue-personnel-app，学习使用vuex（企业实战）
+> 2018.06 vue.js实战3.0。实践并开发一个企业员工信息管理系统vue-personnel-app，学习使用vuex模块化开发（企业实战）
 
 > 2018.07 结界（web前端开发工程师）
 
