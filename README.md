@@ -10,12 +10,14 @@
 
 > 2018.03 探索ES6之美。借助阮一峰老师的《ES6标准入门》一书学习ES6（爬行ing）
 
-> 2018.04 vue.js实战1.0。实践并开发一个博客系统vue-blog-app，学习使用axios（练习实战）
+> 2018.04 vue.js实战1.0。实践并开发一个博客系统vue-blog-system，学习使用axios（练习实战）
 
-> 2018.05 vue.js实战2.0。实践并开发一个披萨点餐系统vue-ordering-app，学习使用less（练习实战）
+> 2018.05 vue.js实战2.0。实践并开发一个披萨点餐系统vue-pc-ordering-system，学习使用less（练习实战）
 
-> 2018.06 vue.js实战3.0。实践并开发一个企业员工信息管理系统vue-personnel-app，学习使用vuex模块化（企业实战）
+> 2018.06 vue.js实战3.0。实践并开发一个企业员工信息管理系统vue-personnel-system，学习使用vuex模块化（企业实战）
 
 > 2018.07 结界（web前端开发工程师）
 
-> 2018.08 vue.js实战4.0。实践并开发一个手机点餐应用，初探node.js（练习实战）
+> 2018.08 vue.js实战4.0。实践并开发一个手机点餐应用vue-mobile-ordering-app，初探node.js（练习实战）
+
+> 2018.09 系统的学习了一遍Git和GitHub.
