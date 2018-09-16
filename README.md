@@ -12,7 +12,7 @@
 
 > 2018.04 vue.js实战1.0。实践并开发一个博客系统vue-blog-app，学习使用axios（练习实战）
 
-> 2018.05 vue.js实战2.0。实践并开发一个披萨点餐系统vue-shopping-app，学习使用less（练习实战）
+> 2018.05 vue.js实战2.0。实践并开发一个披萨点餐系统vue-ordering-app，学习使用less（练习实战）
 
 > 2018.06 vue.js实战3.0。实践并开发一个企业员工信息管理系统vue-personnel-app，学习使用vuex模块化（企业实战）
 
