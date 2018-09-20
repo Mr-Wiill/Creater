@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    var arr=[
+        {id:1,pId:0,name:"1",rank:1},
+        {id:2,pId:0,name:"2",rank:1},
+
+        {id:3,pId:1,name:"1-1",rank:2},
+
+        {id:4,pId:3,name:"1-1-1",rank:3},
+
+        {id:5,pId:4,name:"1-1-1-1",rank:4},
+    ];
+
+    function setTreeData(data){
+        let array =  data;
+        let treeData = [];
+        let firstBranch = [];
+        let secondBranch = [];
+        let thirdBranch = [];
+        array.forEach((object)=>{
+            if (object.pId == 0){
+                treeData.push(object)
+            } else{
+                firstBranch.push(object);
+                secondBranch.push(object);
+                thirdBranch.push(object)
+            }
+        });
+
+        /*第一分支（第二级）*/
+        treeData.forEach((father)=>{
+            let branckArr1 = firstBranch.filter((child)=>{
+                return father.id == child.pId
+            });
+            father.children = branckArr1
+        });
+
+        /*第二分支*/
+        firstBranch.forEach((father)=>{
+            let branckArr2 = secondBranch.filter((child)=>{
+                return father.id == child.pId
+            });
+            father.children = branckArr2
+        });
+
+        /*第三分支*/
+        secondBranch.forEach((father)=>{
+            let branckArr3 = thirdBranch.filter((child)=>{
+                return father.id == child.pId
+            });
+            father.children = branckArr3
+        });
+        return treeData
+    }
+    console.log(setTreeData(arr));
+
+     function getMax(){
+
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
