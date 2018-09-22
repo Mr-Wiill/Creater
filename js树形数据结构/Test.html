@@ -4,66 +4,36 @@
     <meta charset="UTF-8">
     <title>Title</title>
   <script>
-    var arr=[
-        {id:1,pId:0,name:"1",rank:1},
-        {id:2,pId:0,name:"2",rank:1},
-
-        {id:3,pId:1,name:"1-1",rank:2},
-
-        {id:4,pId:3,name:"1-1-1",rank:3},
-
-        {id:5,pId:4,name:"1-1-1-1",rank:4},
-    ];
+      let data = [
+          {id:1,parentId:0,name:"一级菜单A",rank:1},
+          {id:2,parentId:0,name:"一级菜单B",rank:1},
+          {id:3,parentId:0,name:"一级菜单C",rank:1},
+          {id:4,parentId:1,name:"二级菜单A-A",rank:2},
+          {id:5,parentId:1,name:"二级菜单A-B",rank:2},
+          {id:6,parentId:2,name:"二级菜单B-A",rank:2},
+          {id:7,parentId:4,name:"三级菜单A-A-A",rank:3},
+          {id:8,parentId:7,name:"四级菜单A-A-A-A",rank:4},
+          {id:9,parentId:8,name:"五级菜单A-A-A-A-A",rank:5},
+          {id:10,parentId:9,name:"六级菜单A-A-A-A-A-A",rank:6},
+          {id:11,parentId:10,name:"七级菜单A-A-A-A-A-A-A",rank:7},
+          {id:12,parentId:11,name:"八级菜单A-A-A-A-A-A-A-A",rank:8},
+          {id:13,parentId:12,name:"九级菜单A-A-A-A-A-A-A-A-A",rank:9},
+          {id:14,parentId:13,name:"十级菜单A-A-A-A-A-A-A-A-A-A",rank:10},
+      ];
 
     function setTreeData(data){
-        let array =  data;
-        let treeData = [];
-        let firstBranch = [];
-        let secondBranch = [];
-        let thirdBranch = [];
-        array.forEach((object)=>{
-            if (object.pId == 0){
-                treeData.push(object)
-            } else{
-                firstBranch.push(object);
-                secondBranch.push(object);
-                thirdBranch.push(object)
-            }
-        });
-
-        /*第一分支（第二级）*/
-        treeData.forEach((father)=>{
-            let branckArr1 = firstBranch.filter((child)=>{
-                return father.id == child.pId
+        let tree = data.filter((father)=>{              //循环所有项，并添加children属性
+            let branckArr = data.filter((child)=>{
+                return father.id == child.parentId      //返回每一项的子级数组
             });
-            father.children = branckArr1
+            father.children = branckArr;    //给父级添加一个children属性，并赋值
+            return father.parentId==0;      //返回第一层
         });
-
-        /*第二分支*/
-        firstBranch.forEach((father)=>{
-            let branckArr2 = secondBranch.filter((child)=>{
-                return father.id == child.pId
-            });
-            father.children = branckArr2
-        });
-
-        /*第三分支*/
-        secondBranch.forEach((father)=>{
-            let branckArr3 = thirdBranch.filter((child)=>{
-                return father.id == child.pId
-            });
-            father.children = branckArr3
-        });
-        return treeData
+        return tree     //返回树形数据
     }
-    console.log(setTreeData(arr));
-
-     function getMax(){
-
-    }
+    console.log(setTreeData(data));
   </script>
 </head>
 <body>
-
 </body>
 </html>
