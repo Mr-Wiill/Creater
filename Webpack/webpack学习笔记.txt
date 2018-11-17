@@ -1,0 +1,7 @@
+查看webpack版本： webpack -v
+
+创建文件： mkdir fileName
+
+查看所有文件： ls
+
+打包单个文件： webpack 源文件名 打包生成的文件名
