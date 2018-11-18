@@ -1,5 +1,5 @@
 /*
-    set数据结构项数组一样，可以配合for of 和forEach 使用。
+    set数据结构像数组一样，可以配合for of 和forEach 使用。
 */
 
 /*例1;使用for of 对set循环遍历*/

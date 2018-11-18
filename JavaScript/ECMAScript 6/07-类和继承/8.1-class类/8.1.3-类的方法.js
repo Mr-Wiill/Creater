@@ -17,5 +17,6 @@ class Person {
     }
 }
 let p = new Person();
+// console.log(p.aaa)
 p.aaa = 123456;           //设置aaa的值
 console.log(p.aaa);

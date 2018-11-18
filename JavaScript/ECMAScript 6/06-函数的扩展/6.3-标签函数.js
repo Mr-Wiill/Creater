@@ -4,6 +4,7 @@
 */
 
 function fn(args) {
+    // console.log(args)   //[ 'welcome' ]
     return args[0].toUpperCase();   //转大写
 }
 console.log(fn`welcome`);

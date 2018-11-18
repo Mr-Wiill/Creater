@@ -40,7 +40,7 @@ let json = {
     },
     sayName : function () {
         setTimeout(()=>{
-          console.log(this.name);         //箭头函数的宿主函数是sayId，sayId里的this指向json，输出1111
+          console.log(this.name);         //箭头函数的宿主函数是sayId，sayId里的this指向json
         },2000);
     }
 };
