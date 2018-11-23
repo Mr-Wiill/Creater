@@ -37,4 +37,13 @@ function stack(){
 }
 
 /* 十进制转二进制 */
-
+function decimalToBinary(num){
+    let s = new stack();
+    let remainder;
+    while(num>0){
+        remainder = num%2;
+        s.push(remainder);
+        num = Math.floor(num/2);  //向下取整，如5÷2=2.5向下取整2
+    }
+    return s.getArr().join('');
+}
