@@ -2,11 +2,11 @@
 /* jshint esversion: 6 */
 
 /* 定义一个栈类 */
-function stack(){
+function Stack(){
     // 栈
     let arr = [];          //私有属性，只有类里面的方法可以方法
     // 查看栈
-    this.getArr = ()=>{
+    this.getStack = ()=>{
         return arr;
     },
     // 进栈push()
@@ -38,12 +38,12 @@ function stack(){
 
 /* 十进制转二进制 */
 function decimalToBinary(num){
-    let s = new stack();
+    let s = new Stack();          //调用上面的Stack类
     let remainder;
     while(num>0){
-        remainder = num%2;
+        remainder = num%2;        //去2的余数，即0或1
         s.push(remainder);
         num = Math.floor(num/2);  //向下取整，如5÷2=2.5向下取整2
     }
-    return s.getArr().join('');
+    return s.getStack().join('');   //把十进制数组转成字符串输出
 }
