@@ -8,7 +8,7 @@
     方法：1、add() 往set里面添加一项，也可以add().add().add()...连串添加；
          2、delete() 删除指定项；
          3、has() 判断set里面有没有指定项，有返回true，否则返回false；
-         4、clear() 清楚set例的所有值；
+         4、clear() 清空set里的所有值；
 
     注意：set里面是数组，值不重复，没有key，没有get方法；
 */
