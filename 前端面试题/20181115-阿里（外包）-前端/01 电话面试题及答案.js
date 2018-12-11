@@ -44,6 +44,7 @@
 
 7、Vue数据双向绑定原理
    vue.js是采用数据劫持结合发布者-订阅者模式的方式实现数据双向绑定，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调，从而更新视图层的数据。
+   
    详细介绍：https://segmentfault.com/a/1190000006599500
 
 8、web项目性能优化
@@ -76,11 +77,21 @@
    3）SessionStorage的其他属性同LocalStorage，只不过它的生命周期同标签页的生命周期，当标签页被关闭时，SessionStorage也会被清除；
    4）IndexDB主要用在前端有大容量存储需求的页面上，例如，在线编辑浏览器或者网页邮箱。
 
+   参考：https://segmentfault.com/a/1190000015809379
+
 10、跨域方式和安全
+   同源策略：协议，域名，端口三者中有一个不同就算跨域。
+   跨域方式：
+   1）JSONP，通过<script>标签的异步加载来实现的跨域；
+   2）CORS “跨域资源共享”（Cross-origin resource sharing），它允许浏览器向跨源服务器，发出XMLHttpRequest请求。分为简单请求和非简单请求；（浏览器自动完成）
+   3）WebSocket（网络通信协议），不受同源的限制，可在客户端和服务器端之间双向通信；（客户端可以向服务器发送请求，服务器也可以向客户端发送请求，而http只能由客户端向服务器发送请求，不能反过来）
+   4）postMessage()，H5新增的跨域通信方法。应用场景：窗口 A (http:A.com)向跨域的窗口 B (http:B.com)互通信息；
+   5）Hash，原理：Hash的改变，页面不会刷新。应用场景：A 通过iframe或frame嵌入了跨域的页面 B，A与B间可以通过hash通信。（A和B的domain相同）；
+   
+   参考：https://www.cnblogs.com/smyhvae/p/8523576.html
 
-
-12、大数据的加减乘除
-
-
+12、大数的加减乘除
+   1）使用插件：如bignumber.js、bigInteger.js
+   2）原生js实现：https://www.cnblogs.com/liuqingsha3/p/3830454.html
 
 */
