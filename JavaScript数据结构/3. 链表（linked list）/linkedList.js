@@ -2,43 +2,29 @@
 
 /* 链表为空时的尾部添加：append(element) */
 function LinkedList(element){
-    // 列表头
-    this.head = null;
-    // 链表长度
-    this.length = 0;
+    this.head = null;       // 列表头
+    this.length = 0;        // 链表长度
 
-    // 辅助类：结点
-    function NodeItem(element){
-        this.element = element;
-        this.next = null;
-    }
+    this.NodeItem = node;          // 辅助类
 
-    /* 查看链表  */ 
-    this.getHead = ()=>{     
-        return head;       
+    this.getHead = ()=>{           // 查看链表
+        return this.head;       
     };
 
-    // 添加节点
-    this.append = append;
-
-    // 插入节点
-    this.insert = insert;
-
-    // 移除某个节点   
-    this.removeAt = removeAt;
-
-    // 查找某节点下标
-    this.indexOf = indexOf;
-
-    // 移除某个节点   
-    this.remove = remove;
-
-    // 判断是否为空
-    this.isEmpty = isEmpty;
-
-    // 查看大小
-    this.size = size;
+    this.append = append;           // 添加节点
+    this.insert = insert;           // 插入节点
+    this.removeAt = removeAt;       // 移除某个节点 
+    this.indexOf = indexOf;         // 查找某节点下标
+    this.remove = remove;           // 移除某个节点
+    this.isEmpty = isEmpty;         // 判断是否为空
+    this.size = size;               // 查看大小
 }
+
+/*  辅助类：结点 */
+var node = function(element){         
+    this.element = element;
+    this.next = null;
+};
 
  /* 
     append(element) 链表尾添加元素 
@@ -46,7 +32,7 @@ function LinkedList(element){
     2）链表不为空时，从链表头开始查找，若当前查找项的指针不为null，继续查找下一项；直到当前查找项的指针等于null（最后一项），把新元素赋值当前项的指针（尾部插入）
 */
 var append = function(element){
-    var node = new NodeItem(element);   // 调用辅助类创建一个新结点
+    var node = node(element);   // 调用辅助类创建一个新结点
     // 链表为空
     if(this.head == null){   
         this.head = node;    // 把第一个添加的结点作为链表头
@@ -161,6 +147,6 @@ var isEmpty = function(){
 };
 
 /* size() 查询链表的大小 */
-var size = ()=>{
+var size = function(){
     return length;
 };
