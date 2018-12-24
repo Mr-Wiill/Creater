@@ -9,11 +9,9 @@ function Skipper(){
     this.size = size;           // size() 查看集合大小
     this.values = values;       // values() 提取集合所有元素并组合成的一个数组           
     this.union = union;         // union() 并集
-    this.intersection = intersection;       // intersection() 交集           
-    this.difference = difference;           // difference() 差集
-    this.getSkipper = ()=>{     // 查询集合    
-        return item;
-    };
+    this.intersection = intersection;    // intersection() 交集           
+    this.difference = difference;        // difference() 差集
+    this.getSkipper = getSkipper;        // 查看集合
 }
 
 // has(element) 查询集合是否存在某元素
@@ -98,4 +96,9 @@ var difference = function(otherSet){
         }
     }
     return result;
+};
+
+// 查看集合
+var getSkipper = function(){     // 查询集合    
+    return item;
 };
