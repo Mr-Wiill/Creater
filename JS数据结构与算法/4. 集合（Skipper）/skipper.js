@@ -1,17 +1,17 @@
 /* jshint esversion: 6 */
 /* 定义一个集合类 */
 function Skipper(){
-    this.item = {};         // 一个集合(值值对，如value : value)
-    this.has = has;         // has(element) 查询集合是否存在某元素
-    this.add = add;         // add(element) 向集合里添加新元素
-    this.remove = remove;       // remove(element) 删除某个元素
-    this.clear = clear;         // clear() 清空集合元素
-    this.size = size;           // size() 查看集合大小
-    this.values = values;       // values() 提取集合所有元素并组合成的一个数组           
-    this.union = union;         // union() 并集
-    this.intersection = intersection;    // intersection() 交集           
-    this.difference = difference;        // difference() 差集
-    this.getSkipper = getSkipper;        // 查看集合
+    this.item = {};           // 一个集合(值值对，如value : value)
+    this.has = has;           // 查找元素
+    this.add = add;           // 添加元素
+    this.remove = remove;     // 移除元素
+    this.clear = clear;       // 清空集合
+    this.size = size;         // 查看集合大小
+    this.values = values;     // 提取集合所有元素并组合成的一个数组    
+    this.getitem = getitem;        // 查看集合       
+    // this.union = union;                  // union() 并集
+    // this.intersection = intersection;    // intersection() 交集           
+    // this.difference = difference;        // difference() 差集
 }
 
 // has(element) 查询集合是否存在某元素
@@ -52,30 +52,36 @@ var size = function(){
 // values() 提取集合所有元素并组合成的一个数组
 var values = function(){
     var arr = [];
-    for(var key in item){
+    for(var key in this.item){
         arr.push(this.item[key]);
     }
     return arr;
 };
 
+// 查看集合
+var getitem = function(){     // 查询集合    
+    return this.item;
+};
+
 // union() 并集
-var union = function(otherSet){
+/* var union = function(otherSet){
     var result = new Skipper();
     var arr = this.values();       // 第一个集合
-    // 把第一个集合元素取出，并添加到result数组
+    // 把第一个集合元素取出，并添加到result集合
     for(var i=0,len=arr.length; i<len; i++ ){
         result.add(arr[i]);     // add()方法已做了去重
     }
     arr = otherSet.values();   // 第二个集合
-    // 把第二个集合元素取出，并添加到result数组
+    // 把第二个集合元素取出，并添加到result集合
     for(var i=0,len=arr.length; i<len; i++ ){
         result.add(arr[i]);    
     }
     return result;
-};
+}; */
+
 
 // intersection() 交集
-var intersection = function(otherSet){
+/* var intersection = function(otherSet){
     var result = new Skipper();
     var arr = this.values();
     for(var i=0,len=arr.length; i<len; i++){
@@ -84,10 +90,10 @@ var intersection = function(otherSet){
         }
     }
     return result;
-};
+}; */
 
 // difference() 差集
-var difference = function(otherSet){
+/* var difference = function(otherSet){
     var result = new Skipper();
     var arr = this.values();
     for(var i=0,len=arr.length; i<len; i++){
@@ -96,9 +102,40 @@ var difference = function(otherSet){
         }
     }
     return result;
-};
+}; */
 
-// 查看集合
-var getSkipper = function(){     // 查询集合    
-    return item;
-};
+
+
+// UnionSkipper 交集类
+function UnionSkipper(set,otherSet){
+    var result = new Skipper();
+    set.values().forEach(element=>{            // 遍历第一个集合
+        result.add(element);   // add()已去重
+    });
+    otherSet.values().forEach(element=>{       // 遍历第二个集合
+        result.add(element);
+    });
+    return result;
+}
+
+// IntersectionSkipper 交集类
+function IntersectionSkipper(set,otherSet){
+    let result = new Skipper();
+    set.values().forEach(element=>{
+        if(otherSet.has(element)){
+            result.add(element);     
+        }
+    });
+    return result;
+}
+
+// differenceSkipper 差集类
+function differenceSkipper(set,otherSet){
+    let result = new Skipper();
+    set.values().forEach(element=>{
+        if(!otherSet.has(element)){
+            result.add(element);
+        }
+    });
+    return result;
+}
