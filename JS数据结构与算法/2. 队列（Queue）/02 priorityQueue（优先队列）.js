@@ -1,7 +1,7 @@
 /* jshint esversion:6 */
 
-/* 定义一个优先队列类 */
-function PriorityQueue(){
+/* 定义一个优先队列类 es5 */
+/* function PriorityQueue(){
     // 优先队列数组
     let items = [];
     // 定义一个辅助类（用于创建一项具有优先级的元素）
@@ -27,4 +27,35 @@ function PriorityQueue(){
     this.getPriorityQueue = ()=>{
         return items;
     };
+} */
+
+/* 辅助类，代表一个元素 ES6 */
+class Item{
+    constructor(element,priority){
+        this.element = element;         // 元素名称
+        this.priority = priority;       // 优先级标识
+    }
+}
+/* 定义一个优先队列类 es6 */
+class PriorityQueue{
+    constructor(){
+        this.list = []                  // 队列
+    }
+    enqueue(element,priority){
+        let item = new Item(element,priority);       // 调用辅助类创建一个元素
+        let added = false;
+        for(let i=0,len=this.list.length; i<len; i++){      
+            if(item.priority > this.list[i].priority){   // 与每一项做比较，若优先级比较高，则插入其前面，结束比较
+                this.list.splice(i,0,item);
+                added = true;
+                break;
+            }
+        }
+        if(!added){                                 // 比队列的所有项都小，则插入尾部
+            this.list.push(item);
+        }
+    }
+    getQueue(){
+        return this.list
+    }
 }
