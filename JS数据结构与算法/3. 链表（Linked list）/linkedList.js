@@ -1,7 +1,7 @@
-/* jshint esversion: 6 */
+/* jshint esversion: 5 */
 
 /* 链表类 */
-function LinkedList(element){
+function _LinkedList(element){
     this.head = null;       // 列表头
     this.length = 0;        // 链表长度
 
@@ -12,11 +12,10 @@ function LinkedList(element){
     this.remove = remove;           // 移除某个节点
     this.isEmpty = isEmpty;         // 判断是否为空
     this.size = size;               // 查看大小
-    this.display = display;         // 查看链表
 }
 
 /*  辅助类：结点 */
-function Node(element){         
+function _Node(element){         
     this.element = element;    // 数据         
     this.next = null;          // 指针
 }
@@ -27,10 +26,10 @@ function Node(element){
     2）链表不为空时，从链表尾添加，原链表尾的指针指向新增元素。
 */
 var append = function(element){
-    var node = new Node(element);   // 调用辅助类创建一个新结点
+    var _Node = new _Node(element);   // 调用辅助类创建一个新结点
     // 链表为空
     if(this.head == null){   
-        this.head = node;    // 把第一个添加的结点作为链表头
+        this.head = _Node;    // 把第一个添加的结点作为链表头
     }
     // 已存在结点
     else{
@@ -39,7 +38,7 @@ var append = function(element){
             current = current.next;     // 把下一项赋值给当前查找项，即查找下一项（循环的经典方法）
         }
         // while循环结束后，current已经到了最后一项（current.next=null）
-        current.next = node;            // 插入新元素
+        current.next = _Node;            // 插入新元素
     }
     length++;   // 长度加1
 };
@@ -51,13 +50,13 @@ var append = function(element){
        使前节点的指针指向插入节点，而插入节点的指针指向目标节点，完成插入。
 */
 var insert = function(position, element){
-    var node = new Node(element);           // 定义一个新结点
+    var _Node = new _Node(element);           // 定义一个新结点
     // 越界
     if(position>-1 && position<length){
         var current = this.head;            // 先把原链表头赋值给current
         // 链表头插入
         if(position==0){                    
-            this.head = node;               // 插入的新节点作为链表头
+            this.head = _Node;               // 插入的新节点作为链表头
             this.head.next = current;       // 链表头的指针指向原链表头，完成插入
         }
         // 非链表头插入
@@ -71,8 +70,8 @@ var insert = function(position, element){
                 index++;                    // 下标加1
             }
             // 直到index=position时，即找到了目标项
-            previous.next = node;           // 目标项的前一项的指针指向插入项
-            node.next = current;            // 插入项的指针指向目标项，完成插入
+            previous.next = _Node;           // 目标项的前一项的指针指向插入项
+            _Node.next = current;            // 插入项的指针指向目标项，完成插入
         }
         length++;       // 长度加1
     }
@@ -117,7 +116,7 @@ var removeAt = function(position){
 var indexOf = function(element){
     var index = 0;                          // 当前下标
     var current = this.head;                // 从头部开始查找
-    while(current.next !== null){                // 当前项不等于null，表示还不是最后一项，继续循环
+    while(current !== null){                // 当前项不等于null，表示还不是最后一项，继续循环
         if(element === current.element){    // 如果当前节点的值等于目标项
             return index;                   // 返回对应下标
         }
@@ -138,14 +137,10 @@ var remove = function(element){
 
 /* isEmpty() 判断链表是否为空 */
 var isEmpty = function(){
-    return length == 0;
+    return this.length === 0;
 };
 
 /* size() 查询链表的大小 */
 var size = function(){
-    return length;
-};
-
-var display = function(){           // 查看链表
-    return this.head;       
+    return this.length;
 };
