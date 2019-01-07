@@ -37,4 +37,12 @@ class HashTable_Line{
             this.table[position] = node   // 如果没值，直接赋值
         }
     }
+    remove(key){
+        const position = this.loseloseHashCode(key)
+        if(this.table[position]){
+            
+        } else{
+            return false
+        }
+    }
 }
