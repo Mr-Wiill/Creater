@@ -22,6 +22,7 @@ class HashTable_Line{
         for(let i=0; i<key.length; i++){
             hash += key[i].charCodeAt()
         }
+        console.log(hash%37,11)
         return hash%37
     }
     put(key,value){
@@ -37,11 +38,38 @@ class HashTable_Line{
             this.table[position] = node   // 如果没值，直接赋值
         }
     }
+<<<<<<< HEAD
+
+    remove(key){
+        const position = this.loseloseHashCode(key)
+        if (this.table[position]) {
+            let index = position
+            while(this.table[index].key !== key){
+                index++
+            }
+            this.table[index] = undefined
+            return true
+        } else {
+            return false
+        }
+    }
+
+    get(key){
+        const position = this.loseloseHashCode(key)
+        if (this.table[position]) {
+            let index = position
+            while(this.table[index].key !== key){
+                index++
+            }
+            return this.table[index]
+        } else {
+=======
     remove(key){
         const position = this.loseloseHashCode(key)
         if(this.table[position]){
             
         } else{
+>>>>>>> 7d6b1f00d05f5e8c674c0f2988ab2d8192693e9b
             return false
         }
     }
