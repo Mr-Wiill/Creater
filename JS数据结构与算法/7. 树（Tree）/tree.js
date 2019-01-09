@@ -18,14 +18,11 @@ class Tree{
         if(this.root == null){
             this.root = newNode
         } else{
-            let node = this.root
-            let insertNode = (function(node,newNode){
-                console.log(222)
+            /* 插入节点（递归） */
+            const insertNode = (node,newNode)=>{
                 if(newNode.value < node.value){         // 左边插入
-                    console.log(333)
                     if(node.left == null){   
-                        console.log(444)       
-                        node.left = newNode.value       // 如果左节点为null，直接赋值        
+                        node.left = newNode             // 如果左节点为null，直接赋值        
                     } else{
                         insertNode(node.left,newNode)   // 否则，左节点与新节点比较大小（递归）
                     }
@@ -37,7 +34,8 @@ class Tree{
                         insertNode(node.right,newNode)
                     }
                 }
-            })()
+            }
+            insertNode(this.root,newNode)
         }
     }
 }
