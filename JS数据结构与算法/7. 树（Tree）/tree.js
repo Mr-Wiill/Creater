@@ -79,7 +79,7 @@ class Tree{
                 node = node.left
             }
             console.log(node.value)
-            return node.value
+            return node
         }
         getTreeMin(this.root)
     }
@@ -91,12 +91,12 @@ class Tree{
                 node = node.right
             }
             console.log(node.value)
-            return node.value
+            return node
         }
         getMax(this.root)
     }
     /* 移除节点（重构树） */
-    remove(){
+    remove(value){
         const removeNode = (node,value)=>{
             if(value < node.value){             /* 继续向左查找 */
                 node.left = removeNode(node.left,value)         
@@ -106,7 +106,7 @@ class Tree{
                 node.right = removeNode(node.right,value)
                 return node
             } 
-            else{      /* node.value == value （直接删除node节点）*/
+            else{      /* node.value == value （删除node节点）*/
                 if(node.left == null && node.right == null){      // 叶子节点（没有子级）
                     node = null
                     return node
@@ -118,9 +118,22 @@ class Tree{
                     return node.left
                 }
                 else{                                             // 有两个子节点
-                    
+                    // 查找最小值
+                    const getMin = (node)=>{
+                        if(node==null) return null
+                        while(node && node.left){           
+                            node = node.left
+                        }
+                        // console.log(node.value)
+                        return node
+                    }
+                    const min = getMin(node.right)      // 右侧子树的最小节点
+                    node.value = min.value              // 把要删除的节点替换为右侧子树的最小节点   
+                    node.right = removeNode(node.right,min.value)    // 删除最小节点
+                    return node
                 }
             }
         }
+        removeNode(this.root,value)
     }
 }
