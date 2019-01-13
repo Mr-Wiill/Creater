@@ -14,12 +14,12 @@ class Tree{
     }
     /* 添加节点 */
     insert(value){
-        const newNode = new Node(value)
+        let newNode = new Node(value)
         if(this.root == null){
             this.root = newNode
         } else{
             /* 插入节点（递归） */
-            const insertNode = (node,newNode)=>{
+            let insertNode = (node,newNode)=>{
                 if(newNode.value < node.value){         // 左边插入
                     if(node.left == null){   
                         node.left = newNode             // 如果左节点为null，直接赋值        
@@ -40,12 +40,12 @@ class Tree{
     }
     /* 遍历节点 */
     traverse(){
-        const print = (node)=>{
+        let print = (node)=>{
             console.log(node.value)      // 打印节点的值       
             // return node.value                   
         }
         /* 遍历节点（递归） */
-        const traverseNode = (node,callback)=>{
+        let traverseNode = (node,callback)=>{
             if(node == null) return    // 如果节点为null，退出递归
             // callback(node)                    // 前遍历（从上到下打印）
             traverseNode(node.left,callback)     // 遍历左节点
@@ -58,7 +58,7 @@ class Tree{
     /* 获取最小值 */
     min(){
         // 递归方法
-        /* const getMin = (node)=>{
+        /* let getMin = (node)=>{
             if(node == null){
                 return null
             } else{
@@ -73,7 +73,7 @@ class Tree{
         getMin(this.root) */
 
         // 循环方法
-        const getTreeMin = (node)=>{
+        let getTreeMin = (node)=>{
             if(!node) return null
             while(node && node.left){      // 一直往左查找，直到找到最左节点
                 node = node.left
@@ -85,7 +85,7 @@ class Tree{
     }
     /* 获取最大值 */
     max(){
-        const getMax = (node)=>{
+        let getMax = (node)=>{
             if(!node) return null
             while(node && node.right){
                 node = node.right
@@ -97,7 +97,7 @@ class Tree{
     }
     /* 移除节点（重构树） */
     remove(value){
-        const removeNode = (node,value)=>{
+        let removeNode = (node,value)=>{
             if(value < node.value){             /* 继续向左查找 */
                 node.left = removeNode(node.left,value)         
                 return node         // 返回重构后的树
@@ -119,7 +119,7 @@ class Tree{
                 }
                 else{                                             // 有两个子节点
                     // 查找最小值
-                    const getMin = (node)=>{
+                    let getMin = (node)=>{
                         if(node==null) return null
                         while(node && node.left){           
                             node = node.left
@@ -127,7 +127,7 @@ class Tree{
                         // console.log(node.value)
                         return node
                     }
-                    const min = getMin(node.right)      // 右侧子树的最小节点
+                    let min = getMin(node.right)      // 右侧子树的最小节点
                     node.value = min.value              // 把要删除的节点替换为右侧子树的最小节点   
                     node.right = removeNode(node.right,min.value)    // 删除最小节点
                     return node
