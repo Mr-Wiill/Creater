@@ -1,21 +1,20 @@
 /* 
-    广度优先算法：从某个顶点开始，一层一层的向下遍历，层层堵截
+    广度优先算法：从某个顶点开始，一层一层的向下遍历，层层堵截。
 */
+
 class BreadthFirstSearch{
     constructor(graph,vertice){
-        this.graph = graph              // 图
+        this.graph = graph              // 图（邻接表）
         this.vertice = vertice          // 顶点
     }
     search(){   
-        /* 标记方法：标记遍历过的图接点，分别为0未被检验（未入列）、1已检验（已入列）*/
-        let tab = (list)=>{
-            let tabList = {}
+        /* 标记方法：标记遍历过的图接点，分别为0未搜索（未入列）、1已搜索（已入列）*/
+        let tabGraph = {}
+        let tab = ((list)=>{
             for(let key in list){
-                tabList[key] = 0        // 都初始化为未遍历
+                tabGraph[key] = 0        // 都初始化为未搜索
             }
-            return tabList
-        }
-        let tabGraph = tab(this.graph)
+        })(this.graph)
         let queue = new Queue()
         queue.enqueue(this.vertice)         // 顶点入列
         tabGraph[this.vertice] = 1

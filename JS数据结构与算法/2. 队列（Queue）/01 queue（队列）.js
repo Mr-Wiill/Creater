@@ -29,9 +29,6 @@ class Queue{
     constructor(){
         this.arr = []               //一个队列
     }
-    getQueue(){                     //查询队列
-        return this.arr;             
-    }
     enqueue(element){               //入列
         this.arr.push(element);      
     }
