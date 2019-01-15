@@ -24,20 +24,21 @@ class Graph{
                 previous[key] = null
             }
         })(this.objList)
-        console.log(distance,previous,tabGraph)
-        /* 
         let queue = new Queue()
-        queue.enqueue(this.vertice)         // 顶点入列
-        tabGraph[this.vertice] = 1
+        queue.enqueue(vertice)         // 顶点入列
+        tabGraph[vertice] = 1
         while(!queue.isEmpty()){            // 队列不为空
-            let current = queue.dequeue()           // 从顶点开始查找
+            let current = queue.dequeue()             // 从顶点开始查找
             for(let item of this.objList[current]){   // 遍历当前查找点的每个连接点
-                if(tabGraph[item] == 0){            // 如果标记为0，表示未入列
-                    queue.enqueue(item)             // 入列
-                    tabGraph[item] = 1              // 标记为已入列
+                if(tabGraph[item] == 0){              // 如果标记为0，表示未入列
+                    queue.enqueue(item)               // 入列
+                    tabGraph[item] = 1                // 标记为已入列
+                    distance[item] = distance[current] + 1
+                    previous[item] = current
                 }
             }
             console.log(current)        // 输出已遍历的顶点
-        } */
+        }
+        console.log(distance,previous)
     }
 }
