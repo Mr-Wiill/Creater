@@ -13,7 +13,7 @@ class Graph{
         this.objList[b].push(a)     // 如是有向图，则把这一项去掉
     }
     /* 求最短路径（利用广度优先算法） */
-    minPath(vertice){
+    minPath(from,to){
         let BFS = (v)=>{
             let distance = {}           // 距离
             let previous = {}           // 回溯点
@@ -46,6 +46,18 @@ class Graph{
                 previous : previous
             }
         }
-        const s = BFS(vertice)
+        const s = BFS(from)
+        // console.log(s)
+        let setPath = ((from,to)=>{
+            let path = to
+            let dis = 0
+            let pre = s.previous[to]
+            while(pre !== from){
+                // path = '-' + pre
+                // dis = s.distance[to] +s.distance[pre]
+                pre = s.previous[pre]
+                console.log(pre)
+            }
+        })(from,to)
     }
 }
