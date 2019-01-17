@@ -1,3 +1,5 @@
+/* jshint esversion :6 */
+
 /* 一个无向图类 */
 class Graph{
     constructor(){
@@ -49,15 +51,19 @@ class Graph{
         const s = BFS(from)
         // console.log(s)
         let setPath = ((from,to)=>{
-            let path = to
+            let current = to
             let dis = 0
-            let pre = s.previous[to]
-            while(pre !== from){
-                // path = '-' + pre
-                // dis = s.distance[to] +s.distance[pre]
-                pre = s.previous[pre]
-                console.log(pre)
+            let stack = new Stack()
+            while(current !== from){
+                stack.push(current)
+                current = s.previous[current]
+                dis += s.distance[current]
             }
+            let path = ''
+            while(!stack.isEmpty()){
+                path += stack.pop() + '-'
+            }
+            console.log(path,111)
         })(from,to)
     }
 }
