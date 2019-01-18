@@ -49,21 +49,24 @@ class Graph{
             }
         }
         const s = BFS(from)
-        // console.log(s)
-        let setPath = ((from,to)=>{
-            let current = to
-            let dis = 0
+        /* 求最短路径和最短距离   */
+        let setPath = ((from,to)=>{                   
+            let current = to                // 起始位置
+            let dis = s.distance[from]      // 起始距离
             let stack = new Stack()
-            while(current !== from){
+            while(current !== from){        // 依据回溯点，从后往前找
                 stack.push(current)
-                current = s.previous[current]
-                dis += s.distance[current]
+                dis += s.distance[current]          // 距离累加
+                current = s.previous[current]      
             }
-            let path = ''
-            while(!stack.isEmpty()){
-                path += stack.pop() + '-'
+            stack.push(current)
+            let str = ''
+            while(!stack.isEmpty()){            
+                str += stack.pop() + '-'        //输出最短路径
             }
-            console.log(path,111)
+            const path = str.slice(0,str.length-1)
+            console.log(path)       // 最短路径
+            console.log(dis)        // 最短距离
         })(from,to)
     }
 }
