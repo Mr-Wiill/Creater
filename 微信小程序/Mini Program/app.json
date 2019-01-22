@@ -1,0 +1,34 @@
+{
+  "pages":[       
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/demo/index"
+  ],
+  "window":{       
+    "backgroundTextStyle":"dark",            
+    "navigationBarBackgroundColor": "#FEFEFE",
+    "navigationBarTitleText": "微信小程序",
+    "navigationBarTextStyle": "black",
+    "backgroundColorBottom": "#eee",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#eeeeee"
+  },
+  "tabBar": {
+    "position": "bottom",
+    "backgroundColor":"#FEFEFE",
+    "color": "#909399",
+    "borderStyle": "white",    
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Home"
+    },
+    {
+      "pagePath": "pages/demo/index",
+      "text": "demo"
+    },
+    {
+      "pagePath": "pages/logs/logs",
+      "text": "logs"
+    }]
+  }
+}
