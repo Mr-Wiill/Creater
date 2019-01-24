@@ -1,8 +1,9 @@
 {
   "pages":[       
+    "pages/demo/index",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/demo/index"
+    "pages/logs/logs"
+   
   ],
   "window":{       
     "backgroundTextStyle":"dark",            
