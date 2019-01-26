@@ -8,3 +8,4 @@
 <icon type='info' size='18'></icon><text>密码</text>
 <input password placeholder='密码'></input>
 <button type='primary'>提交</button>
+<button>重置</button>
