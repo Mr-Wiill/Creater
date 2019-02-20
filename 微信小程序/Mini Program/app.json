@@ -1,12 +1,12 @@
 {
-  "pages":[    
-    "pages/index/index",   
+  "pages": [
+    "pages/index/index",
     "pages/demo/index",
-    "pages/logs/logs"
-   
+    "pages/logs/logs",
+    "pages/scroll-view/index"
   ],
-  "window":{       
-    "backgroundTextStyle":"dark",            
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#FEFEFE",
     "navigationBarTitleText": "微信小程序",
     "navigationBarTextStyle": "black",
@@ -16,20 +16,22 @@
   },
   "tabBar": {
     "position": "bottom",
-    "backgroundColor":"#FEFEFE",
+    "backgroundColor": "#FEFEFE",
     "color": "#909399",
-    "borderStyle": "white",    
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "Home"
-    },
-    {
-      "pagePath": "pages/demo/index",
-      "text": "demo"
-    },
-    {
-      "pagePath": "pages/logs/logs",
-      "text": "logs"
-    }]
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/demo/index",
+        "text": "demo"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "logs"
+      }
+    ]
   }
 }
