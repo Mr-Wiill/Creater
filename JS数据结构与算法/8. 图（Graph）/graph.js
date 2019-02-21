@@ -1,3 +1,5 @@
+/* jshint esversion :6 */
+
 /* 一个无向图类 */
 class Graph{
     constructor(){
@@ -13,7 +15,7 @@ class Graph{
         this.objList[b].push(a)     // 如是有向图，则把这一项去掉
     }
     /* 求最短路径（利用广度优先算法） */
-    minPath(vertice){
+    minPath(from,to){
         let BFS = (v)=>{
             let distance = {}           // 距离
             let previous = {}           // 回溯点
@@ -46,6 +48,25 @@ class Graph{
                 previous : previous
             }
         }
-        const s = BFS(vertice)
+        const s = BFS(from)
+        /* 求最短路径和最短距离   */
+        let setPath = ((from,to)=>{                   
+            let current = to                // 起始位置
+            let dis = s.distance[from]      // 起始距离
+            let stack = new Stack()
+            while(current !== from){        // 依据回溯点，从后往前找
+                stack.push(current)
+                dis += s.distance[current]          // 距离累加
+                current = s.previous[current]      
+            }
+            stack.push(current)
+            let str = ''
+            while(!stack.isEmpty()){            
+                str += stack.pop() + '-'        //输出最短路径
+            }
+            const path = str.slice(0,str.length-1)
+            console.log(path)       // 最短路径
+            console.log(dis)        // 最短距离
+        })(from,to)
     }
 }

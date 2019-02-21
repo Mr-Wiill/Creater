@@ -54,9 +54,6 @@ class Stack{
     constructor(){
         this.arr = []               // 定义一个数组代表栈
     }
-    getStack(){
-        return this.arr             // 查看栈
-    }
     push(element){
         this.arr.push(element)      // 进栈
     }
@@ -67,7 +64,7 @@ class Stack{
         return this.arr[this.arr.length-1]      // 查看栈顶
     }
     isEmpty(){
-        return this.arr.length=0        // 查看栈是否为空
+        return this.arr.length==0        // 查看栈是否为空
     }
     size(){ 
         return this.arr.length          // 查看栈元素个数
