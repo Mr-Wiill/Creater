@@ -1,8 +1,0 @@
-1、ECMAScript与JavaScript的关系：
-   前者是后者的规格，后者是前者的一种实现（另外ECMAScript方言还有JScript和ActionScript）。
-
-2、Node是JavaScript语言的服务器执行环境，它对ES6的支持度很高。
-
-3、ES6转ES5（将ES6代码转为ES5代码）的方法：
-   1）Babel转码器；（在线转码：babeljs.io/repl/）
-   2）Traceur转码器；（可在线转码：https://github.com/google/traceur-compiler）
