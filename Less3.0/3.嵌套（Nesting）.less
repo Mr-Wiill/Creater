@@ -1,0 +1,21 @@
+/* 
+    4、嵌套
+    定义：父子元素的样式可以进行嵌套编写
+*/
+
+// 例如
+// .css原始写法
+.container {
+    padding: 0;
+}
+.container .article {
+    background-color: red;
+}
+
+// .less嵌套写法
+.container {
+    padding: 0;
+    .article {
+        background-color: red;
+    }
+}

@@ -1,0 +1,19 @@
+/* 
+    5、映射
+    定义：3.5版本开始，可以把混入（Mixins）的值映射给一个样式属性
+*/
+
+@colors() {
+    primary: blue;
+    secondary: green;
+}
+  
+.button {
+    color: @colors[primary];
+    border: 1px solid @colors[secondary];
+}
+
+.button {
+    color: blue;
+    border: 1px solid green;
+}
