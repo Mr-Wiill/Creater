@@ -1,7 +1,7 @@
 /* 
 概述：
 
-如右图所示，new Vue一个实例对象a，其中有一个属性a.b，那么在实例化的过程中，
+如图所示，new Vue一个实例对象a，其中有一个属性a.b，那么在实例化的过程中，
 通过Object.defineProperty()会对a.b添加getter和setter，
 同时Vue.js会对模板做编译，解析生成一个指令对象（这里是v-text指令），每个指令对象都会关联一个Watcher,
 当对a.b求值的时候，就会触发它的getter，当修改a.b的值的时候，就会触发它的setter，同时会通知被关联的Watcher，
@@ -49,12 +49,6 @@ vue.js采用数据劫持结合发布者-订阅者的方式，通过Object.define
          3）待属性变动，dep.notice()通知时，就调用自身的update()方法，并触发Compile中绑定的回调
 
 ● 最后，viewmodel(vue实例对象)作为数据绑定的入口，整合Observer、Compile、Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 (ViewModel)-》视图更新(view)；视图变化(view)-》数据(ViewModel)变更的双向绑定效果。
-
---------------------- 
-作者：tangxiujiang 
-来源：CSDN 
-原文：https://blog.csdn.net/tangxiujiang/article/details/79594860 
-版权声明：本文为博主原创文章，转载请附上博文链接！
 
  */
 
