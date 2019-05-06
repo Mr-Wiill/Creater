@@ -1,0 +1,29 @@
+<html>
+    <title>css3简单实现一个对话框</title>
+    <head>
+        <style >
+            .demo{
+                width: 200px;
+                min-height: 50px;
+                padding: 10px 20px;
+                background: #606266;
+                border-radius: 8px;
+                position: relative;
+                color: aliceblue;
+            }
+            .demo::after{
+                position: absolute;
+                right: -10px;
+                top: 20px;
+                content: '';
+                border: 10px solid #606266;
+                transform: rotate(45deg)     /* 顺时针旋转45° */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo">
+                
+        </div>
+    </body>
+</html>
