@@ -1,4 +1,4 @@
-{
+export const axios = {
   // `url` 是用于请求的服务器 URL
   url: '/user',
 
@@ -112,7 +112,7 @@
   proxy: {
     host: '127.0.0.1',
     port: 9000,
-    auth: : {
+    auth: {
       username: 'mikeymike',
       password: 'rapunz3l'
     }

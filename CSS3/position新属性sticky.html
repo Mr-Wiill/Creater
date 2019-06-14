@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>position:sticky</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            .wrapper{
+                margin: 0 auto;
+                width: 100%;
+                min-height: 800px;
+                background: #eee;
+                text-align: center;
+            }
+            .header{
+                height: 100px;
+                width: 100%;
+            }
+            .menu{
+                width: 100%;
+                height: 50px;
+                position: sticky;
+                top: 0;
+                background: #606266;
+            }
+            .content{
+                line-height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">header</header>
+            <div class="menu">menu</div>
+            <div class="content">
+                content
+            </div>
+        </div>
+        <!-- 
+            sticky是css3里新增的position属性值，
+            当使用的标签未超出可视区时效果相当于static，其设置的top，right等都无效，
+            当超出标签超出可视区时，效果等效于fixed，其设置的top等属性开始生效。
+         -->
+    </body>
+</html>
