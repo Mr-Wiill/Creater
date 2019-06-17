@@ -1,42 +1,41 @@
 const template = 
     `<div class="date">
         <!-- 年份 月份 -->
-        <div class="month">
-            <p>{{ currentYear }}年{{ currentMonth }}月</p>
+        <div class="picker">
+            <div class="picker-btn" @click="pickerHandle">
+                <span>{{currentYear}}年{{currentMonth<10 ? '0'+currentMonth : currentMonth}}月</span>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <span class="today" @click="today">返回今日</span>
         </div>
         <!-- 星期 -->
-        <ul class="weekdays">
-            <li>一</li>
-            <li>二</li>
-            <li>三</li>
-            <li>四</li>
-            <li>五</li>
-            <li>六</li>
-            <li>日</li>
-        </ul>
-        <!-- 日期 -->
-        <ul class="days">
-            <li @click="pick(day)" v-for="(day, index) in days" :key="index">
-                <!--本月-->
-                <span v-if="day.getMonth()+1 != currentMonth" class="other-month">{{ day.getDate() }}</span>
-                <template v-else>
-                    <!--今天-->
-                    <span class="active"
-                        v-if="day.getFullYear() == new Date().getFullYear() && day.getMonth() == new Date().getMonth() && day.getDate() == new Date().getDate()">
-                        {{ day.getDate() }}
-                    </span>
-                    <span v-else>{{ day.getDate() }}</span>
+         <div class="date-list">
+            <ul class="weekdays">
+                <li>一</li> <li>二</li> <li>三</li> <li>四</li> <li>五</li> <li>六</li> <li>日</li>
+            </ul>
+            <!-- 日期 -->
+            <ul class="days">
+                <template v-for="(day, index) in days">
+                    <li @click="pick(day)" v-if="day.getMonth()+1 == currentMonth"
+                        :key="index" 
+                        :class="{'is-active':day.getDate()==selectedDay}"
+                        >{{day.getDate()}}</li>
+                    <li v-else class="other-month" 
+                        :key="index" 
+                        :class="{'is-active':day.getDate()==selectedDay}"
+                        @click="pick(day)"
+                        >{{day.getDate()}}</li>
                 </template>
-            </li>
-        </ul>
-        <div>
-            <button @click="weekPre">上一页</button>  <button @click="weekNext">下一页</button>
+            </ul>
+            <span class="pre-btn" @click="weekPre"> < </span>
+            <span class="nex-btn" @click="weekNext"> > </span>
         </div>
     </div>
     `
 
 Vue.component('date-picker',{
     template: template,
+    props: ['time'],
     data () {
         return {
             currentYear: 1970,      // 年份
@@ -44,12 +43,37 @@ Vue.component('date-picker',{
             currentDay: 1,          // 日期
             currentWeek: 1,         // 星期
             days: [],
+            selectedDay: this.currentDay,
         }
     },
     mounted() {
-        this.initData(null)
+        this.initData(this.time)
+    },
+    watch:{
+        time(){
+            this.initData(this.time)
+            this.selectedDay = this.currentDay
+            this.pick(new Date(this.time))
+        }
     },
     methods:{
+        // 返回今日
+        today(){
+            this.initData(null)
+            this.pick(new Date())
+        },
+
+        // 当前选择日期
+        pick (date) {
+            this.initData(date)
+            this.selectedDay = date.getDate()
+            this.$emit('change', this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate()))
+        },
+
+        // 选择日期
+        pickerHandle(){
+            this.$emit('picker')
+        },
 
         // 初始化
         initData(cur) {
@@ -103,27 +127,5 @@ Vue.component('date-picker',{
             this.initData(d)
         },
 
-        // 当前选择日期
-        pick (date) {
-            console.log(this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate()))
-        },
-    
-
-        // 上一個月  传入当前年份和月份
-        pickPre (year, month) {
-            const d = new Date(this.formatDate(year, month, 1))
-            d.setDate(0)
-            this.initData(this.formatDate(d.getFullYear(), d.getMonth() + 1, 1))
-        },
-    
-    
-        // 下一個月  传入当前年份和月份
-        pickNext (year, month) {
-            const d = new Date(this.formatDate(year, month, 1))
-            d.setDate(35)
-            this.initData(this.formatDate(d.getFullYear(), d.getMonth() + 1, 1))
-        },
-    
-        
     }
 })
