@@ -11,7 +11,7 @@ const template =
         <!-- 星期 -->
          <div class="date-list">
             <ul class="weekdays">
-                <li>一</li> <li>二</li> <li>三</li> <li>四</li> <li>五</li> <li>六</li> <li>日</li>
+               <li>日</li> <li>一</li> <li>二</li> <li>三</li> <li>四</li> <li>五</li> <li>六</li> 
             </ul>
             <!-- 日期 -->
             <ul class="days">
@@ -27,8 +27,8 @@ const template =
                         >{{day.getDate()}}</li>
                 </template>
             </ul>
-            <span class="pre-btn" @click="weekPre"> < </span>
-            <span class="nex-btn" @click="weekNext"> > </span>
+            <span class="pre-btn" @click="weekPre"><van-icon name="arrow-left" size=".25rem"/></span>
+            <span class="nex-btn" @click="weekNext"><van-icon name="arrow" size=".25rem"/></span>
         </div>
     </div>
     `
@@ -44,30 +44,26 @@ Vue.component('date-picker',{
             currentWeek: 1,         // 星期
             days: [],
             selectedDay: this.currentDay,
+            activeDay: 1
         }
-    },
-    mounted() {
-        this.initData(this.time)
     },
     watch:{
         time(){
-            this.initData(this.time)
-            this.selectedDay = this.currentDay
-            this.pick(new Date(this.time))
+            this.pick(this.time)
         }
     },
     methods:{
         // 返回今日
         today(){
-            this.initData(null)
             this.pick(new Date())
         },
 
         // 当前选择日期
         pick (date) {
-            this.initData(date)
-            this.selectedDay = date.getDate()
-            this.$emit('change', this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate()))
+            const d = new Date(date)
+            this.initData(d)
+            this.selectedDay = this.activeDay = d.getDate()
+            this.$emit('change', this.formatDate(d.getFullYear(), d.getMonth() + 1, d.getDate()))
         },
 
         // 选择日期
@@ -83,20 +79,16 @@ Vue.component('date-picker',{
             this.currentYear = date.getFullYear()       // 当前年份
             this.currentMonth = date.getMonth() + 1     // 当前月份
             this.currentWeek = date.getDay()            // 1...6,0  // 星期几
-            if (this.currentWeek === 0) {
-                this.currentWeek = 7
-            }
+
             const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay)       // 今日日期 年-月-日
             this.days.length = 0
-            
-            // 今天是周日，放在第一行第7个位置，前面6个 这里默认显示一周，如果需要显示一个月，则第二个循环为 i<= 35- this.currentWeek
-            for (let i = this.currentWeek - 1; i >= 0; i -= 1) {
+            // 获取本周日期，周日排第一个
+            for (let i = this.currentWeek; i >= 0; i -= 1) {        // 当日之前的日期
                 const d = new Date(str)
                 d.setDate(d.getDate() - i)
-                // console.log(y:" + d.getDate())
                 this.days.push(d)
             }
-            for (let i = 1; i <= 7 - this.currentWeek; i += 1) {
+            for (let i = 1; i <= 6 - this.currentWeek; i += 1) {    // 当日之后的日期
                 const d = new Date(str)
                 d.setDate(d.getDate() + i)
                 this.days.push(d)
@@ -116,16 +108,23 @@ Vue.component('date-picker',{
         // 上个星期
         weekPre () {
             const d = this.days[0]          // 如果当期日期是7号或者小于7号
-            d.setDate(d.getDate() - 7)
+            d.setDate(d.getDate() - 6)
             this.initData(d)
+            this.setActive()
         },
     
         // 下个星期
         weekNext () {
             const d = this.days[6]          // 如果当期日期是7号或者小于7号
-            d.setDate(d.getDate() + 7)
+            d.setDate(d.getDate() + 6)
             this.initData(d)
+            this.setActive()
         },
 
+        // 设置选中
+        setActive(){
+            let isCurrent = this.currentMonth == (new Date()).getMonth()+1
+            isCurrent ? this.selectedDay = this.activeDay : this.selectedDay = '';
+        }
     }
 })
