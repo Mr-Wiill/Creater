@@ -5,67 +5,249 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>better-scroll</title>
     <style>
-        .wrap{ 
-            width:100%;
-            height:500px;
+        ul, li{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{ 
+            width:40rem;
+            height:30rem;
+            line-height: 30rem;
             overflow:hidden;
             border:1px solid #0a8ddf;
             /* white-space: nowrap; */
         }
-        .wrap .content{
-            width:200px;
+        #demo .content{
+            width:auto;
             height:auto;
-            
+            border: 1px solid red;
+            white-space: nowrap;
+        }
+        .content li{
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <div class="content">
-            我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll我是better-scroll
-            '😀 😁 😂 🤣 😃','😀 😁 😂 🤣 😃','😄 😅 😆 😉 😊',
-            '😫 😴 😌 😛 😜',
-            '👆🏻 😒 😓 😔 👇🏻',
-            '😑 😶 🙄 😏 😣',
-            '😞 😟 😤 😢 😭',
-            '🤑 😲 ☹️ 🙁 😖',
-            '👍 👎 👊 ✊ 🤛',
-            '☝️ ✋ 🤚 🖐 🖖',
-            '👍🏼 👎🏼 👊🏼 ✊🏼 🤛🏼',
-            '☝🏽 ✋🏽 🤚🏽 🖐🏽 🖖🏽',
-            '🌖 🌗 🌘 🌑 🌒',
-            '💫 💥 💢 💦 💧',
-            '🐠 🐟 🐬 🐳 🐋',
-            '😬 😐 😕 😯 😶',
-            '😇 😏 😑 😓 😵',
-            '🐥 🐣 🐔 🐛 🐤',
-            '💪 ✨ 🔔 ✊ ✋',
-            '👇 👊 👍 👈 👆',
-            '💛 👐 👎 👌 💘'
-            '😄 😅 😆 😉 😊',
-            '😫 😴 😌 😛 😜',
-            '👆🏻 😒 😓 😔 👇🏻',
-            '😑 😶 🙄 😏 😣',
-            '😞 😟 😤 😢 😭',
-            '🤑 😲 ☹️ 🙁 😖',
-            '👍 👎 👊 ✊ 🤛',
-            '☝️ ✋ 🤚 🖐 🖖',
-            '👍🏼 👎🏼 👊🏼 ✊🏼 🤛🏼',
-            '☝🏽 ✋🏽 🤚🏽 🖐🏽 🖖🏽',
-            '🌖 🌗 🌘 🌑 🌒',
-            '💫 💥 💢 💦 💧',
-            '🐠 🐟 🐬 🐳 🐋',
-            '😬 😐 😕 😯 😶',
-            '😇 😏 😑 😓 😵',
-            '🐥 🐣 🐔 🐛 🐤',
-            '💪 ✨ 🔔 ✊ ✋',
-            '👇 👊 👍 👈 👆',
-            '💛 👐 👎 👌 💘'
-        </div>
+    <div id="demo" ref="wrap">
+        <ul class="content" ref="tab">
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <!-- <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😀 😁 😂 🤣 😃', </li>
+            <li>'😄 😅 😆 😉 😊', </li>
+            <li>'😫 😴 😌 😛 😜', </li> -->
+        </ul>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="./better-scroll@1.15.2.min.js"></script>
 <script>
-    let oScroll = new BScroll(".wrap", {
+    window.onload = ()=>{
+        new Vue({
+            el:'#demo',
+            data() {
+                return {
+                    list:[
+                        {
+                            closeprice: "3.77",         
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                        {
+                            closeprice: "3.77",
+                            evgprice: "3.79",
+                            openprice: "3.79",
+                            product: "601899",
+                            productname: "紫金矿业",
+                            totalamt: "121828.8356",
+                            totalchanges: "3.4",
+                            totalchng: "1.07",
+                            totalexchrate: "1.89",
+                            totalvol: "31909.8708",
+                            tx_rank: 1,
+                        },
+                    ]
+                }
+            },
+            mounted() {
+                this.$nextTick(()=>{
+                    setTimeout(()=>{
+                        this.initSroll()
+                    },10)
+                })
+                
+            },
+            methods: {
+                setTabWidth(){
+                    let w = 0
+                    let lis = this.$refs.tab.querySelectorAll('li')
+                    lis.forEach(ele => w+=(ele.offsetWidth+5));
+                    this.$refs.tab.style.width = `${w}px`
+                    console.log(w)
+                },
+                initSroll(){
+                    this.setTabWidth()
+                    if (!this.BScroll) {
+                        this.BScroll = new BScroll(this.$refs.wrap, {
+                            scrollX: true,
+                            scrollY: true,
+                            click: true,
+                            // bounce: false,
+                            probeType: 3,
+                            //下拉刷新：可以配置顶部下拉的距离（threshold） 来决定刷新时机以及回弹停留的距离（stop）
+                            //这个配置用于做上拉加载功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启上拉加载
+                            pullUpLoad: {
+                                threshold: 10
+                            },
+                            mouseWheel: {    // pc端同样能滑动
+                                speed: 20,
+                                invert: false
+                            },
+                            useTransition:false  // 防止iphone微信滑动卡顿
+                        })
+                    } else {
+                        this.BScroll.refresh()
+                    }
+                    this.BScroll.on("pullingUp", ()=>{
+                        console.log('加载ajax数据');
+                        this.BScroll.finishPullUp();     //可以多次执行上拉刷新
+                    });
+                }
+            },
+        })
+    }
+    /* let oScroll = new BScroll(".wrap", {
         scrollX: true,
         click: true,
         probeType: 3,
@@ -85,7 +267,7 @@
         console.log('加载ajax数据');
         oScroll.finishPullUp();     //可以多次执行上拉刷新
     });
-    oScroll.refresh();
+    oScroll.refresh(); */
 </script>
 </body>
 </html>
