@@ -1,0 +1,47 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+.top-wrapper{
+    height: 10rem;
+    background-color: #ccc;
+}
+#wrapper{ 
+    width:100%;
+    height:auto;
+    line-height: 30rem;
+    overflow:hidden;
+}
+.list{
+    position: relative;
+}
+#wrapper .header, #wrapper .row{
+    width:auto;
+    height:auto;
+    white-space: nowrap;
+}
+#wrapper .header{
+    position: static;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+#wrapper .row{
+    position: relative;
+}
+.van-list .van-cell{
+    /* padding: .5rem 0; */
+    padding: 0;
+}
+.header li, .row li{
+    display: inline-block;
+    box-sizing: border-box;
+}
+.header li:first-child, .row li:first-child{
+    background: #fff;
+    /* z-index: 1; */
+}
+.header li{
+    padding: 0.5rem 1rem;
+}
