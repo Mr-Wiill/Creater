@@ -110,7 +110,7 @@ Vue.component('stock-table', {
                 cols[0].style.top = `${this.colsTop[index+1]-scrollTop}px`
             }
             console.log(scrollTop)
-            
+            this.setFistColSus()
         },
 
         // 设置company悬浮
