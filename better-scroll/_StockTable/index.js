@@ -29,11 +29,15 @@ Vue.component('stock-table', {
     props:['list', 'fields'],
     data() {
         return {
-            loadingFinish: false
+            loadingFinish: false,
+            colsTop:[]
         }
     },
     mounted() {
         this.$nextTick(_=>{
+            setTimeout(_=>{
+                this.getColsOffsetTop()
+            },0)
             window.addEventListener('scroll',this.setHeadereSus)
             document.getElementById('wrapper').addEventListener('scroll', this.setFistColSus)
             this.setBodyAutoWidth()
@@ -83,7 +87,6 @@ Vue.component('stock-table', {
             let listHeight = this.$refs.wrap.offsetHeight;
             let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             let header = document.querySelectorAll('#wrapper .header')[0];
-            let body = document.querySelectorAll('#wrapper .body')[0]
             if (scrollTop > clientHeight-listHeight){
                 header.style.position = 'fixed'
                 header.style.boxShadow = '0 0 .05rem #eee'
@@ -91,6 +94,23 @@ Vue.component('stock-table', {
                 header.style.position = 'static'
                 header.style.boxShadow = 'none'
             }
+
+            let rows = this.$refs.wrap.querySelectorAll('.body .row')
+            let _header = this.$refs.wrap.querySelectorAll('.header li')
+            let scrollLeft = document.getElementById('wrapper').scrollLeft
+            // if (scrollLeft<=0) return
+            if (this.colsTop[0]-scrollTop<=0) {
+                _header[0].style.top = 0
+            } else {
+                _header[0].style.top = `${this.colsTop[0]-scrollTop}px`
+            }
+            
+            for (let index = 0; index < rows.length; index++) {
+                let cols = rows[index].querySelectorAll('li')
+                cols[0].style.top = `${this.colsTop[index+1]-scrollTop}px`
+            }
+            console.log(scrollTop)
+            
         },
 
         // 设置company悬浮
@@ -100,26 +120,37 @@ Vue.component('stock-table', {
             let header = this.$refs.wrap.querySelectorAll('.header li')
             let rows = this.$refs.wrap.querySelectorAll('.body .row')
             scrollHeader.style.left = -scrollLeft+'px'
-            if (scrollLeft > 0){
-                header[0].style.position = 'fixed'
-                console.log(header[0].offsetWidth)
-                header[1].style.marginLeft = header[0].offsetWidth
-                for (const row of rows) {
-                    let cols = row.querySelectorAll('li')
-                    cols[0].style.position = 'fixed'
-                    cols[1].style.marginLeft = cols[0].offsetWidth
-                }
-            } else {
-                header[0].style.position = 'static'
-                header[1].style.marginLeft = 0
-                for (const row of rows) {
-                    let cols = row.querySelectorAll('li')
-                    cols[0].style.position = 'static'
-                    cols[1].style.marginLeft = 0
+            for (const row of rows) {
+                let cols = row.querySelectorAll('li')
+                if (scrollLeft > 0) {
+                    [header[0], cols[0]].forEach(ele => ele.style.position = 'fixed');
+                    header[1].style.marginLeft = header[0].offsetWidth+'px'
+                    cols[1].style.marginLeft = cols[0].offsetWidth+'px'
+                } else {
+                    [header[0], cols[0]].forEach(ele => ele.style.position = 'static');
+                    [header[1], cols[1]].forEach( ele=>ele.style.marginLeft = 0 )
                 }
             }
-
         },
+
+        getColsOffsetTop(){
+            let rows = this.$refs.wrap.querySelectorAll('.body .row')
+            let header = this.$refs.wrap.querySelectorAll('.header li')
+            this.colsTop.push(this.getTop(header[0]))
+            for (const row of rows) {
+                let cols = row.querySelectorAll('li')
+                
+                this.colsTop.push(this.getTop(cols[0]))
+            }
+            console.log(this.colsTop,'colsTop')
+        },
+
+        // 获取元素纵坐标
+        getTop(e){
+            var offset=e.offsetTop;
+            if(e.offsetParent!=null) offset+=this.getTop(e.offsetParent);
+            return offset;
+        }
 
     },
 })
