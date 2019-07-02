@@ -1,3 +1,7 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
 .top-wrapper{
     height: 10rem;
     background-color: #ccc;
@@ -7,29 +11,37 @@
     height:auto;
     overflow:auto;
     background: #fff;
-}
-.wrapper{
-    position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 #stocklist .row{
     width:auto;
     height:auto;
     white-space: nowrap;
 }
-.row li{
+#stocklist .row:nth-child(1){
+    top: 0;
+    z-index: 1;
+}
+#stocklist .row li{
     display: inline-block;
     box-sizing: border-box;
     padding: 0.5rem 1rem;
     font-size: .9rem;
-    text-align: center;
+    text-align: left;
     background: #fff;
     border-bottom: .01rem solid #f1f1f1;
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .row:nth-child(1) li{
     font-size: .8rem;
     color: #909399;
 }
+
+/* 第一列浮动 */
 #stocklist li:nth-child(1){
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    position: absolute;
+    transform: translate(0,0);
 }

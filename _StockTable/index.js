@@ -1,6 +1,6 @@
 const StockTable = `
-<div id="stocklist" ref="stocklist" v-cloak @scroll="setFistColSus">
-    <div class="wrapper">
+<div id="stocklist" ref="stocklist" v-cloak @scroll="transverseSroll">
+    <div class="list">
         <ul class="row">
             <li v-for="(item,index) in fields" :key="index" :class="'col_'+index">{{item}}</li>
         </ul>
@@ -19,13 +19,19 @@ Vue.component('stock-table', {
     data() {
         return {
             firstCols:[],
-            rows:[]
+            rows:[],
+            isFloat: false
         }
     },
     mounted() {
+        window.addEventListener('scroll', this.portraitScroll)
         this.rows = [...this.$refs.stocklist.querySelectorAll('.row')]
         this.firstCols = this.rows.map(el=>el.querySelectorAll('li')[0])
         this.setAutoWidth()
+        this.setSecondColsMargin()
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.portraitScroll)
     },
     watch:{
         list(){
@@ -33,9 +39,39 @@ Vue.component('stock-table', {
         }
     },
     methods: {
+        // 纵向滚动
+        portraitScroll(){
+            let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+            let topHeader = document.body.scrollHeight - this.$refs.stocklist.offsetHeight
+            scrollTop >= topHeader ? this.isFloat = true : this.isFloat = false
+            if (this.isFloat) {
+                this.rows[0].style.position = 'fixed'
+                this.rows[1].style.marginTop = `${this.rows[0].offsetHeight}px`
+            } else{
+                this.rows[0].style.position = ''
+                this.rows[1].style.marginTop = 0
+                this.rows[0].style.transform = ''
+                this.firstCols[0].style.transform = ''
+            }
+        },
+
+        // 横向滚动
+        transverseSroll(){
+            if (!this.isFloat) return
+            let scrollLeft = this.$refs.stocklist.scrollLeft
+            this.rows[0].style.transform = `translateX(${-scrollLeft}px)`
+            this.firstCols[0].style.transform = `translateX(${scrollLeft}px)`
+        },
+
+        // 第二列添加左边距
+        setSecondColsMargin(){
+            let secondCols = this.rows.map(el=>el.querySelectorAll('li')[1])
+            secondCols.forEach((el,index) => el.style.marginLeft = `${this.firstCols[index].offsetWidth}px`)
+        },
+
         // 宽度自适应
-        setAutoWidth(){         
-            let maxColWidth = {}     
+        setAutoWidth(){             
+            let maxColWidth = {}     // 列宽为最宽元素的宽度 
             let header_li = this.rows[0].querySelectorAll('li');
             header_li.forEach((h_col, i) => maxColWidth[i] = h_col.offsetWidth);
             for (let j = 1; j < this.rows.length; j++) {
@@ -52,11 +88,5 @@ Vue.component('stock-table', {
                 });
             }
         },
-
-        // 第一列浮动
-        setFistColSus(){
-            let scrollLeft = document.getElementById('stocklist').scrollLeft
-            this.firstCols.forEach(el=>el.style.transform = `translateX(${scrollLeft}px)`)
-        }
     }
 })
