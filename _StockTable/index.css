@@ -1,0 +1,35 @@
+.top-wrapper{
+    height: 10rem;
+    background-color: #ccc;
+}
+#stocklist{ 
+    width:100%;
+    height:auto;
+    overflow:auto;
+    background: #fff;
+}
+.wrapper{
+    position: relative;
+}
+#stocklist .row{
+    width:auto;
+    height:auto;
+    white-space: nowrap;
+}
+.row li{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    font-size: .9rem;
+    text-align: center;
+    background: #fff;
+    border-bottom: .01rem solid #f1f1f1;
+}
+.row:nth-child(1) li{
+    font-size: .8rem;
+    color: #909399;
+}
+#stocklist li:nth-child(1){
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}

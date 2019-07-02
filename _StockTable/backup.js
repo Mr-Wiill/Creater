@@ -37,7 +37,7 @@ Vue.component('stock-table', {
         this.$nextTick(_=>{
             setTimeout(_=>{
                 this.getColsOffsetTop()
-            },0)
+            },10)
             window.addEventListener('scroll',this.setHeadereSus)
             document.getElementById('wrapper').addEventListener('scroll', this.setFistColSus)
             this.setBodyAutoWidth()
@@ -87,18 +87,20 @@ Vue.component('stock-table', {
             let listHeight = this.$refs.wrap.offsetHeight;
             let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             let header = document.querySelectorAll('#wrapper .header')[0];
+            let body = this.$refs.wrap.querySelectorAll('.body')[0]
             if (scrollTop > clientHeight-listHeight){
                 header.style.position = 'fixed'
                 header.style.boxShadow = '0 0 .05rem #eee'
+                body.style.marginTop = header.offsetHeight+'px'
             } else {
                 header.style.position = 'static'
                 header.style.boxShadow = 'none'
+                body.style.marginTop = 0
             }
 
             let rows = this.$refs.wrap.querySelectorAll('.body .row')
             let _header = this.$refs.wrap.querySelectorAll('.header li')
-            let scrollLeft = document.getElementById('wrapper').scrollLeft
-            // if (scrollLeft<=0) return
+            // let scrollLeft = document.getElementById('wrapper').scrollLeft
             if (this.colsTop[0]-scrollTop<=0) {
                 _header[0].style.top = 0
             } else {
@@ -109,8 +111,8 @@ Vue.component('stock-table', {
                 let cols = rows[index].querySelectorAll('li')
                 cols[0].style.top = `${this.colsTop[index+1]-scrollTop}px`
             }
-            console.log(scrollTop)
-            this.setFistColSus()
+            // console.log(scrollTop)
+            // this.setFistColSus()
         },
 
         // 设置company悬浮
@@ -124,25 +126,35 @@ Vue.component('stock-table', {
                 let cols = row.querySelectorAll('li')
                 if (scrollLeft > 0) {
                     [header[0], cols[0]].forEach(ele => ele.style.position = 'fixed');
+                    // [header[0], cols[0]].forEach(ele => {
+                    //     ele.style.position = 'absolute'
+                    //     ele.style.left = scrollLeft+'px'
+                    // })
                     header[1].style.marginLeft = header[0].offsetWidth+'px'
                     cols[1].style.marginLeft = cols[0].offsetWidth+'px'
                 } else {
                     [header[0], cols[0]].forEach(ele => ele.style.position = 'static');
+                    // [header[0], cols[0]].forEach(ele => {
+                    //     ele.style.position = 'static'
+                    //     ele.style.left = 0
+                    // })
                     [header[1], cols[1]].forEach( ele=>ele.style.marginLeft = 0 )
                 }
             }
         },
 
+        // 获取第一列的初始纵坐标
         getColsOffsetTop(){
             let rows = this.$refs.wrap.querySelectorAll('.body .row')
             let header = this.$refs.wrap.querySelectorAll('.header li')
             this.colsTop.push(this.getTop(header[0]))
+            header[0].style.top = this.getTop(header[0])
+            console.log(header[0].get)
             for (const row of rows) {
                 let cols = row.querySelectorAll('li')
-                
                 this.colsTop.push(this.getTop(cols[0]))
+                cols[0].style.top = this.getTop(cols[0])
             }
-            console.log(this.colsTop,'colsTop')
         },
 
         // 获取元素纵坐标
