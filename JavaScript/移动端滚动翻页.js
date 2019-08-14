@@ -1,3 +1,15 @@
+function scrollNextPage(callback){
+	//真实内容的高度
+	let pageHeight = Math.max(document.body.scrollHeight,document.body.offsetHeight);
+	//视窗的高度
+	let viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+	//隐藏的高度
+	let scrollHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+	if(pageHeight - viewportHeight - scrollHeight < 20){	//如果满足触发条件，执行
+		callback()
+	}
+}
+
 //滚动分页
 var scrollPage = function(callback){
 	$(window).scroll(function(){

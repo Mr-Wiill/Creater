@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>js修改伪类样式</title>
+    <style>
+ul li{
+    list-style: none;
+}
+li:before{
+    content:"·";
+}
+    </style>
+</head>
+<body>
+    <ul>
+    　　<li>apple</li>
+    　　<li>banana</li>
+    　　<li>pear</li>
+    </ul>
+
+    <script>
+        window.onload = ()=>{
+            let style = document.createElement(`style`);        // 创建<style></style>标签
+            let text = document.createTextNode(`ul li:nth-child(1):before{content:"*";}`);    // 添加伪类样式
+            style.appendChild(text);                            // 把伪类样式添加样式表
+            document.body.appendChild(style);
+        }
+    </script>
+</body>
+</html>
