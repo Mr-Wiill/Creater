@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>stock-table</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="demo" v-cloak>
+        <div class="top-wrapper">
+            股票一览表
+        </div>
+        <stock-table :data="stocktopList" :columns="columns" />
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../better-scroll-1.15.2.min.js"></script>
+<script src="./index.js"></script>
+<script>
+    window.onload = ()=>{
+        new Vue({
+            el: '#demo',
+            data() {
+                return {
+                    startDate: '-',
+                    endDate: '-',
+                    selected:'1',
+                    columns:[
+                        {
+                            title: '股票简称',
+                            field: 'productname' ,
+                            code: 'product',
+                            width: `${8}rem`
+                        },
+                        {
+                            title: '收盘价',
+                            field: 'closeprice' ,
+                            width: `${6}rem`
+                        },
+                        {
+                            title: '成交金额(万元)',
+                            field: 'totalvol' ,
+                            width: `${10}rem`
+                        },
+                        {
+                            title: '成交量(万股)',
+                            field: 'totalamt' ,
+                            width: `${10}rem`
+                        },
+                        {
+                            title: '涨跌幅(%)',
+                            field: 'totalchng' ,
+                            width: `${7}rem`
+                        },
+                        {
+                            title: '振幅(%)',
+                            field: 'totalchanges' ,
+                            width: `${7}rem`
+                        },
+                        {
+                            title: '换手率(%)',
+                            field: 'totalexchrate' ,
+                            width: `${7}rem`
+                        }
+                    ],
+                    stocktopList:[
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                        {
+                            product: '230897',
+                            productname: '阿里粑粑',
+                            closeprice: '198',
+                            totalvol: '180',
+                            totalvol: '43584343424',
+                            totalamt: '34535235',
+                            totalchng: '2.00',
+                            totalchanges: '4.5',
+                            totalexchrate: '0.8'
+                        },
+                    ],
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>
