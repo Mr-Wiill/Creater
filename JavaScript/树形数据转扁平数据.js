@@ -1,11 +1,13 @@
-let res = []
+let res = []        // 用于存储递归结果（扁平数据）
+// 递归函数
 const fn = (source)=>{
     source.forEach(el=>{
-        el.children && el.children.length>0 ? fn(el.children) : ""
+        el.children && el.children.length>0 ? fn(el.children) : ""      // 子级递归
         res.push(el)
     })
 }
 
+// 树形数据
 const arr = [
     { id: "1", rank: 1 },
     { id: "2", rank: 1,
@@ -32,5 +34,6 @@ const arr = [
         ] 
     }
 ]
-fn(arr)
-console.log(res)
+
+fn(arr)             // 执行递归函数
+console.log(res)    // 查看结果
