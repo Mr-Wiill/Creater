@@ -2,8 +2,8 @@ let res = []        // 用于存储递归结果（扁平数据）
 // 递归函数
 const fn = (source)=>{
     source.forEach(el=>{
-        el.children && el.children.length>0 ? fn(el.children) : ""      // 子级递归
         res.push(el)
+        el.children && el.children.length>0 ? fn(el.children) : ""      // 子级递归
     })
 }
 
