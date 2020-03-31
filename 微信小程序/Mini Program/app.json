@@ -7,31 +7,42 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#FEFEFE",
-    "navigationBarTitleText": "微信小程序",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ff4500",
+    "navigationBarTitleText": "MINI商城",
+    "navigationBarTextStyle": "white",
     "backgroundColorBottom": "#eee",
     "enablePullDownRefresh": true,
     "backgroundColor": "#eeeeee"
   },
   "tabBar": {
     "position": "bottom",
-    "backgroundColor": "#FEFEFE",
-    "color": "#909399",
-    "borderStyle": "white",
+    "color": "#8a8a8a",
+    "selectedColor": "#ff4500",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "Home"
+        "text": "首页",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home-selected.png"
       },
       {
         "pagePath": "pages/demo/index",
-        "text": "demo"
+        "text": "订单",
+        "iconPath": "static/order.png",
+        "selectedIconPath": "static/order-selected.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "logs"
+        "text": "我的",
+        "iconPath": "static/my.png",
+        "selectedIconPath": "static/my-selected.png"
       }
     ]
-  }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
 }

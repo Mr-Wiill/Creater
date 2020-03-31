@@ -13,11 +13,13 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wx145562c0cac4a4d8",
-	"projectname": "First-MiniApp",
+	"projectname": "wxApp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
