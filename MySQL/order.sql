@@ -1,4 +1,0 @@
--- 排序（升序asc 和 降序desc）
-SELECT USER_NAME FROM TABLE_NAME ORDER BY ID ASC       -- 升序(默认，ASC可省略)
-
-SELECT USER_NAME FROM TABLE_NAME ORDER BY ID DESC      -- 降序
