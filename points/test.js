@@ -100,3 +100,51 @@ var b = 3;
     var b = 2;
 })();
 console.log(b);     // 3
+
+
+/* 
+setTimeout是异步操作，每次遇到它不是先运行，而是先压入执行栈。等i执行完for循环，setTimeout才开始执行，此时的i已经是10了
+*/
+for (var i = 0; i < 10; i++) {
+    setTimeout(function () {
+        console.log(i);
+    }, 1000);
+}
+// 输出 10个10
+
+
+
+/* this绑定的优先级是new>bind>call(apply)>obj.func()>默认绑定 */
+/* 
+函数fn的调用方式：
+1、fn();
+2、fn.apply(this, [参数...])，fn.call(this, 参数1, 参数2...)
+*/
+var obj = {};
+obj.log = console.log;
+obj.log.call(console, this);    // 等价于 console.log(this)，call改变this指向，外部传进去的this所以是window
+// 输出 window
+
+
+
+console.log(!![])       // true
+console.log(!!{})       // true
+console.log(!!function () { })       // true
+
+
+
+/* 函数提升优先级高于变量提升，且不会被变量声明覆盖，但会被变量赋值覆盖 */
+var foo = function (x, y) {
+    return x - y;
+}
+function foo(x, y) {
+    return x + y;
+}
+var num = foo(1, 2);        // 输出 -1
+
+// 等价于
+
+function foo(x, y) { return x + y; }    //函数声明优先于变量提升
+var foo;
+foo = function (x, y) { return x - y; } //变量赋值覆盖了函数声明
+var num = foo(1, 2);
