@@ -148,3 +148,20 @@ function foo(x, y) { return x + y; }    //函数声明优先于变量提升
 var foo;
 foo = function (x, y) { return x - y; } //变量赋值覆盖了函数声明
 var num = foo(1, 2);
+
+
+
+/* ++在前先自增，++在后先赋值 */
+var x = 0;
+switch (++x) {
+    case 0: ++x;
+    case 1: ++x;
+    case 2: ++x;
+}
+/* 
+switch中，对x+1,此时x为1，然后进入case 1 中，又执行++x，此时x变为2；由于case 1中没有break，然后继续执行 case 2，执行++x，所以x变成3
+*/
+
+
+// ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。
+// ECMAScript中有6种原始类型，即undefined、null、number、string、boolean、Symbol。
