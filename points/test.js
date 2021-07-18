@@ -165,3 +165,70 @@ switch中，对x+1,此时x为1，然后进入case 1 中，又执行++x，此时x
 
 // ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。
 // ECMAScript中有6种原始类型，即undefined、null、number、string、boolean、Symbol。
+
+
+
+// 布尔类型里只有这几参数个返回false，其它都为true
+Boolean(undefined) // false
+Boolean(null) // false 
+Boolean(0) // false 
+Boolean(NaN) // false 
+Boolean('') // false
+Boolean([]);    //true
+Number([]);     //0
+Number({});     // NaN
+Number(false);  //0
+Number(true);  //1
+Number(undefined)   //NaN
+Number(null)    // 0
+Number('')    // 0
+Number(function(){})    // NaN
+
+console.log(([])?true:fasle);   // => console.log((true)?true:false);
+console.log([]==false?true:false);  // => console.log(0==0?true:false);
+console.log(({}==false)?true:false);    // => console.log((NaN==0)?true:false);
+
+/* 
+“==”运算符（两个操作数的类型不相同时）
+
+如果一个值是null，另一个值是undefined，则它们相等
+如果一个值是数字，另一个值是字符串，先将字符串转换为数学，然后使用转换后的值进行比较。
+如果其中一个值是true，则将其转换为1再进行比较。如果其中的一个值是false，则将其转换为0再进行比较。
+如果一个值是对象，另一个值是数字或字符串，则将对象转换为原始值，再进行比较。
+
+// 对象到数字的转换
+
+如果对象具有valueOf()方法，后者返回一个原始值，则JavaScript将这个原始值转换为数字（如果需要的话）并返回一个数字。
+否则，如果对象具有toString()方法，后者返回一个原始值，则JavaScript将其转换并返回。（对象的toString()方法返回一个字符串直接量（作者所说的原始值），JavaScript将这个字符串转换为数字类型，并返回这个数字）。
+否则，JavaScript抛出一个类型错误异常。
+
+// 空数组转换为数字0
+
+数组继承了默认的valueOf()方法，这个方法返回一个对象而不是一个原始值，因此，数组到数学的转换则调用toString()方法。空数组转换为空字符串，空字符串转换为数字0.
+*/
+
+
+
+(function() {
+    var x=foo();
+    var foo=function foo() {
+        return "foobar"
+    };
+    return x;
+})();
+
+// 等价于
+
+(function() {
+    var foo;
+    var x=foo();   
+    foo=function foo() {
+        return "foobar"
+    };
+    return x;
+})();
+
+/* 
+当执行到 x = foo() 时，由于foo未被定义为函数，所以会返回
+TypeError: foo is not a function
+*/
