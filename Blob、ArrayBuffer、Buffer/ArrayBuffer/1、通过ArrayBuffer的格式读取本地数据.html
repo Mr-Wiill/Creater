@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1、通过ArrayBuffer的格式读取本地数据</title>
+</head>
+
+<body>
+    <div>
+        <input type="file" id='f' />
+    </div>
+</body>
+<script type="text/javascript">
+    document.getElementById('f').addEventListener('change', function (e) {
+        const file = this.files[0];
+        const fileReader = new FileReader();
+        fileReader.readAsArrayBuffer(file);
+        fileReader.onload = function () {
+            const result = fileReader.result;
+            console.log(result)
+        }
+    }, false);
+
+</script>
+
+</html>
