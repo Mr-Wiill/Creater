@@ -1,5 +1,13 @@
 ﻿## 《知行合一，跬步致远》
 
+> 2021.10 复习ES6，并学习ES7、8的新语法（温故而知新）
+
+> 2021.09 深入学习JavaScript源码，掌握如instanceof、prototype、Promise、new等的原理
+
+> 2021.08 学习FreeMarker模板引擎，并应用至项目开发中
+
+> 2021.07 参与一个基于Vue2.0和FreeMarker模板引擎的web低代码平台的开发
+
 > 2021.06 复习巩固React和TypeScript，并基于Tora开发一个小程序商城（练习）
 
 > 2021.05 学习使用Tora跨端开发框架
