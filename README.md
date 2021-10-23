@@ -42,7 +42,7 @@
 
 > 2020.02 安分的呆家里，为国家做贡献（武汉加油！中国加油！）
 
-> 2020.01 参与开发一个Hybrid APP项目（Android和iOS），负责开发mobile web模块（基于Vant-UI和Vue.js）
+> 2020.01 参与开发一个Hybrid APP项目（Android和iOS），负责mobile web模块的开发
 
 > 2019.12 研究后台数据，对商品进行优化...
 
