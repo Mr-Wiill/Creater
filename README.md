@@ -6,7 +6,7 @@
 
 > 2021.08 学习FreeMarker模板引擎，并应用至项目开发中
 
-> 2021.07 参与一个基于Vue2.0和FreeMarker模板引擎的web低代码平台的开发
+> 2021.07 参与研发一个的web低代码编辑平台，基于Vue2.0和FreeMarker模板引擎
 
 > 2021.06 复习巩固React和TypeScript，并基于Tora开发一个小程序商城（练习）
 
