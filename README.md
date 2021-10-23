@@ -80,7 +80,7 @@
 
 > 2018.07 结界（web前端开发工程师）|| 前端一年
 
-> 2018.06 vue.js实战3.0。开发一个企业员工信息管理系统vue-personnel-system，学习vuex状态管理（企业实战）
+> 2018.06 vue.js实战3.0。开发一个企业员工信息管理系统vue-personnel-system，学习vuex（企业实战）
 
 > 2018.05 vue.js实战2.0。开发一个披萨点餐系统vue-pc-ordering-system，学习less（练习实战）
 
