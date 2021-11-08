@@ -105,5 +105,21 @@ p.then(null, function (s) {
 // 出错了
 
 
+/* Promise.try() */
+// 一般方法database.users.get()可能还会抛出同步错误（比如数据库连接错误，具体要看实现方法），这时你就不得不用try...catch去捕获。
+try {
+  database.users.get({id: userId})
+  .then(...)
+  .catch(...)
+} catch (e) {
+  // ...
+}
+
+// ES6方法
+Promise.try(() => database.users.get({id: userId}))
+  .then(...)
+  .catch(...)
+
+
 
 
