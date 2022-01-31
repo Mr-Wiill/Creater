@@ -1,14 +1,20 @@
 ﻿## 《知行合一，跬步致远》
 
-> 2021.10 复习ES6，并学习ES7、8的新语法（温故而知新）
+> 2022.01 解决微信H5兼容微信关怀模式（大字体）的问题
 
-> 2021.09 深入学习JavaScript源码，掌握如instanceof、prototype、Promise、new等的原理
+> 2021.12 [参与一个基于Cordova框架的Hybrid App项目迭代开发](https://github.com/Mr-Wiill/cordova-demo)
+
+> 2021.11 独立接手一个微信公众号H5项目的迭代开发（1500万+用户，月活10万+）
+
+> 2021.10 [复习ES6，并学习ES7、8的新语法（温故而知新）](https://github.com/Mr-Wiill/Creater/tree/master/ES6%E3%80%817%E3%80%818)
+
+> 2021.09 [深入学习JavaScript源码，掌握如instanceof、prototype、Promise、new等的原理](https://github.com/Mr-Wiill/Creater/blob/master/prototype/test.ts)
 
 > 2021.08 学习FreeMarker模板引擎，并应用至项目开发中
 
 > 2021.07 参与研发一个的web低代码编辑平台，基于Vue2.0和FreeMarker模板引擎
 
-> 2021.06 复习巩固React和TypeScript，并基于Tora开发一个小程序商城（练习）
+> 2021.06 [复习巩固React和TypeScript，并基于Tora开发一个小程序商城（练习）](https://github.com/Mr-Wiill/mini-mall-app)
 
 > 2021.05 学习使用Tora跨端开发框架
 
@@ -22,21 +28,21 @@
 
 > 2020.12 优化时间胶囊项目，压缩文件，提高性能
 
-> 2020.11 学习使用CryptoJS加密算法库，学习前端AES+RSA加密
+> 2020.11 [学习使用CryptoJS加密算法库，学习前端AES+RSA加密](https://github.com/Mr-Wiill/Creater/blob/master/CryptoJS/aes.js)
 
 > 2020.10 参与一个基于VUE2.0的移动端区块链时间胶囊项目开发
 
-> 2020.09 复习前端相关的知识点，巩固基础
+> 2020.09 [复习前端相关的知识点，巩固基础](https://github.com/Mr-Wiill/Creater/tree/master/points)
 
 > 2020.08 学习MongoDB和MySQL数据库，并开发一个服务器端应用
 
-> 2020.07 学习node.js及express框架，应用于开发后端接口 || 前端三年
+> 2020.07 [学习node.js及express框架，应用于开发后端接口](https://github.com/Mr-Wiill/node-server-app) || 前端三年
 
-> 2020.06 学习React.js，并模仿小红书开发了一个美食社区mobile web（练习项目）
+> 2020.06 [学习React.js，并模仿小红书开发了一个美食社区mobile web（练习项目）](https://github.com/Mr-Wiill/react-foods-community-app)
 
 > 2020.05 参与开发一个企业请假流程管理微信小程序项目（基于Vant-weapp和原生小程序）
 
-> 2020.04 学习HTML5的canvas，并基于vue开发一个web电子签名
+> 2020.04 [学习HTML5的canvas，并基于vue开发一个web电子签名](https://github.com/Mr-Wiill/web/blob/master/electronic-signature/qianming.vue)
 
 > 2020.03 学习web怎么与原生app做交互，并实践在项目中
 
