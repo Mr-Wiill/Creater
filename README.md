@@ -6,9 +6,9 @@
 
 > 2021.11 独立接手一个微信公众号H5项目的迭代开发（1500万+用户，月活10万+）
 
-> 2021.10 [复习ES6，并学习ES7、8的新语法（温故而知新）](https://github.com/Mr-Wiill/Creater/tree/master/ES6%E3%80%817%E3%80%818)
+> 2021.10 [复习ES6，并学习ES7、8的新语法（温故而知新）](https://github.com/Mr-Wiill/Creater/tree/v2021/ES6%E3%80%817%E3%80%818)
 
-> 2021.09 [深入学习JavaScript源码，掌握如instanceof、prototype、Promise、new等的原理](https://github.com/Mr-Wiill/Creater/blob/master/prototype/test.ts)
+> 2021.09 [深入学习JavaScript源码，掌握如instanceof、prototype、Promise、new等的原理](https://github.com/Mr-Wiill/Creater/blob/v2021/prototype/test.ts)
 
 > 2021.08 学习FreeMarker模板引擎，并应用至项目开发中
 
@@ -28,11 +28,11 @@
 
 > 2020.12 优化时间胶囊项目，压缩文件，提高性能
 
-> 2020.11 [学习使用CryptoJS加密算法库，学习前端AES+RSA加密](https://github.com/Mr-Wiill/Creater/blob/master/CryptoJS/aes.js)
+> 2020.11 [学习使用CryptoJS加密算法库，学习前端AES+RSA加密](https://github.com/Mr-Wiill/Creater/blob/v2021/CryptoJS/aes.js)
 
 > 2020.10 参与一个基于VUE2.0的移动端区块链时间胶囊项目开发
 
-> 2020.09 [复习前端相关的知识点，巩固基础](https://github.com/Mr-Wiill/Creater/tree/master/points)
+> 2020.09 [复习前端相关的知识点，巩固基础](https://github.com/Mr-Wiill/Creater/tree/v2021/points)
 
 > 2020.08 [学习MongoDB和MySQL数据库，并开发一个服务器端应用](https://github.com/Mr-Wiill/Creater/tree/v2020/MongoDB)
 
