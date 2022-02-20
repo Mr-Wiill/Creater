@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+        <title>圣杯布局&双飞翼布局</title>
+    </head>
+    <style>
+        .container {
+            width: 100%;
+            min-height: 300px;
+            padding: 0 100px;
+            box-sizing: border-box;
+        }
+        .container > div {
+            position: relative;
+            float: left;
+        }
+        .left, .right {
+            width: 100px;
+            height: 100%;
+        }
+        .left {
+            left: -100px;
+            margin-left: -100%;
+        }
+        .right {
+            right: 0;
+            margin-right: -100%;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="main">main</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+         </div>
+    </body>
+</html>
