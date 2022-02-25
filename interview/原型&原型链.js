@@ -7,7 +7,7 @@ console.log(fn.__proto__ == Func.prototype);        // true
 // Func其实也是Function的实例
 console.log(Func.__proto__ == Function.prototype);  // true
 
-// Function是一个Object类型，所以它的原型__proto__指向Object
+// Function是一个Object类型，所以它原型的__proto__指向Object
 console.log(Function.prototype.__proto__ == Object.prototype);  //true
 
 // 顶层原型对象的__proto__为null
