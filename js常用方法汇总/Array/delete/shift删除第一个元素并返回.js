@@ -5,6 +5,6 @@
 
 const arr = [3,4,4,5,4,6,5,7];
 const a = arr.shift(); // 3
-console.log(arr); // [empty, 4, 5, 4, 6, 5, 7]
+console.log(arr); // [4, 4, 5, 4, 6, 5, 7]
 
 

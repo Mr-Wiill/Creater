@@ -1,8 +1,11 @@
 /* 
     依次处理数组的每个成员，最终累计成一个值。
-    格式：reduce（() => (pre, cur, curIndex, arr), initialValue）
+    格式：reduce(() => (pre, cur, curIndex, arr), initialValue)
     pre:必填，累计变量；cur：必填，当前变量；curIndex: 可选，当前位置； arr:可选，原数组; initialValue: 传递给函数的初始值。
 
+
+    reduceRight（）
+    与reduce方法使用方式相同，区别在于reduceRight方法从右到左执行（例子略过）。
 */
 
 //简单用法
