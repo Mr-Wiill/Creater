@@ -1,5 +1,11 @@
 ﻿## 《知行合一，跬步致远》
 
+> 2022.04 [学习Vue3.2新语法setup语法糖](https://blog.csdn.net/mr_javascript/category_11795778.html)
+
+> 2022.03 [盘点前端面试常考知识点](https://github.com/Mr-Wiill/Creater/tree/master/interview)
+
+> 2022.02 [复盘JavaScript常用知识点](https://github.com/Mr-Wiill/Creater/tree/master/js%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB)
+
 > 2022.01 解决微信H5兼容微信关怀模式（超大字体）的问题
 
 > 2021.12 [参与一个基于Cordova框架的Hybrid App项目迭代开发](https://github.com/Mr-Wiill/cordova-demo)
