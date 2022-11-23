@@ -1,5 +1,19 @@
 ﻿## 《知行合一，跬步致远》
 
+> 2022.11 持续迭代数智医疗APP
+
+> 2022.10 主导开发一个基于Vue3架构的Hybrid App项目（数智医疗APP用户端）
+
+> 2022.09 基于WebSocket封装一个AI数字人形象组件
+
+> 2022.08 主导开发一个基于Vue3架构的Hybrid App项目（数智医疗APP医生端）
+
+> 2022.07 设计一个Vue3架构（vue3.0 + vite + Pinia + TypeScript + vant3）并应用于新项目
+
+> 2022.06 Pinia（Vue新的状态存储库）的学习与实践
+
+> 2022.05 Vite新型前端构建工具的学习与实践
+
 > 2022.04 [学习Vue3.2新语法setup语法糖](https://blog.csdn.net/mr_javascript/category_11795778.html)
 
 > 2022.03 [复盘前端面试常考知识点](https://github.com/Mr-Wiill/Creater/tree/master/interview)
@@ -10,7 +24,7 @@
 
 > 2021.12 [参与一个基于Cordova框架的Hybrid App项目迭代开发](https://github.com/Mr-Wiill/cordova-demo)
 
-> 2021.11 独立接手一个微信公众号H5项目的迭代开发（1500万+用户，月活10万+）
+> 2021.11 独立接手一个微信公众号H5项目的迭代开发（4500万+用户，月活10万+）
 
 > 2021.10 [复习ES6，并学习ES7、8的新语法（温故而知新）](https://github.com/Mr-Wiill/Creater/tree/v2021/ES6%E3%80%817%E3%80%818)
 
