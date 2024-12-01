@@ -106,7 +106,7 @@
 
 > 2018.08 [学习Flex弹性布局，并在项目中实践](https://github.com/Mr-Wiill/Creater/tree/v2018/Flex%E5%B8%83%E5%B1%80)
 
-> 2018.07 结界（web前端开发工程师）|| 前端一年
+> 2018.07 毕业 || 前端实习一年
 
 > 2018.06 vue.js实战3.0。开发一个企业员工信息管理系统vue-personnel-system，学习vuex（企业实战）
 
