@@ -1,0 +1,69 @@
+1、第一题；
+入参
+let flatArr = [ 
+{id: 1, title: "demo1", parent_id: 0},  
+{id: 2, title: 'demo2', parent_id: 0}, 
+{id: 3, title: 'demo2-1', parent_id: 2},  
+{id: 4, title: 'demo3-1', parent_id: 3},  
+{id: 5, title: 'demo4-1', parent_id: 4},  
+{id: 6, title: 'demo2-2', parent_id: 2}, 
+] 
+输出
+let JsonTree = [ 
+    {id: 1, title: 'demo1', pid: 0},  
+    {id: 2, title: 'demo2', pid: 0, children: [
+        {id: 6, title: 'demo4-2', pid: 2},     
+        {id: 3, title: 'demo2-1', pid: 2, children: [      
+            { id: 4, title: 'demo3-1', pid: 3, children: [
+                {id: 5, title: 'demo4-1', pid: 4}, 
+            ]}, 
+         ]}, 
+     ]} 
+];
+
+考察算法实现方法，算法复杂度，算法优化。
+
+2、第二题；
+BFC
+<div>
+    <div class="column"></div> width:300px height:300px
+    <div class="column"></div>
+</div>
+
+考察css布局
+
+3、第三题；
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.print = function() {
+  return this.name;
+};
+
+Person('abc');
+console.log(name)
+
+const a = new Person('abc').print.call({});
+console.log(a);
+
+const fn = () => {
+  this.x = 'z';
+};
+
+const b = {x: 'y'};
+fn.call(b);
+console.log(b);
+
+考察变量作用域，箭头函数，继承，this，call方法
+
+4、第四题：
+for...of... 遍历数组的什么，是否可以遍历对象。
+
+5、跨域，csrf
+页面http://A.com
+
+http://C.com 
+http://B.com
+
+6、设计一个flat函数将如下数组arr=[1,2,['3',4,'5',[6,[7,8],9]]]输出为1,2,'3',4,'5',6,7,8,9

@@ -1,0 +1,20 @@
+flex布局；
+css长度单位，px、rem、vh、vw、em、pt
+为什么选择750px设计稿
+px2rem原理
+
+js数据类型
+js获取屏幕宽高
+判断数据类型的方法typeof、instanceof、constructor
+对数据类型进行分类
+typeof []
+typeof (()=>{})
+typeof null
+
+遍历数组的方法
+for循环, for of, forEach, map, filter, every, som, reduce
+reduce作用及传参
+
+[1, [2, [3, 4]]]降维为[1, 2, 3, 4]
+
+

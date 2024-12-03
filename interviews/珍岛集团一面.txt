@@ -1,0 +1,13 @@
+1、vue响应式原理；
+2、更改data里的数据怎么去比对虚拟DOM节点；
+3、vue怎么监听数组里的元素变化？
+4、首次进入怎么使用watch监听？
+5、watch、computed和filter区别；
+6、全局守卫和局部守卫？
+7、vue的首屏优化？
+8、虚拟列表渲染？
+9、异步路由加载大文件组件？
+10、webpack配置多页面？
+11、webpack配置sass的顺序，sass,css,style？
+12、webpack配置插件？
+13、v-if和v-for的执行优先级？vue2.0里if高于for，而vue3.0里for更高。
