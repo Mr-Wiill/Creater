@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4、读取本地文件内容</title>
+</head>
+
+<body>
+    <div>
+        <input type="file" id='f' />
+    </div>
+</body>
+<script type="text/javascript">
+
+    /* 
+        如果想要读取Blob或者文件对象并转化为其他格式的数据，可以借助FileReader对象的API进行操作。
+
+        FileReader.readAsText(Blob)：   将Blob转化为文本字符串
+        FileReader.readAsArrayBuffer(Blob)：   将Blob转为ArrayBuffer格式数据
+        FileReader.readAsDataURL():     将Blob转化为Base64格式的Data URL
+    */
+
+    document.getElementById('f').addEventListener('change', function (e) {
+        var file = this.files[0];
+        const reader = new FileReader();
+        reader.readAsText(file);    // 将Blob转化为文本字符串
+        reader.onload = function (e) {
+            const content = reader.result;
+            console.log(content);
+        }
+    }, false);
+
+</script>
+
+</html>

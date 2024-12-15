@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas_1" width="1000" height="500" style="box-shadow: 0px 0px 20px black;">
+            当前浏览器不支持 canvas
+        </canvas>
+    </div>
+</body>
+<script type="text/javascript">
+
+    // 获取 canvas 元素对应的 DOM 对象
+    var canvas_1 = document.getElementById("canvas_1");
+
+    // 获取在 canvas 上绘图的 canvasRenderingContent2D 对象
+    var ctx = canvas_1.getContext("2d");
+
+    // 打印一下，查看是否能够显示具体环境
+    console.log(ctx);
+
+    // 开始绘制
+    ctx.beginPath();
+
+    //设置绘制起点
+    ctx.moveTo(100, 100);
+
+    //设置绘制下一个点
+    ctx.lineTo(700, 400);
+
+    //设置绘制下一个点
+    ctx.lineTo(400, 100);
+
+    //设置绘制下一个点
+    ctx.lineTo(600, 500);
+
+    //结束绘制
+    ctx.closePath();
+
+    //设置线的宽度
+    ctx.lineWidth = 10;
+
+    //设置绘制的样式
+    ctx.strokeStyle = "red";
+
+    //绘制点之间的线路
+    ctx.stroke();
+
+    // 设置填充样式
+    ctx.fillStyle = "green";
+
+    // 填充当前视图
+    ctx.fill();
+
+    // 注意：所有的绘制相应属性全部应该放在 closePath 之前
+
+</script>
+
+</html>

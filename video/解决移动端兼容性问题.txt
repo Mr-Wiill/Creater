@@ -1,0 +1,24 @@
+1、ios端Safari浏览器里autoplay失效，加载完调用play()方法无效
+解决办法：
+1）把play()方法绑定到用户交互事件（eg.onclick,ontouchstart），当用户交互事件触发时，play()才会执行。
+2）进入页面弹出友好提示弹框，提醒用户WiFi环境播放之类的，让用户点击确认按钮触发播放；
+
+2、ios设备视频全屏/非全屏切换时，视频停止播放
+解决办法：
+1）onwebkitpresentationmodechanged事件可以检测video标签当前视频展示模式的变化，当检测到变化时，调用play()方法继续播放；
+2）通过onresize事件可以检测到video标签宽高的变化，来触发play();
+
+
+配置属性：
+muted   // 设置后，音频会初始化为静音，注意浏览器只有设置静音，才能自动播放 
+autoplay="autoplay"     // 视频会马上自动开始播放，不会停下来等着数据载入结束。
+loop="loop"     // 布尔属性；指定后，会在视频结尾的地方，自动返回视频开始的地方 
+preload="auto"  // 这个视频优先加载
+
+x5-playsinline="true"   
+playsinline="true"          // 一个布尔属性，标志视频将被“inline”播放，即在元素的播放区域内。
+webkit-playsinline="true"    
+
+x5-video-player-type="h5"   // 启用同层H5播放器，就是在视频全屏的时候，div可以呈现在视频层上，也是WeChat安卓版特有的属性。同层播放别名也叫做沉浸式播放
+x5-video-player-fullscreen="true"   // :全屏设置。它又两个属性值，ture和false，true支持全屏播放
+x-webkit-airplay="allow"    // 一个布尔属性，用于禁用使用有线连接的设备(HDMI、DVI等)的远程播放功能。
