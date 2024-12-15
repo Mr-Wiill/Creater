@@ -3,7 +3,7 @@
  * 背景：引用类型数据保存在堆内存中，引用地址存在栈中
  * 原理：创建一个新的对象，将原对象的引用地址复制到新对象中
  * 方法：
- * 1、for循环拷贝；
+ * 1、一层for循环拷贝；
  * 2、Object.assign；
  * 3、Object.create；
  * 4、Array.prototype.slice()；
