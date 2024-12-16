@@ -5,7 +5,7 @@
  * 2、循环递归
  */
 
-// 例1，JSON.parse(JSON.stringify(obj))，弊端：会忽略undefined、symbol和函数
+// 例1，JSON.parse(JSON.stringify(obj))，弊端：会忽略undefined、symbol、函数、RegExp
 const obj = {
     name: 'A',
     name1: undefined,
